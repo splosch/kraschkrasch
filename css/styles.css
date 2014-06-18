@@ -1,105 +1,110 @@
 @import "normalize.css";
 
-body{
-    font-family: TheSans, sans, verdana, arial, sans-serif;
-    color: #333333;
-    margin: 0;
+body {
+  font-family: TheSans, sans, verdana, arial, sans-serif;
+  color: #333333;
+  margin: 0;
 }
 
-h1, h2{
-    font-weight: normal;
+h1, h2 {
+  font-weight: normal;
 }
 
-h2{
-    margin: 1em 0 0.3em;
-}
-h3{
-    margin: 1em 0 0.3em;
-    font-size:1em;
-    color: #333;
+h2 {
+  margin: 1em 0 0.3em;
 }
 
-header, nav, article{
-    display: block;
+h3 {
+  margin: 1em 0 0.3em;
+  font-size:1em;
+  color: #333;
 }
 
-article{
-    position: relative;
-    overflow:hidden;
-    height: 100%;
-    font-size: 0.65em;
+header, nav, article {
+  display: block;
+}
+
+article {
+  position: relative;
+  overflow:hidden;
+  height: 100%;
+  font-size: 0.65em;
 }
 
 header {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 20; /*overlay slider (z-index 10)*/
-}
-header img{
-    width: 160px;
-    margin-top: 18px;
-}
-#content{
-    /*position: relative;
-     overflow:hidden;*/
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 20; /*overlay slider (z-index 10)*/
 }
 
-#slider, article .overlay{
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-}
-.photoSlideshow img{
-    height: 100%;
-    width: 100%;
-}
-.productDetailsDummy{
-    background: rgba(0, 0, 0, 0.05);
-    width: 150px;
-    height: 100px;
-    display: inline-block;
-}
-img{
-    border: none;
-}
-a, a:link, a:visited{
-    text-decoration: none;
-    font-family: TheSans, sans, verdana, arial, sans-serif;
-    color: #333333;
-    position:relative;
+header img {
+  width: 160px;
+  margin-top: 18px;
 }
 
-.startbild{
-    display:none;
+#content {
+  /*position: relative;
+   overflow:hidden;*/
 }
 
-.invisible{
-    position: absolute;
-    font-size: 0;
-    line-height: 0;
-    color:transparent;
-    left:-9999px;
-    top:-9999px;
+#slider, article .overlay {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 
+.photoSlideshow img {
+  height: 100%;
+  width: 100%;
+}
 
+.productDetailsDummy {
+  background: rgba(0, 0, 0, 0.05);
+  width: 150px;
+  height: 100px;
+  display: inline-block;
+}
 
+img {
+  border: none;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+  font-family: TheSans, sans, verdana, arial, sans-serif;
+  color: #333333;
+  position:relative;
+}
+
+.startbild {
+  display:none;
+}
+
+.invisible {
+  position: absolute;
+  font-size: 0;
+  line-height: 0;
+  color:transparent;
+  left:-9999px;
+  top:-9999px;
+}
 
 /********PAGEWRPAPPER******************/
-.pageWrapper{
-    position: relative;
-    padding-bottom: 50px;
-    margin: auto;
-    padding-top: 40px;
+.pageWrapper {
+  position: relative;
+  padding-bottom: 50px;
+  margin: auto;
+  padding-top: 40px;
 }
-.pageWrapper, .photoSlideshow{
-    display: block;
-    height: 100%;
-    width: 100%;
+
+.pageWrapper, .photoSlideshow {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 /**
@@ -107,462 +112,479 @@ a, a:link, a:visited{
  */
 
 /* Height on HTML/Body - maybe an issue in some Browsers - JS fill */
-html,body{
-    height: 98%;
-    margin: 0.1%;
+html,body {
+  height: 98%;
+  margin: 0.1%;
 }
 
 #container {
-    margin: 0 auto;
-    width: 94%;
-    height: 93%;
-    padding: 3%;
+  margin: 0 auto;
+  width: 94%;
+  height: 93%;
+  padding: 3%;
 
-    font-size: 1em; /* initial font size - all lower level are controlled by this one
-                       - so its easier to allow mediaquerz breakpoints to controll overall font adjustment */
-
+  font-size: 1em; /* initial font size - all lower level are controlled by this one
+             - so its easier to allow mediaquerz breakpoints to controll overall font adjustment */
 }
+
 .content {
-    display:block;
-    width: 100%;
-    height:89%;
-    margin:auto;
-    margin-bottom:1%;
+  display:block;
+  width: 100%;
+  height:89%;
+  margin:auto;
+  margin-bottom:1%;
 }
 
 /* especially for images other might apply*/
-.content .fullscale{
-    max-height: 100%;
-    max-width:100%
+.content .fullscale {
+  max-height: 100%;
+  max-width:100%
 }
 
-nav{
-    display:block;
-    width: 100%;
-    min-height:20px;
-    margin:auto;
-    margin-top: 3.5%;
+nav {
+  display:block;
+  width: 100%;
+  min-height:20px;
+  margin:auto;
+  margin-top: 3.5%;
 }
 
-.centeringContainer{
-    text-align: center;
+.centeringContainer {
+  text-align: center;
 }
-.centeringContainer > .centered{
-    margin-left: auto;
-    margin-right: auto;
-    display: inline-block;
+
+.centeringContainer > .centered {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
 }
 
 /* Big Screens scale the .fullscale image inside .content */
-@media all and (min-width: 920px) and (min-height: 600px){
-    .content .fullscale{
-        /*height: 100%;
-        max-width: initial;*/
-    }
+@media all and (min-width: 920px) and (min-height: 600px) {
+  .content .fullscale{
+    /*height: 100%;
+    max-width: initial;*/
+  }
 }
-
-
-
-
-
-
 
 /********NAVIGATION******************/
-nav{
-    text-align: center;
-    max-width:800px;
-}
-nav ul, nav li{
-    margin:0;
-    padding:0;
-}
-nav ul > li{
-    display: inline-block;
-    width:24%;
-    font-size: 1.2em /*breakpoint*/
-}
-nav a, nav a:link, nav a:visited{
-    text-transform: uppercase;
-}
-nav a:hover, nav a.active, nav a:focus{
-    color: #CCC;
-}
-.productNav >li >ul{
-    padding-left: 10px;
+nav {
+  text-align: center;
+  max-width:800px;
 }
 
+nav ul, nav li {
+  margin:0;
+  padding:0;
+}
+
+nav ul > li {
+  display: inline-block;
+  width:24%;
+  font-size: 1.2em /*breakpoint*/
+}
+
+nav a, nav a:link, nav a:visited {
+  text-transform: uppercase;
+}
+
+nav a:hover, nav a.active, nav a:focus {
+  color: #CCC;
+}
+
+.productNav >li >ul {
+  padding-left: 10px;
+}
 
 /********ARTICLE*****************
 article, .home article img, .impressum article img{
-	height: 480px;
-	width: 720px;
+  height: 480px;
+  width: 720px;
 }*/
 
 article li, article ul {
-    list-style: none;
+  list-style: none;
 }
 
-
-.impressum article > .imprint{
-    position:absolute;
-    top:0;
-    display: block;
-    width: 36%;
-    text-align: right;
-    padding-top: 8.3%;
-    z-index: 100;
+.impressum article > .imprint {
+  position:absolute;
+  top:0;
+  display: block;
+  width: 36%;
+  text-align: right;
+  padding-top: 8.3%;
+  z-index: 100;
 }
-
-
-
 
 /**********Slider Pagination**********/
 .slidesjs-pagination {
-    display: table;
-    margin: auto;
-    position: relative;
-    top: -30px;
-    z-index: 10;
+  display: table;
+  margin: auto;
+  position: relative;
+  top: -30px;
+  z-index: 10;
 }
+
 .slidesjs-pagination li {
-    float: left;
-    margin: 0 4px;
-    list-style: none;
-    opacity: 0.4;
-    filter: alpha(opacity = 40);
+  float: left;
+  margin: 0 4px;
+  list-style: none;
+  opacity: 0.4;
+  filter: alpha(opacity = 40);
 }
+
 .slidesjs-pagination li a {
-    display: block;
-    width: 1.1em;
-    height: 0.5em;
-    float: left;
-    overflow: hidden;
-    background: none white;
-    color: transparent;
-    line-height: 0px;
+  display: block;
+  width: 1.1em;
+  height: 0.5em;
+  float: left;
+  overflow: hidden;
+  background: none white;
+  color: transparent;
+  line-height: 0px;
 }
+
 .slidesjs-pagination li.active {
-    opacity: 0.8;
-    filter: alpha(opacity = 80);
+  opacity: 0.8;
+  filter: alpha(opacity = 80);
 }
 
 .slidesjs-navigation{
-    display:none;
+  display:none;
 }
-
-
 
 /********DETAILS******************/
-.detailsWrapper{
-    height: 1.8em;
-    position: absolute;
-    bottom: 25%;
-    overflow: hidden;
+.detailsWrapper {
+  height: 1.8em;
+  position: absolute;
+  bottom: 25%;
+  overflow: hidden;
 }
-.details{
-    position: absolute;
-    right: 0px;
 
-    width: 33%;
+.details {
+  position: absolute;
+  right: 0px;
+  width: 33%;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1em;
+  text-align: center;
+  z-index: 100;
 
-    background-color: rgba(255, 255, 255, 0.8);
-    font-size: 1em;
-    text-align: center;
-    z-index: 100;
-
-    /* controll slide in / out*/
-    transition: all 2s ease;
-    -moz-transition: all 2s ease;
-    -webkit-transition: all 2s ease;
-    -o-transition: all 2s ease;
+  /* controll slide in / out*/
+  -webkit-transition: all 2s ease;
+     -moz-transition: all 2s ease;
+       -o-transition: all 2s ease;
+          transition: all 2s ease;
 }
 
 /* rotating Arrow-Label */
-.productNav a:before, a.follow:before{
-    /*content: "◄"; */
-    content: "<";
-    -moz-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-    display: inline-block;
-    line-height: 0.7em;
-    margin-right: 2px;
+.productNav a:before, a.follow:before {
+  /*content: "◄"; */
+  content: "<";
+  -webkit-transform: rotate(180deg);
+     -moz-transform: rotate(180deg);
+       -o-transform: rotate(180deg);
+          transform: rotate(180deg);
+  display: inline-block;
+  line-height: 0.7em;
+  margin-right: 2px;
 }
 
-
-.productNav a, a.follow{
-    white-space:nowrap;
-    opacity: 0.7;
-}
-.productNav a:hover, a.follow:hover{
-    white-space:nowrap;
-    opacity:1;
+.productNav a, a.follow {
+  white-space:nowrap;
+  opacity: 0.7;
 }
 
-.details .backlink{
-    position: absolute;
-    top: 41px;
-    
+.productNav a:hover, a.follow:hover {
+  white-space:nowrap;
+  opacity:1;
+}
+
+.details .backlink {
+  position: absolute;
+  top: 41px;
 }
 
 .details .label {
-    display:block;
+  display:block;
 }
 
-.details .label > .icon_arrow:before{
-    content: "<";
-    line-height: 34px;
+.details .label > .icon_arrow:before {
+  content: "<";
+  line-height: 34px;
 }
 
-.details .label > .icon_arrow{
-    display: inline-block;
-    /* fixed px size to avoid font-size inheritage while resizing*/
-    font-size: 20px;
+.details .label > .icon_arrow {
+  display: inline-block;
+  /* fixed px size to avoid font-size inheritage while resizing*/
+  font-size: 20px;
+  margin:0 5px;
+  -webkit-transform: rotate(180deg);
+     -moz-transform: rotate(180deg);
+       -o-transform: rotate(180deg);
+          transform: rotate(180deg);
 
-    margin:0 5px;
+  -webkit-transition: all 0.7s ease;
+     -moz-transition: all 0.7s ease;
+       -o-transition: all 0.7s ease;
+          transition: all 0.7s ease;
 
-    -moz-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-
-    -moz-transition: all 0.7s ease;
-    -webkit-transition: all 0.7s ease;
-    -o-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-
-    -moz-transition-delay: 1.2s; /* Firefox 4 */
-    -webkit-transition-delay: 1.2; /* Safari and Chrome */
-    -o-transition-delay: 1.2s; /* Opera */
-    transition-delay: 1.2s;
+  -webkit-transition-delay: 1.2; /* Safari and Chrome */
+     -moz-transition-delay: 1.2s; /* Firefox 4 */
+       -o-transition-delay: 1.2s; /* Opera */
+          transition-delay: 1.2s;
 }
 
 .collapsed > .details .label > .icon_arrow/*,
-.details:hover .label > .icon_arrow*/{
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+.details:hover .label > .icon_arrow*/ {
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 
-.details .label{
-    position: absolute;
-    height: 34px;
-    overflow: hidden;
-    margin-left: -34px;
-    left:0;
-    width:34px;
-    display: block;
-    text-align: left;
-    background-color: inherit;
-    cursor:pointer;
+.details .label {
+  position: absolute;
+  height: 34px;
+  overflow: hidden;
+  margin-left: -34px;
+  left:0;
+  width:34px;
+  display: block;
+  text-align: left;
+  background-color: inherit;
+  cursor:pointer;
 }
 
-.collapsed > .details:hover .label{
-
-    margin-left: -40px;
-    width:40px;
+.collapsed > .details:hover .label {
+  margin-left: -40px;
+  width:40px;
 }
 
-.details:hover .label{
-    transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -webkit-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    margin-left: -28px;
-    width:28px;
+.details:hover .label {
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+  margin-left: -28px;
+  width:28px;
 }
 
-.details:hover .label{
-    /*background-color: rgba(255, 255, 255, 0.5);*/
+.details:hover .label {
+  /*background-color: rgba(255, 255, 255, 0.5);*/
 }
-.details .aniContainer{
-    padding-right: 10%;
-    transition: all 0.8s ease;
-    -moz-transition: all 0.8s ease;
-    -webkit-transition: all 0.8s ease;
-    -o-transition: all 0.8s ease;
+
+.details .aniContainer {
+  padding-right: 10%;
+  -webkit-transition: all 0.8s ease;
+     -moz-transition: all 0.8s ease;
+        -o-transition: all 0.8s ease;
+           transition: all 0.8s ease;
 }
 
 .details .productNav {
-    margin-left: 15%;
+  margin-left: 15%;
 }
 
-
-.details:hover{
-    background-color: rgba(255, 255, 255, 0.7);
-}
-.collapsed .details{
-    background-color: rgba(255, 255, 255, 0.5);
-}
-.collapsed .details:hover{
-    background-color: rgba(255, 255, 255, 0.6);
-}
-.collapsed .details .aniContainer{
-    /*color:transparent;*/
+.details:hover {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-
-.bigDetailsPage .detailsWrapper{
-    top: 0;
-    bottom: auto;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.bigDetailsPage .details{
-    height: 100%;
-}
-.bigDetailsPage .details .label{
-    bottom: 120px;
-}
-.bigDetailsPage .details .aniContainer{
-    padding-top: 25%;
-    text-align: left;
-    padding-left: 10%;
-    padding-right: 10%;
+.collapsed .details {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.bigDetailsPage .collapsed .details{
-    background-color: rgba(255, 255, 255, 0.5);
-    right: -33%;
+.collapsed .details:hover {
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-#detailsBox.collapsed:target .details{
-    background-color: rgba(255, 255, 255, 0.5);
-    right: 0;
+.collapsed .details .aniContainer {
+  /*color:transparent;*/
 }
 
-.products.bigDetailsPage.details ul, li{
-    list-style: none;
+.bigDetailsPage .detailsWrapper {
+  top: 0;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.aniContainer ul.dates > li{
-    display:block;
-    position:relative;
-    padding-right: 35%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-.aniContainer ul.dates > li > em{
-    position:absolute;
-    right:0;
-    width: 34%;
-    left:auto;
-    display: inline-block;
-    white-space:nowrap;
-    font-style: normal;
+.bigDetailsPage .details {
+  height: 100%;
 }
 
+.bigDetailsPage .details .label {
+  bottom: 120px;
+}
+
+.bigDetailsPage .details .aniContainer {
+  padding-top: 25%;
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.bigDetailsPage .collapsed .details {
+  background-color: rgba(255, 255, 255, 0.5);
+  right: -33%;
+}
+
+#detailsBox.collapsed:target .details {
+  background-color: rgba(255, 255, 255, 0.5);
+  right: 0;
+}
+
+.products.bigDetailsPage.details ul, li {
+  list-style: none;
+}
+
+.aniContainer ul.dates > li {
+  display:block;
+  position:relative;
+  padding-right: 35%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.aniContainer ul.dates > li > em {
+  position:absolute;
+  right:0;
+  width: 34%;
+  left:auto;
+  display: inline-block;
+  white-space:nowrap;
+  font-style: normal;
+}
 
 /* Scale the Text on breakpoints */
 /* Big Screens scale the .fullscale image inside .content */
 @media all and (max-width: 860px) {
-    header img {
-        height: 45px;
-        margin-top: 18px;
-        width: 131px;
-    }
-    .impressum article > .imprint {
-        width:38%
-    }
-    nav ul > li{
-        font-size: 1em /*breakpoint*/
-    }
-    article{
-        font-size: 0.68em;
-    }
-    p {
-        margin: 0 0 0.5em;
-    }
-    h3 {
-        margin: 0.5em 0 0.3em;
-    }
-    .bigDetailsPage .details .aniContainer{
-        padding-top:5em;
-    }
-    .details .backlink{
-        position: absolute;
-        top: 35px;
-    }
+  header img {
+    height: 45px;
+    margin-top: 18px;
+    width: 131px;
+  }
+
+  .impressum article > .imprint {
+    width:38%
+  }
+
+  nav ul > li {
+    font-size: 1em /*breakpoint*/
+  }
+
+  article {
+    font-size: 0.68em;
+  }
+
+  p {
+    margin: 0 0 0.5em;
+  }
+
+  h3 {
+    margin: 0.5em 0 0.3em;
+  }
+
+  .bigDetailsPage .details .aniContainer {
+    padding-top:5em;
+  }
+
+  .details .backlink {
+    position: absolute;
+    top: 35px;
+  }
 }
 
 @media all and (max-height: 585px) {
-    header img {
-        height: 45px;
-        margin-top: 18px;
-        width: 131px;
-    }
-    .impressum article > .imprint {
-        width:38%
-    }
-    nav ul > li{
-        font-size: 1em /*breakpoint*/
-    }
-    article{
-        font-size: 0.68em;
-    }
-    p {
-        margin: 0 0 0.5em;
-    }
-    h3 {
-        margin: 0.5em 0 0.3em;
-    }
-    .bigDetailsPage .details .aniContainer{
-        padding-top:5em;
-    }
-    .details .backlink{
-        position: absolute;
-        top: 35px;
-    }
+  header img {
+    height: 45px;
+    margin-top: 18px;
+    width: 131px;
+  }
+
+  .impressum article > .imprint {
+    width:38%
+  }
+
+  nav ul > li {
+    font-size: 1em /*breakpoint*/
+  }
+
+  article {
+    font-size: 0.68em;
+  }
+
+  p {
+    margin: 0 0 0.5em;
+  }
+
+  h3 {
+    margin: 0.5em 0 0.3em;
+  }
+
+  .bigDetailsPage .details .aniContainer {
+    padding-top:5em;
+  }
+
+  .details .backlink {
+    position: absolute;
+    top: 35px;
+  }
 }
 
 @media all and (max-height: 350px) {
-    header img {
-        height: auto;
-        margin-top: 18px;
-        width: 95px;
-    }
-    .impressum article > .imprint {
-        width:38%
-    }
-    nav ul > li{
-        font-size: 1em; /*breakpoint*/
-        width:23%;
-    }
-    article{
-        font-size: 0.55em;
-    }
-    .bigDetailsPage .details .aniContainer{
-        padding-top:3em;
-    }
-    .details .backlink{
-        position: absolute;
-        top: 15px;
-    }
+  header img {
+    height: auto;
+    margin-top: 18px;
+    width: 95px;
+  }
+
+  .impressum article > .imprint {
+    width:38%
+  }
+
+  nav ul > li {
+    font-size: 1em; /*breakpoint*/
+    width:23%;
+  }
+
+  article {
+    font-size: 0.55em;
+  }
+
+  .bigDetailsPage .details .aniContainer {
+    padding-top:3em;
+  }
+
+  .details .backlink {
+    position: absolute;
+    top: 15px;
+  }
 }
-
-
 
 a.popup {
   text-decoration:none;
   position:relative;
   display:block;
 }
+
 a.popup:hover {
   border:none;
 }
+
 a.popup img {
   border:none;
 }
+
 a.popup span {
   visibility:hidden;
   position:absolute;
   top:-97px;
   left:-681px;
 }
+
 a.popup:hover span {
   visibility:visible;
 }
