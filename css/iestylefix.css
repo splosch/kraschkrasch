@@ -1,19 +1,17 @@
 ﻿.productDetailsDummy{
-  background: #F2F2F2;
+	background: #F2F2F2;
 }
-
 .details{
-  background-color: rgb(248, 248, 248);
+	background-color: rgb(248, 248, 248);
 }
 
 .details:hover:before{
-  background-color: #E7E7E7;
+    background-color: #E7E7E7;
 }
 
 .collapsed .details{
-  background-color: rgb(248, 248, 248);
+    background-color: rgb(248, 248, 248);
 }
-
 .collapsed .details:hover:before{
-  background-color: #E7E7E7; 
+	background-color: #E7E7E7; 
 }

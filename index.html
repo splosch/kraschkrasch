@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,7 +9,7 @@
 	<meta name="googlebot" content="noodp">
 	<meta name="msnbot" content="noodp"> 
 	
-	<title>kaschkasch cologne</title>
+	<title>kaschkasch</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	
@@ -18,82 +18,72 @@
 		<link rel="stylesheet" type="text/css" href="css/iestylefix.css">
 	<![endif]-->
 	
-	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.min.js"></script>
 	<script type="text/javascript" src="js/myCommonJavaScript.js"></script>
-
 </head>
 
-<body>
+<body data-role="page" class="home">
 
-<div id="page" class="home">
+<div id="container">
 	
-		<div class="pageWrapper">
-	
-			<header>
-				<a href="index.html"><img src="images/logo.png"/></a>
-			</header>
-			
-			<nav>
-				<li> <a href="what.html">What</a> </li>
-				<li> <a href="who.html">Who</a> </li>
-				<li> <a href="when.html">When</a> </li>
-				<li> <a href="where.html">Where</a> </li>
-			</nav>
-		
-			<div id="content">
-				
-				<article>
-					<!-- attention: no photo slider but text -->
-					<script>
-						var bildUrl, zufallszahl, 
-						bilder = [
-							"IMG_1.JPG",
-							"IMG_2.JPG",
-							"IMG_3.JPG",
-							"IMG_4.JPG",
-							"IMG_5.JPG",
-							"IMG_6.JPG",
-							"IMG_7.JPG",
-							"IMG_8.JPG",
-							"IMG_9.JPG",
-							"IMG_10.JPG",
-							"IMG_11.JPG",
-							"IMG_12.JPG",
-							"IMG_13.JPG",
-							"IMG_14.JPG",
-							"IMG_15.JPG",
-							"IMG_16.JPG",
-							"IMG_17.JPG",
-							"IMG_18.JPG",
-							"IMG_19.JPG",
-							"IMG_20.JPG",
-							"IMG_21.JPG",
-							"IMG_22.JPG",
-							"IMG_23.JPG",
-							"IMG_24.JPG",
-							"IMG_25.JPG",
-						];
+    <div class="content centeringContainer">
 
-						// zufallszahl = Math.round(Math.random() * 10) * bilder.length()-1;
-						zufallszahl = Math.floor(Math.random()*bilder.length);
-						zufallszahl = zufallszahl < (bilder.length-1) ? zufallszahl : (bilder.length-1);
-						bildUrl = "images/start/" + bilder[zufallszahl];
-						//$("#startbild").attr("src", bildUrl);
-						document.write("<img id=\"startbild\" src=\""+ bildUrl +"\"\/>");
-					</script>
-					
-					<noscript>
-						<!-- Standardbild -->
-						<img id="startbild" src="images/start/IMG_1.JPG"/>
-					</noscript>
-					
-				</article>
-				
-			</div>
-			
-		</div>
-	
-	</div>
+        <div class="centered">
+            <header>
+                <a href="index.html"><img src="images/logo.png" alt="logo kaschkasch"/></a>
+            </header>
+
+            <article>
+                <!-- Transparentes 900 x 600 Bild um das Responsive scaling
+                     schon vor dem Laden des Sliders/Startbildes zu forcieren -->
+                <img class="fullscale" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAAJYCAYAAAA6xSjbAAANS0lEQVR4nO3XMQEAIAzAMMC/5yFjRxMFfXtn5gAAANDztgMAAADYYQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARBlCAACAKEMIAAAQZQgBAACiDCEAAECUIQQAAIgyhAAAAFGGEAAAIMoQAgAARH3D4getFtxM6QAAAABJRU5ErkJggg=="/>
+
+                <div class="overlay">
+                </div>
+                <!-- attention: no photo slider but text -->
+                <script language="JavaScript" >
+                    var bildUrl, zufallszahl,
+                            bilder = [
+                                "IMG_1.JPG",
+                                "IMG_2.JPG",
+                                "IMG_3.JPG",
+                                "IMG_4.JPG",
+                                "IMG_5.JPG",
+                                "IMG_6.JPG",
+                                "IMG_7.JPG",
+                                "IMG_8.JPG",
+                                "IMG_9.JPG",
+                                "IMG_10.JPG"
+                            ];
+                    // zufallszahl = Math.round(Math.random() * 10) * bilder.length()-1;
+                    zufallszahl = Math.floor(Math.random()*bilder.length);
+                    zufallszahl = zufallszahl < (bilder.length-1) ? zufallszahl : (bilder.length-1);
+                    bildUrl = "images/start/" + bilder[zufallszahl];
+                    $("article .overlay").append('<img class="startbild fullscale" src="'+bildUrl+'"/>');
+                </script>
+
+                <noscript>
+                    <!-- Standardbild -->
+                    <img src="images/start/IMG_1.JPG"/>
+                </noscript>
+
+            </article>
+
+            <nav>
+                <ul>
+                    <li> <a href="what.html">What</a> </li>
+                    <li> <a href="who.html">Who</a> </li>
+                    <li> <a href="when.html">When</a> </li>
+                    <li> <a href="where.html">Where</a> </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="js/analytics.js" type="text/javascript"></script>
 
 </body>
 

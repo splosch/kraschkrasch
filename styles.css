@@ -46,6 +46,30 @@ header img{
      overflow:hidden;*/
 }
 
+
+a.popup {
+  text-decoration:none;
+  position:relative;
+  display:block;
+}
+a.popup:hover {
+  border:none;
+}
+a.popup img {
+  border:none;
+}
+a.popup span {
+  visibility:hidden;
+  position:absolut;
+  top:0px;
+  left:0px;
+}
+a.popup:hover span {
+  visibility:visible;
+}
+
+
+
 #slider, article .overlay{
     overflow: hidden;
     height: 100%;
@@ -542,27 +566,4 @@ article li, article ul {
         position: absolute;
         top: 15px;
     }
-}
-
-
-
-a.popup {
-  text-decoration:none;
-  position:relative;
-  display:block;
-}
-a.popup:hover {
-  border:none;
-}
-a.popup img {
-  border:none;
-}
-a.popup span {
-  visibility:hidden;
-  position:absolute;
-  top:-97px;
-  left:-681px;
-}
-a.popup:hover span {
-  visibility:visible;
 }
