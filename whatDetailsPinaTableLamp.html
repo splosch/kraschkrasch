@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="">
+	<meta name="keywords" content=""> 
+	<meta name="robots" content="noodp">
+	<meta name="googlebot" content="noodp">
+	<meta name="msnbot" content="noodp"> 
+	
+	<title>kaschkasch cologne - product details</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	
+	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="js/easySlider1.7.js"></script>
+	<script type="text/javascript">	
+		/*
+		function adoptHeight(){
+			var jqObj = $(".pageWrapper"),
+				wWidth = window.innerWidth,
+				wHeight = window.innerHeight,
+				//objPadding = parseInt(jqObj.css("padding-top")) + parseInt(jqObj.css("padding-bottom")),
+				//objW = jqObj.outerWidth(),
+				//objH = jqObj.outerHeight(),
+				objW = jqObj.width(),
+				objH = jqObj.height(),
+				objRatio = (objW / objH),
+				newH, 
+				newW;
+
+			newH = ((wWidth / objRatio) < wHeight) ? wHeight : newH;
+			newW = ((wHeight * objRatio) < wWidth) ? wWidth : newW;
+			newH = newW ? (newW / objRatio) : wHeight;
+			newW = newH * objRatio;
+			
+			jqObj.width(newW);
+			jqObj.height(newH-objPadding);
+			jqObj.css("margin-top", "-"+newH/2+"px");
+			jqObj.css("margin-left", "-"+newW/2+"px");
+		}
+		*/
+	</script>
+
+</head>
+
+<body>
+
+	<div id="page" class="productDetails">
+	
+		<div class="pageWrapper">
+	
+			<header>
+				<a href="index.html"><img src="images/logo.png"/></a>
+			</header>
+			
+			<nav>
+				<li> <a class="active" href="what.html">What</a> </li>
+				<li> <a href="who.html">Who</a> </li>
+				<li> <a href="when.html">When</a> </li>
+				<li> <a href="where.html">Where</a> </li>
+			</nav>
+		
+			<div id="content">
+				
+				<article>
+					<div id="slider">
+						<ul class="photoSlideshow">
+							<li> <img src="images/003.jpg"/> </li>
+							<li> <img src="images/004.jpg"/> </li>
+							<li> <img src="images/005.jpg"/> </li>
+						</ul>
+					</div>
+				</article>
+				
+				<div class="detailsWrapper collapsed">
+					<div class="details">	
+						<p class="small"> Pina table lamp <i>Lamp / Prototype 2011 /</i> <b><a href="pdfs/Pina_table_lamp.pdf">pdf</a></b> </p>
+						<!-- TODO: refacotring -> set other font sizes to number of 3 and so on??? -->
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+	
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			
+			//adoptHeight();
+			
+			$(".details").bind("click", function(){
+				$(".detailsWrapper").toggleClass("collapsed");
+			});	
+			
+			// TODO: refactor to file
+			$("#slider").easySlider({
+				prevText: 'previous',
+				nextText: 'next',
+				firstText: 'first',
+				lastText: 'last',
+				firstShow: false,
+				lastShow: false,
+				vertical: false,
+				speed: 1000,
+				controlsShow: false,
+				controlsBefore:	'',
+				controlsAfter: '',
+				controlsFade: true,	
+				auto: true,
+				pause: 3000,
+				continuous: true,
+				numeric: false
+			});
+		});
+	</script>
+
+</body>
+
+</html>

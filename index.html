@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="">
+	<meta name="keywords" content=""> 
+	<meta name="robots" content="noodp">
+	<meta name="googlebot" content="noodp">
+	<meta name="msnbot" content="noodp"> 
+	
+	<title>kaschkasch cologne</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	
+	<!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/iestylefix.css">
+	<![endif]-->
+	
+	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="js/myCommonJavaScript.js"></script>
+
+</head>
+
+<body>
+
+<div id="page" class="home">
+	
+		<div class="pageWrapper">
+	
+			<header>
+				<a href="index.html"><img src="images/logo.png"/></a>
+			</header>
+			
+			<nav>
+				<li> <a href="what.html">What</a> </li>
+				<li> <a href="who.html">Who</a> </li>
+				<li> <a href="when.html">When</a> </li>
+				<li> <a href="where.html">Where</a> </li>
+			</nav>
+		
+			<div id="content">
+				
+				<article>
+					<!-- attention: no photo slider but text -->
+					<script>
+						var bildUrl, zufallszahl, 
+						bilder = [
+							"IMG_1.JPG",
+							"IMG_2.JPG",
+							"IMG_3.JPG",
+							"IMG_4.JPG",
+							"IMG_5.JPG",
+							"IMG_6.JPG",
+							"IMG_7.JPG",
+							"IMG_8.JPG",
+							"IMG_9.JPG",
+							"IMG_10.JPG",
+							"IMG_11.JPG",
+							"IMG_12.JPG",
+							"IMG_13.JPG",
+							"IMG_14.JPG",
+							"IMG_15.JPG",
+							"IMG_16.JPG",
+							"IMG_17.JPG",
+							"IMG_18.JPG",
+							"IMG_19.JPG",
+							"IMG_20.JPG",
+							"IMG_21.JPG",
+							"IMG_22.JPG",
+							"IMG_23.JPG",
+							"IMG_24.JPG",
+							"IMG_25.JPG",
+						];
+
+						// zufallszahl = Math.round(Math.random() * 10) * bilder.length()-1;
+						zufallszahl = Math.floor(Math.random()*bilder.length);
+						zufallszahl = zufallszahl < (bilder.length-1) ? zufallszahl : (bilder.length-1);
+						bildUrl = "images/start/" + bilder[zufallszahl];
+						//$("#startbild").attr("src", bildUrl);
+						document.write("<img id=\"startbild\" src=\""+ bildUrl +"\"\/>");
+					</script>
+					
+					<noscript>
+						<!-- Standardbild -->
+						<img id="startbild" src="images/start/IMG_1.JPG"/>
+					</noscript>
+					
+				</article>
+				
+			</div>
+			
+		</div>
+	
+	</div>
+
+</body>
+
+</html>

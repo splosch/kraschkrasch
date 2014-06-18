@@ -1,0 +1,243 @@
+body{
+	font-family: TheSans, sans, verdana, arial, sans-serif; /* TODO: Schriftart Futura */
+	color: #333333;
+}
+ul, li, p{
+	margin:0;
+	padding: 0;
+}
+header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 10;
+}
+header img{
+	width: 150px; 
+	height: 60px;
+}
+#content{
+	position: relative;
+}
+#slider{
+	overflow: hidden;
+	height: 476px; /* 4px less - don't know why */
+	width: 1000px;
+}
+.photoSlideshow img{
+	height: 476px; /* 4px less - don't know why */
+	width: 1000px;
+}
+.productDetailsDummy{
+	background: rgba(0, 0, 0, 0.1);
+	width: 150px;
+	height: 100px;
+	display: inline-block;
+}
+
+
+
+
+/********PAGEWRPAPPER******************/
+.pageWrapper{
+	position: relative;
+	padding-bottom: 50px;
+	margin: auto;
+	padding-top: 40px;
+}
+.pageWrapper, .photoSlideshow{
+	display: block;
+	height: 480px;
+	width: 1000px;
+}
+
+
+
+
+/********NAVIGATION******************/
+nav{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	text-align: center;
+}
+nav li, nav ul{
+	display: inline;
+	list-style: none;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+nav a, nav a:link, nav a:visited{
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: TheSans, sans, verdana, arial, sans-serif;
+	color: #333333;
+}
+nav a:hover, nav a.active, nav a:focus{
+	color: #CCC;
+}
+
+
+
+
+/********ARTICLE******************/
+article, .home article img{
+	height: 480px;
+	width: 1000px;
+}
+article li, article ul {
+	list-style: none;
+}
+
+
+.products article{
+	background: rgba(0, 0, 0, 0);
+	height: 400px;
+    width: 550px;
+    margin-left: 230px;
+    margin-top: 80px;
+}
+.products article li, .products article ul{
+	list-stlye:none;
+	display: inline-block;
+  	margin: 10px;
+}
+.products article img{
+	width: 150px;
+	height: 100px;
+	opacity: 0.3;
+}
+.products article img:hover{
+	opacity: 1.0;
+}
+
+
+.impressum article{
+	background: rgba(0, 0, 0, 0.1);
+}
+.impressum article p{
+	font-size: 12px;
+	display: block;
+	width: 300px;
+	text-align: right;
+	padding-top: 100px;
+}
+
+
+
+
+/********DETAILS******************/
+.detailsWrapper{
+	height: 2.5em; 
+	padding-left: 100%; 
+	position: absolute;
+	bottom: 25%;
+}
+.details{
+	position: absolute;
+	right: 0px;
+	background-color: rgba(255, 255, 255, 0.8);
+    min-height: 2.5em;
+    text-align: center;
+    z-index: 100;
+}
+.details:hover{
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.details:before{
+    font-size:1em;
+	content: "<";
+    position: absolute;
+	margin-left: -2.5em;
+    left:0;
+    width:2.5em;
+    line-height:2.5em;
+    display: block;
+    text-align: center;
+    background-color: inherit;
+    -webkit-transition: all 0.6s ease-in-out; 
+    -moz-transition: all 0.6s ease-in-out; 
+    -o-transition: all 0.6s ease-in-out; 
+    -ms-transition: all 0.6s ease-in-out;
+}
+.details:hover:before{
+    background-color: rgba(255, 255, 255, 0.5);
+	/* Firefox */
+	-moz-transform: rotate(-180deg);
+	/* WebKit */
+	-webkit-transform: rotate(-180deg);
+	/* Opera */
+	-o-transform: rotate(-180deg);
+	/* Standard */
+	transform: rotate(-180deg);
+}
+.details p{
+    min-height: 2.5em;
+    max-width: 250px;
+    padding-right: 200px;
+}
+.details p.small{
+    line-height: 2.5em;
+    max-width: 600px;
+}
+.small i, .small b{
+	font-size:12px;
+	line-height:2.5em;
+}
+.small a, .small a:hover{
+	text-decoration:none;
+	color: inherit;	
+}
+
+
+.collapsed .details{
+    right: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 0px;
+}
+.collapsed .details:before{
+	content: ">";
+	-webkit-transition: all 0.6s ease-in-out; 
+    -moz-transition: all 0.6s ease-in-out; 
+    -o-transition: all 0.6s ease-in-out; 
+    -ms-transition: all 0.6s ease-in-out;
+}
+.collapsed .details:hover:before{
+	background-color: rgba(255, 255, 255, 0.8); 
+	/* Firefox */
+	-moz-transform: rotate(-180deg);
+	/* WebKit */
+	-webkit-transform: rotate(-180deg);
+	/* Opera */
+	-o-transform: rotate(-180deg);
+	/* Standard */
+	transform: rotate(-180deg);       
+}
+.collapsed .details p{
+    display: none;
+}
+
+
+.bigDetailsPage .detailsWrapper{
+	top: 0%;
+	bottom: auto;
+}
+.bigDetailsPage .details{
+    min-height: auto;
+    height: 480px;
+}	
+.bigDetailsPage .details:before{
+	bottom: 120px;
+}
+.bigDetailsPage .details p{
+	font-size:12px;
+	padding-top: 100px;
+	text-align: left;
+	padding-left: 70px;
+	padding-right: 70px;
+}
+.bigDetailsPage .collapsed .details{
+	height: 480px;
+}
