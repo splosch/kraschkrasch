@@ -1,6 +1,7 @@
 body{
 	font-family: TheSans, sans, verdana, arial, sans-serif;
 	color: #333333;
+	margin: 0;
 }
 ul, li, p{
 	margin:0;
@@ -19,7 +20,7 @@ header {
 header img{
 	width: 131px; 
 	height: 45px;
-	margin-top: 12px;
+	margin-top: 18px;
 }
 #content{
 	position: relative;
@@ -42,6 +43,9 @@ header img{
 }
 img{
 	border: none;
+}
+.startbild{
+	display:none;
 }
 
 
@@ -140,7 +144,7 @@ article li, article ul {
 
 
 
-/**********Slider Pagination**********/.pagination {    display: table;    margin: auto;    position: relative;    top: -30px;    z-index: 10;}.pagination li {    float:left;    margin:0 1px;    list-style:none;}.pagination li a {    display:block;    width:12px;    height:0;    padding-top:12px;    background-image:url(../images/pagination_b.png);    background-position:0 0;    float:left;    overflow:hidden;}.pagination li.current a {    background-position:0 -12px;}
+/**********Slider Pagination**********/.pagination {    display: table;    margin: auto;    position: relative;    top: -30px;    z-index: 10;}.pagination li {    float: left;    margin: 0 4px;    list-style: none;    opacity: 0.4;    filter: alpha(opacity = 40);}.pagination li a {    display: block;    width: 1.1em;    height: 0.5em;    float: left;    overflow: hidden;    background: none white;    color: transparent;    line-height: 0px;}.pagination li.current {    opacity: 0.8;    filter: alpha(opacity = 80);}
 
 
 
@@ -159,7 +163,7 @@ article li, article ul {
     min-height: 1.8em;
     text-align: center;
     z-index: 100;
-    transition: all 2s ease-in;	-moz-transition: all 2s ease-in;	-webkit-transition: all 2s ease-in;	-o-transition: all 2s ease-in;
+    transition: all 2s ease;	-moz-transition: all 2s ease;	-webkit-transition: all 2s ease;	-o-transition: all 2s ease;
 	cursor:pointer;
 }
 .details:before{
@@ -182,7 +186,7 @@ article li, article ul {
     min-height: 1.8em;
     max-width: 350px;
     padding-right: 38px;
-    transition: all 0.5s ease-in;	-moz-transition: all 0.5s ease-in;	-webkit-transition: all 0.5s ease-in;	-o-transition: all 0.5s ease-in;
+    transition: all 0.8s ease;	-moz-transition: all 0.8s ease;	-webkit-transition: all 0.8s ease;	-o-transition: all 0.8s ease;
 }
 .details .content{	width:170px;}
 
@@ -207,8 +211,8 @@ article li, article ul {
 	background-color: rgba(255, 255, 255, 0.8); 
 }
 .collapsed .details .aniContainer{
-    max-width:0px;
-	width:0px;	padding-left:0px;	padding-right:0px;	color:transparent;
+    max-width:0px;	padding-left:0px;	padding-right:0px;	color:transparent;
+	width: 0px;
 }
 
 
@@ -244,10 +248,15 @@ article li, article ul {
 
 /******Groessere Browseraufloesung*******/
 @media all and (min-height: 750px){
+header img{
+	margin-top: 24px;
+}
+
 	#slider{
 		height: 650px;
 		width: 975px;
 	}
+
 	.photoSlideshow img{
 		height: 650px;
 		width: 975px;
