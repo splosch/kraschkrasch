@@ -1,240 +1,0 @@
-body{
-	font-family: TheSans, sans, verdana, arial, sans-serif;
-	color: #333333;
-}
-ul, li, p{
-	margin:0;
-	padding: 0;
-}
-header, nav, article{
-	display: block;
-}
-header {
-	position: absolute;
-	left: 0;
-	right: 0;
-	text-align: center;
-	z-index: 10;
-}
-header img{
-	width: 131px; 
-	height: 45px;
-	margin-top: 12px;
-}
-#content{
-	position: relative;
-	overflow:hidden;
-}
-#slider{
-	overflow: hidden;
-	height: 480px;
-	width: 720px;
-}
-.photoSlideshow img{
-	height: 480px;
-	width: 720px;
-}
-.productDetailsDummy{
-	background: rgba(0, 0, 0, 0.05);
-	width: 150px;
-	height: 100px;
-	display: inline-block;
-}
-img{
-	border: none;
-}
-
-
-
-
-/********PAGEWRPAPPER******************/
-.pageWrapper{
-	position: relative;
-	padding-bottom: 50px;
-	margin: auto;
-	padding-top: 40px;
-}
-.pageWrapper, .photoSlideshow{
-	display: block;
-	height: 480px;
-	width: 720px;
-}
-
-
-
-
-/********NAVIGATION******************/
-nav{
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	text-align: center;
-}
-nav li, nav ul{
-	display: inline;
-	list-style: none;
-	padding-left: 60px;
-	padding-right: 60px;
-}
-nav a, nav a:link, nav a:visited{
-	text-decoration: none;
-	text-transform: uppercase;
-	font-family: TheSans, sans, verdana, arial, sans-serif;
-	color: #333333;
-}
-nav a:hover, nav a.active, nav a:focus{
-	color: #CCC;
-}
-
-
-
-
-/********ARTICLE******************/
-article, .home article img, .impressum article img{
-	height: 480px;
-	width: 720px;
-}
-.impressum article{
-	background-image: url(../images/who/dummyBackground.jpg);
-	background-size: 720px 480px;
-}
-article li, article ul {
-	list-style: none;
-}
-
-
-.products article{
-	padding-top: 100px;
-	height: 400px;
-}
-.products article li, .products article ul{
-	list-stlye:none;
-	display: inline-block;
-  	margin: 5px;
-}
-.products article ul{
-	margin: auto;
-	display: block;
-	width: 492px;
-}
-.products article img{
-	width: 150px;
-	height: 100px;
-	opacity: 0.3;
-}
-.products article img:hover{
-	opacity: 1.0;
-}
-
-
-.impressum article p{
-	font-size: 12px;
-	display: block;
-	width: 300px;
-	text-align: right;
-	padding-top: 100px;
-	z-index: 100;
-}
-
-
-
-
-/**********Slider Pagination**********/.pagination {    display: table;    margin: auto;    position: relative;    top: -30px;    z-index: 10;}.pagination li {    float:left;    margin:0 1px;    list-style:none;}.pagination li a {    display:block;    width:12px;    height:0;    padding-top:12px;    background-image:url(../images/pagination_b.png);    background-position:0 0;    float:left;    overflow:hidden;}.pagination li.current a {    background-position:0 -12px;}
-
-
-
-
-/********DETAILS******************/
-.detailsWrapper{
-	height: 1.8em; 
-	padding-left: 100%; 
-	position: absolute;
-	bottom: 25%;
-}
-.details{
-	position: absolute;
-	right: 0px;
-	background-color: rgba(255, 255, 255, 0.8);
-    min-height: 1.8em;
-    text-align: center;
-    z-index: 100;
-    transition: all 2s ease-in;	-moz-transition: all 2s ease-in;	-webkit-transition: all 2s ease-in;	-o-transition: all 2s ease-in;
-	cursor:pointer;
-}
-.details:before{
-    font-size:1em;
-	content: "<";
-    position: absolute;
-	margin-left: -2.0em;
-    left:0;
-    width:2.0em;
-    line-height:1.8em;
-    display: block;
-    text-align: center;
-    background-color: inherit;
-    cursor:pointer;
-}
-.details:hover:before{
-    background-color: rgba(255, 255, 255, 0.5);
-}
-.details .aniContainer{
-    min-height: 1.8em;
-    max-width: 350px;
-    padding-right: 38px;
-    transition: all 0.5s ease-in;	-moz-transition: all 0.5s ease-in;	-webkit-transition: all 0.5s ease-in;	-o-transition: all 0.5s ease-in;
-}
-.details .content{	width:170px;}
-
-
-.details .aniContainer.small{    line-height: 1.8em;}.details .small .content{	width:400px;
-	text-align: left;
-	margin-left: 5px;}
-.small i, .small b{
-	font-size:12px;
-	line-height:1.8em;
-}
-.small a, .small a:hover{
-	text-decoration:none;
-	color: inherit;	
-}
-
-
-.collapsed .details{
-    background-color: rgba(255, 255, 255, 0.5);
-}
-.collapsed .details:hover:before{
-	background-color: rgba(255, 255, 255, 0.8); 
-}
-.collapsed .details .aniContainer{
-	width:0;
-    max-width:0px;	padding-left:0px;	padding-right:0px;	color:transparent;
-}
-
-
-.bigDetailsPage .detailsWrapper{
-	top: 0%;
-	bottom: auto;
-}
-.bigDetailsPage .details{
-    min-height: auto;
-    height: 480px;
-}	
-.bigDetailsPage .details:before{
-	bottom: 120px;
-}
-.bigDetailsPage .details .aniContainer{
-	font-size:12px;
-	padding-top: 100px;
-	text-align: left;
-	padding-left: 40px;
-	padding-right: 40px;
-}
-.bigDetailsPage .collapsed .details{
-	height: 480px;
-}
-.bigDetailsPage .collapsed .details .aniContainer{    max-width:0px;	padding-left:0px;	padding-right:0px;}
-
-.about.bigDetailsPage .details .aniContainer{
-	padding-top: 55px;
-}

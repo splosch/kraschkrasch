@@ -1,23 +1,22 @@
-function click (e) {
-  if (!e)
-    e = window.event;
-  if ((e.type && e.type == "contextmenu") || (e.button && e.button == 2) || (e.which && e.which == 3)) {
+function preventRightClick (event) {
+  if (!event)
+    event = window.event;
+  if ((event.type && event.type == "contextmenu") || (event.button && event.button == 2) || (event.which && event.which == 3)) {
     if (window.opera)
       window.alert("Sorry: Diese Funktion ist deaktiviert.");
     return false;
   }
 }
-if (document.layers)
+if (document.layers) {
   document.captureEvents(Event.MOUSEDOWN);
-document.onmousedown = click;
-document.oncontextmenu = click;
-
-
-
+}
+  
+document.onmousedown = preventRightClick;
+document.oncontextmenu = preventRightClick;
 
 $(document).ready(function(){
-	$(".details").bind("click", function(){
-		$(".detailsWrapper").toggleClass("collapsed");
-	});	
+  $(".details").bind("click", function(){
+    $(".detailsWrapper").toggleClass("collapsed");
+  }); 
 
 });
