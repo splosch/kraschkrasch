@@ -93,9 +93,9 @@ $(document).ready(function() {
   }
 });
 
-if (document.layers) {
-  document.captureEvents(Event.MOUSEDOWN);
-}
+// if (document.layers) {
+//   document.captureEvents(Event.MOUSEDOWN);
+// }
 
-document.onmousedown   = click;
-document.oncontextmenu = click;
+// document.onmousedown   = click;
+// document.oncontextmenu = click;
