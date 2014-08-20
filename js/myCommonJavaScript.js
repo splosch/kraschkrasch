@@ -88,7 +88,7 @@ $(document).ready(function() {
     }
   };
 
-  if($('#slider')[0]) {
+  if($('#slider')[0] && $("#slider").children().length) {
     $("#slider").slidesjs(options);
   }
 });
