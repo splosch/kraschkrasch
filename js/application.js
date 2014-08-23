@@ -36,16 +36,16 @@ var app = $.sammy(function( ) {
   this.section = "home";
 
   // defining the basic routes
-  this.get('#/',      function() { this.setSection("home"); }.bind(this));
-  this.get('#/what',  function() { this.setSection("what"); }.bind(this));
-  this.get('#/who',   function() { this.setSection("who"); }.bind(this));
-  this.get('#/when',  function() { this.setSection("when"); }.bind(this));
-  this.get('#/where', function() { this.setSection("where"); }.bind(this));
+  this.get('#/',      function() { this.app.setSection("home"); });
+  this.get('#/what',  function() { this.app.setSection("what"); });
+  this.get('#/who',   function() { this.app.setSection("who"); });
+  this.get('#/when',  function() { this.app.setSection("when"); });
+  this.get('#/where', function() { this.app.setSection("where"); });
 
-  this.get('#/what/product/:name', function() { 
-    this.setSection("what"); 
-    alert(this.params['name']);
-  }.bind(this));
+  this.get('#/what/product/:productname', function() {
+    this.app.setSection("what");
+    alert("Switched to product: " + this.params['productname'])
+  })
 });
 
 $(function() {
