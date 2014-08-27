@@ -32,12 +32,14 @@ var app = $.sammy(function( ) {
   };
 
   // include the plugin and alias handlebars() to hb()
-  //this.use('Handlebars', 'hb');
+  this.use('Handlebars', 'hb');
   this.section = "home";
 
   // defining the basic routes
   this.get('#/',      function() { 
     this.app.setSection("home");
+    this.render('hb_nav_sections.hb', null, { hb_slider: 'hb-partial_slider.hb' });
+
     /* TODO Make this work 
     /  --> source [http://stackoverflow.com/questions/12046748/how-to-dynamically-allocate-a-partial-view-within-a-parent-view-with-handlebars]
     /  this.render(
