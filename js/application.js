@@ -36,7 +36,17 @@ var app = $.sammy(function( ) {
   this.section = "home";
 
   // defining the basic routes
-  this.get('#/',      function() { this.app.setSection("home"); });
+  this.get('#/',      function() { 
+    this.app.setSection("home");
+    /* TODO Make this work 
+    /  --> source [http://stackoverflow.com/questions/12046748/how-to-dynamically-allocate-a-partial-view-within-a-parent-view-with-handlebars]
+    /  this.render(
+    /   'templates/mainPage.hb', 
+    /   item, 
+    /   { subView: 'templates/textView.hb' }
+    /  );
+    */
+  });
   this.get('#/what',  function() { this.app.setSection("what"); });
   this.get('#/who',   function() { this.app.setSection("who"); });
   this.get('#/when',  function() { this.app.setSection("when"); });
