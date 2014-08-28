@@ -22,8 +22,6 @@
   <script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
   <script type="text/javascript" src="js/sammy-latest.min.js"></script>
   <script type="text/javascript" src="js/plugins/sammy.handlebars.js"></script>
-  <script type="text/javascript" src="js/application.js"></script>
-
 
   <script type="text/javascript" src="js/v3_0/jquery.slides.js"></script>
   
@@ -123,6 +121,7 @@
   </div>
 </script>
 
+<script type="text/javascript" src="js/application.js"></script>
 
 <script type="text/javascript">
   var sections_source   = $("#hb_nav_sections").html(),
@@ -131,12 +130,6 @@
       product_template  = Handlebars.compile(product_source),
 
       data = { 
-        nav_sections: [
-          {title: "What",  url: "#/what" },
-          {title: "Who",   url: "#/who"  },
-          {title: "When",  url: "#/when" },
-          {title: "Where", url: "#/where"}
-        ],
         product:
           {
             name:    "Bulb",
