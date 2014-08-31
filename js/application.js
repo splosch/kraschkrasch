@@ -25,22 +25,30 @@ var  NAV_SECTIONS = [
  *  product page #/:section/:product
  */
 var app = $.sammy(function( ) {
+  // prepare the APP
+  this.initialize = function() {
+    // require Plugins and extensions here
+    this.use('Handlebars', 'hb'); // include the plugin and alias handlebars() to hb()
 
-  this.navSections = {}
+    this.navSections = {};
+    this.activeSection = "home";
 
-  // TODO: Move into initialize method
-  // prime the sections once with NAV_SECTIONS data for later (fast) lookup
-  for (var i = 0, len = NAV_SECTIONS.length; i < len; i++) {
-    this.navSections[NAV_SECTIONS[i].name] = NAV_SECTIONS[i];
+    // TODO: Move into initialize method
+    // prime the sections once with NAV_SECTIONS data for later (fast) lookup
+    for (var i = 0, len = NAV_SECTIONS.length; i < len; i++) {
+      this.navSections[NAV_SECTIONS[i].name] = NAV_SECTIONS[i];
+    }
+
+    this.defineRoutes();
   }
 
   // updates the Navigation Section when a change occurs
+  // TODO: Remove logging of section any time section gets switched
   this.setNavSection = function(section){
     var sectionData = {};
 
     sectionData.NAV_SECTIONS  = NAV_SECTIONS;
 
-    debugger;
     if ( section && this.navSections[section]) {
       // keep to check wheter update of nav_section is needed
       this.activeSection = sectionData.activeSection = section;
@@ -53,33 +61,28 @@ var app = $.sammy(function( ) {
     }
   };
 
-  // include the plugin and alias handlebars() to hb()
-  this.use('Handlebars', 'hb');
-  this.activeSection = "home";
+  this.defineRoutes = function() {
+    // defining the basic routes
+    this.get('#/',      function() { 
+      this.app.setNavSection("home");
+      // Render Subsections --> source [http://stackoverflow.com/questions/12046748/how-to-dynamically-allocate-a-partial-view-within-a-parent-view-with-handlebars]
+      this.render('hb_nav_sections.hb', null, { hb_slider: 'hb-partial_slider.hb' });
+    });
+    this.get('#/what',  function() { this.app.setNavSection("what"); });
+    this.get('#/who',   function() { this.app.setNavSection("who"); });
+    this.get('#/when',  function() { this.app.setNavSection("when"); });
+    this.get('#/where', function() { this.app.setNavSection("where"); });
 
-  // defining the basic routes
-  this.get('#/',      function() { 
-    this.app.setNavSection("home");
-    this.render('hb_nav_sections.hb', null, { hb_slider: 'hb-partial_slider.hb' });
+    this.get('#/what/product/:productname', function() {
+      this.app.setNavSection("what");
+      alert("Switched to product: " + this.params['productname'])
+    })
+  };
 
-    /* TODO Make this work 
-    /  --> source [http://stackoverflow.com/questions/12046748/how-to-dynamically-allocate-a-partial-view-within-a-parent-view-with-handlebars]
-    /  this.render(
-    /   'templates/mainPage.hb', 
-    /   item, 
-    /   { subView: 'templates/textView.hb' }
-    /  );
-    */
-  });
-  this.get('#/what',  function() { this.app.setNavSection("what"); });
-  this.get('#/who',   function() { this.app.setNavSection("who"); });
-  this.get('#/when',  function() { this.app.setNavSection("when"); });
-  this.get('#/where', function() { this.app.setNavSection("where"); });
+  // bind app.run() handler to start of the initialization of the APP  
+  // Once the DOM is loaded and the APP started because of app.run()
+  this.bind('run', function() { this.app.initialize(); });
 
-  this.get('#/what/product/:productname', function() {
-    this.app.setNavSection("what");
-    alert("Switched to product: " + this.params['productname'])
-  })
 });
 
 $(function() {
