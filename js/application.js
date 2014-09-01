@@ -3,7 +3,6 @@
  * TODO: move to seperate file
  */
 var  NAV_SECTIONS = [
-      { name: "home",  url: "#/"      },
       { name: "what",  url: "#/what"  },
       { name: "who",   url: "#/who"   },
       { name: "when",  url: "#/when"  },
@@ -23,50 +22,56 @@ var  NAV_SECTIONS = [
  *  url scheme: 
  *  main section #/:section
  *  product page #/:section/:product
+ *  main_content_area id = 'main' --> now sammy knows whats the main content section (equal to this.element_selector = '#main'; within sammy.app())
  */
-var app = $.sammy(function( ) {
+var app = $.sammy('#main', function( ) {
   // prepare the APP
   this.initialize = function() {
     // require Plugins and extensions here
     this.use('Handlebars', 'hb'); // include the plugin and alias handlebars() to hb()
 
     this.navSections = {};
-    this.activeSection = "home";
 
-    // TODO: Move into initialize method
     // prime the sections once with NAV_SECTIONS data for later (fast) lookup
     for (var i = 0, len = NAV_SECTIONS.length; i < len; i++) {
       this.navSections[NAV_SECTIONS[i].name] = NAV_SECTIONS[i];
     }
 
+    // add "home" section to allowed navSections here since its a special nav section not in the section config
+    this.navSections.home = { name: "home", url: "#/" };
+
     this.defineRoutes();
   }
 
-  // updates the Navigation Section when a change occurs
-  // TODO: Remove logging of section any time section gets switched
-  this.setNavSection = function(section){
-    var sectionData = {};
+  // updates the Navigation Section
+  this.setNavSection = function(selected_section){
+    var sectionData = { 
+          nav_sections  : []
+        };
 
-    sectionData.NAV_SECTIONS  = NAV_SECTIONS;
-
-    if ( section && this.navSections[section]) {
-      // keep to check wheter update of nav_section is needed
-      this.activeSection = sectionData.activeSection = section;
-
-      $("#nav_sections").html(sections_template(sectionData));
-
-      console.log("switched to section '"+this.activeSection+"'");
-    } else {
-      console.log("invalid section '"+this.activeSection+"'");
+    if (!this.navSections[selected_section]) {
+      console.warn("No such section available --> ["+selected_section+"]");
+      return null;
     }
+
+    for(section in this.navSections) {
+      this.navSections[section].active = section === selected_section;
+
+      // skip home - it will not be rendered in nav section
+      if (section !== "home") {
+        // keep for rendering && to check wheter update of nav_section is needed
+        sectionData.nav_sections.push(this.navSections[section]);
+      }
+    }
+
+    // update the respective section
+    $("#nav_sections").html(sections_template(sectionData));
   };
 
   this.defineRoutes = function() {
     // defining the basic routes
     this.get('#/',      function() { 
       this.app.setNavSection("home");
-      // Render Subsections --> source [http://stackoverflow.com/questions/12046748/how-to-dynamically-allocate-a-partial-view-within-a-parent-view-with-handlebars]
-      this.render('hb_nav_sections.hb', null, { hb_slider: 'hb-partial_slider.hb' });
     });
     this.get('#/what',  function() { this.app.setNavSection("what"); });
     this.get('#/who',   function() { this.app.setNavSection("who"); });
