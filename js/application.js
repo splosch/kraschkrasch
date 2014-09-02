@@ -2,19 +2,27 @@
  * Configuration
  * TODO: move to seperate file
  */
-var  NAV_SECTIONS = [
+var NAV_SECTIONS = [
       { name: "what",  url: "#/what"  },
       { name: "who",   url: "#/who"   },
       { name: "when",  url: "#/when"  },
       { name: "where", url: "#/where" }
     ],
 
+    layout_template   = Handlebars.compile($("#hb_main_layout").html()),
     sections_template = Handlebars.compile($("#hb_nav_sections").html()),
-    product_template  = Handlebars.compile($("#hb_product").html());
+    product_template  = Handlebars.compile($("#hb_product").html()),
     what_template     = Handlebars.compile($("#hb_what").html());
-    who_template      = Handlebars.compile($("#hb_who").html());
-    when_template     = Handlebars.compile($("#hb_when").html());
-    where_template    = Handlebars.compile($("#hb_where").html());
+    // who_template      = Handlebars.compile($("#hb_who").html()),
+    // when_template     = Handlebars.compile($("#hb_when").html()),
+    // where_template    = Handlebars.compile($("#hb_where").html());
+
+// allow usage of registered partials within templates
+Handlebars.registerPartial("hb_slider", $("#hb_partial_slider").html());
+Handlebars.registerPartial("hb_nav_sections", $("#hb_nav_sections").html());
+Handlebars.registerPartial("hb_startbild", $("#hb_startbild").html());
+Handlebars.registerPartial("hb_product_nav", $("#hb_product_nav").html());
+Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
 
 /* configuration end */
 
@@ -72,24 +80,25 @@ var app = $.sammy('#main', function( ) {
 
   this.defineRoutes = function() {
     // defining the basic routes
-    this.get('#/',      function() { 
+    this.get('#/',      function() {
+      $("#main").html(layout_template());
       this.app.setNavSection("home");
     });
-    this.get('#/what',  function() { 
+    this.get('#/what',  function() {
+      $("#main").html(layout_template());
       this.app.setNavSection("what");
-      $("#main-area").html(what_template());
     });
-    this.get('#/who',   function() { 
+    this.get('#/who',   function() {
+      $("#main").html(layout_template());
       this.app.setNavSection("who");
-      $("#main-area").html(who_template());
     });
-    this.get('#/when',  function() { 
+    this.get('#/when',  function() {
+    $("#main").html(layout_template()); 
       this.app.setNavSection("when"); 
-      $("#main-area").html(when_template());
     });
     this.get('#/where', function() { 
+      $("#main").html(layout_template());
       this.app.setNavSection("where");
-      $("#main-area").html(where_template());
     });
 
     this.get('#/what/product/:productname', function() {

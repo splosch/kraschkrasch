@@ -40,12 +40,12 @@
         <div id="main" class="centered">
           <header>
             {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
-            <a href="index.html"><img src="images/logo.png"/></a>
+            <a href="#/"><img src="images/logo.png"/></a>
           </header>
           <article id="main-area">
             {{> hb_startbild}}
           </article>
-          <nav id="nav_sections">{{> hb_slider}}</nav>
+          <nav id="nav_sections">{{> hb_nav_sections}}</nav>
         </div>
       </div>
     </div>
@@ -204,20 +204,8 @@
             images: [
               1,2,3,4,5,6
             ]
-              // Wenn es keine URLs gibt wird angenommen
-              // dass es 6 Bilder im Pfad:
-              // /images/'produktname'/'nummer'.jpg
           }
-        
       };
-
-  // allow usage of registered partials within templates
-  Handlebars.registerPartial("hb_slider", $("#hb_partial_slider").html());
-  Handlebars.registerPartial("hb_nav_sections", $("#hb_nav_sections").html());
-  Handlebars.registerPartial("hb_startbild", $("#hb_startbild").html());
-  Handlebars.registerPartial("hb_product_nav", $("#hb_product_nav").html());
-  Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
-
   $("#main-area").html(product_template(data));
 
 </script>
