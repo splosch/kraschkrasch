@@ -9,10 +9,12 @@ var  NAV_SECTIONS = [
       { name: "where", url: "#/where" }
     ],
 
-    sections_source   = $("#hb_nav_sections").html(),
-    product_source    = $("#hb_product").html(),
-    sections_template = Handlebars.compile(sections_source),
-    product_template  = Handlebars.compile(product_source);
+    sections_template = Handlebars.compile($("#hb_nav_sections").html()),
+    product_template  = Handlebars.compile($("#hb_product").html());
+    what_template     = Handlebars.compile($("#hb_what").html());
+    who_template      = Handlebars.compile($("#hb_who").html());
+    when_template     = Handlebars.compile($("#hb_when").html());
+    where_template    = Handlebars.compile($("#hb_where").html());
 
 /* configuration end */
 
@@ -73,13 +75,26 @@ var app = $.sammy('#main', function( ) {
     this.get('#/',      function() { 
       this.app.setNavSection("home");
     });
-    this.get('#/what',  function() { this.app.setNavSection("what"); });
-    this.get('#/who',   function() { this.app.setNavSection("who"); });
-    this.get('#/when',  function() { this.app.setNavSection("when"); });
-    this.get('#/where', function() { this.app.setNavSection("where"); });
+    this.get('#/what',  function() { 
+      this.app.setNavSection("what");
+      $("#main-area").html(what_template());
+    });
+    this.get('#/who',   function() { 
+      this.app.setNavSection("who");
+      $("#main-area").html(who_template());
+    });
+    this.get('#/when',  function() { 
+      this.app.setNavSection("when"); 
+      $("#main-area").html(when_template());
+    });
+    this.get('#/where', function() { 
+      this.app.setNavSection("where");
+      $("#main-area").html(where_template());
+    });
 
     this.get('#/what/product/:productname', function() {
       this.app.setNavSection("what");
+      $("#main-area").html(product_template(productData || {}));
       alert("Switched to product: " + this.params['productname'])
     })
   };
