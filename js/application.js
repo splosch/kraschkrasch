@@ -3,10 +3,10 @@
  * TODO: move to seperate file
  */
 var NAV_SECTIONS = [
-      { name: "what",  url: "#/what"  },
-      { name: "who",   url: "#/who"   },
-      { name: "when",  url: "#/when"  },
-      { name: "where", url: "#/where" }
+      { name: "what",  url: "#/what",  headline: "WHAT - kaschkasch products"},
+      { name: "who",   url: "#/who",   headline: "WHO - kaschkasch about kaschkasch"},
+      { name: "when",  url: "#/when",  headline: "WHEN - kaschkasch news and infos"},
+      { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities"}
     ],
 
     layout_template   = Handlebars.compile($("#hb_main_layout").html()),
@@ -18,9 +18,10 @@ var NAV_SECTIONS = [
     // where_template    = Handlebars.compile($("#hb_where").html());
 
 // allow usage of registered partials within templates
-Handlebars.registerPartial("hb_slider", $("#hb_partial_slider").html());
-Handlebars.registerPartial("hb_nav_sections", $("#hb_nav_sections").html());
+
 Handlebars.registerPartial("hb_startbild", $("#hb_startbild").html());
+Handlebars.registerPartial("hb_visual", $("#hb_visual").html());
+Handlebars.registerPartial("hb_nav_sections", $("#hb_nav_sections").html());
 Handlebars.registerPartial("hb_product_nav", $("#hb_product_nav").html());
 Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
 
@@ -48,7 +49,7 @@ var app = $.sammy('#main', function( ) {
     }
 
     // add "home" section to allowed navSections here since its a special nav section not in the section config
-    this.navSections.home = { name: "home", url: "#/" };
+    this.navSections.home = { name: "home", url: "#/", headline: "kaschkasch cologne - designstudio by Florian Kallus and Sebastian Schneider."};
 
     this.defineRoutes();
   }
@@ -81,24 +82,44 @@ var app = $.sammy('#main', function( ) {
   this.defineRoutes = function() {
     // defining the basic routes
     this.get('#/',      function() {
-      $("#main").html(layout_template());
-      this.app.setNavSection("home");
+      var section = "home",
+          data = {};
+      data.headline = this.app.navSections[section].headline;
+
+      $("#main").html(layout_template(data));
+      this.app.setNavSection(section);
     });
     this.get('#/what',  function() {
-      $("#main").html(layout_template());
-      this.app.setNavSection("what");
+      var section = "what",
+          data = {};
+      data.headline = this.app.navSections[section].headline;
+
+      $("#main").html(layout_template(data));
+      this.app.setNavSection(section);
     });
     this.get('#/who',   function() {
-      $("#main").html(layout_template());
-      this.app.setNavSection("who");
+      var section = "who",
+          data = {};
+      data.headline = this.app.navSections[section].headline;
+
+      $("#main").html(layout_template(data));
+      this.app.setNavSection(section);
     });
     this.get('#/when',  function() {
-    $("#main").html(layout_template()); 
-      this.app.setNavSection("when"); 
+      var section = "when",
+          data = {};
+      data.headline = this.app.navSections[section].headline;
+
+      $("#main").html(layout_template(data));
+      this.app.setNavSection(section);
     });
     this.get('#/where', function() { 
-      $("#main").html(layout_template());
-      this.app.setNavSection("where");
+      var section = "where",
+          data = {};
+      data.headline = this.app.navSections[section].headline;
+
+      $("#main").html(layout_template(data));
+      this.app.setNavSection(section);
     });
 
     this.get('#/what/product/:productname', function() {
