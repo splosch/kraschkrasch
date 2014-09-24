@@ -13,3 +13,7 @@ h2.about the app
 h2. SEO
 To allow the google bot to crawl the website that shall be implememted:
 https://vickev.com/#!/article/easily-index-your-single-page-application-thanks-to-phantomjs
+
+h2. Setup your local environment
+- use node-static as a local fileserver --> https://www.npmjs.org/package/node-static
+- after install, run "$ static" in the kaschkasch folder
