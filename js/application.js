@@ -9,8 +9,6 @@ var NAV_SECTIONS = [
       { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities"}
     ],
 
-    layout_template   = Handlebars.compile($("#hb_main_layout").html()),
-    sections_template = Handlebars.compile($("#hb_nav_sections").html()),
     product_template  = Handlebars.compile($("#hb_product").html()),
     what_template     = Handlebars.compile($("#hb_what").html());
     // who_template      = Handlebars.compile($("#hb_who").html()),
@@ -21,7 +19,6 @@ var NAV_SECTIONS = [
 
 Handlebars.registerPartial("hb_startbild", $("#hb_startbild").html());
 Handlebars.registerPartial("hb_visual", $("#hb_visual").html());
-Handlebars.registerPartial("hb_nav_sections", $("#hb_nav_sections").html());
 Handlebars.registerPartial("hb_product_nav", $("#hb_product_nav").html());
 Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
 
@@ -76,18 +73,26 @@ var app = $.sammy('#main', function( ) {
     }
 
     // update the respective section
-    $("#nav_sections").html(sections_template(sectionData));
+    $("#nav_sections").html(this.render('templates/hb_nav_sections.hb', sectionData));
   };
 
   this.defineRoutes = function() {
     // defining the basic routes
-    this.get('#/',      function() {
+    this.get('#/',      function(context) {
       var section = "home",
           data = {};
       data.headline = this.app.navSections[section].headline;
 
-      $("#main").html(layout_template(data));
-      this.app.setNavSection(section);
+      // clear the main area
+      context.app.swap('');
+
+      // add main layout on main element
+      debugger;
+      this.render('templates/hb_main_layout.hb', data)
+          .appendTo(context.$element())
+          .then(funtion(){
+            this.app.setNavSection(section);
+          });      
     });
     this.get('#/what',  function() {
       var section = "what",
