@@ -60,6 +60,11 @@ $(document).ready(function() {
     maxOutImage();
   });
 
+  $("[data-img]").on("mouseover", function(event){ 
+    $("img.startbild").attr("src", $(this).attr("data-img"));
+    event.preventDefault();
+  })
+
   var options = typeof sliderOptions === "object" ? sliderOptions : {
     width: 900,
     height: 600,
