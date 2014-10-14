@@ -77,7 +77,7 @@ $(document).ready(function() {
       // [number] Time spent on each slide in milliseconds.
       auto: true,
       // [boolean] Start playing the slideshow on load.
-      pauseOnHover: false,
+      pauseOnHover: true,
       // [boolean] pause a playing slideshow on hover
       restartDelay: 2500
       // [number] restart delay on inactive slideshow
