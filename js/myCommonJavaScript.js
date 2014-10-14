@@ -118,6 +118,8 @@ $(document).ready(function() {
     });
 
     $("#slider_dynamic").slidesjs(options);
+    // hide pagination for what page
+    $('.slidesjs-pagination').hide();
   }
 
   // initialize slidejs on the slider
