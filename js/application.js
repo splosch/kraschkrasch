@@ -7,20 +7,14 @@ var NAV_SECTIONS = [
       { name: "who",   url: "#/who",   headline: "WHO - kaschkasch about kaschkasch"},
       { name: "when",  url: "#/when",  headline: "WHEN - kaschkasch news and infos"},
       { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities"}
-    ],
-
-    product_template  = Handlebars.compile($("#hb_product").html()),
-    what_template     = Handlebars.compile($("#hb_what").html());
-    // who_template      = Handlebars.compile($("#hb_who").html()),
-    // when_template     = Handlebars.compile($("#hb_when").html()),
-    // where_template    = Handlebars.compile($("#hb_where").html());
+    ];
 
 // allow usage of registered partials within templates
-
-Handlebars.registerPartial("hb_startbild", $("#hb_startbild").html());
-Handlebars.registerPartial("hb_visual", $("#hb_visual").html());
-Handlebars.registerPartial("hb_product_nav", $("#hb_product_nav").html());
+Handlebars.registerPartial("hb_nav_sections",  $("#hb_nav_sections").html());
+Handlebars.registerPartial("hb_visual",        $("#hb_visual").html());
 Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
+
+Handlebars.registerPartial("hb_startbild",     $("#hb_startbild").html());
 
 /* configuration end */
 
@@ -52,10 +46,8 @@ var app = $.sammy('#main', function( ) {
   }
 
   // updates the Navigation Section
-  this.setNavSection = function(selected_section){
-    var sectionData = { 
-          nav_sections  : []
-        };
+  this.navSectionData = function(selected_section){
+    var nav_sections  = [];
 
     if (!this.navSections[selected_section]) {
       console.warn("No such section available --> ["+selected_section+"]");
@@ -68,12 +60,11 @@ var app = $.sammy('#main', function( ) {
       // skip home - it will not be rendered in nav section
       if (section !== "home") {
         // keep for rendering && to check wheter update of nav_section is needed
-        sectionData.nav_sections.push(this.navSections[section]);
+        nav_sections.push(this.navSections[section]);
       }
     }
 
-    // update the respective section
-    $("#nav_sections").html(this.render('templates/hb_nav_sections.hb', sectionData));
+    return nav_sections;
   };
 
   this.defineRoutes = function() {
@@ -82,55 +73,93 @@ var app = $.sammy('#main', function( ) {
       var section = "home",
           data = {};
       data.headline = this.app.navSections[section].headline;
+      data.nav_sections = this.app.navSectionData(section);
 
       // clear the main area
       context.app.swap('');
 
       // add main layout on main element
-      debugger;
-      this.render('templates/hb_main_layout.hb', data)
-          .appendTo(context.$element())
-          .then(funtion(){
-            this.app.setNavSection(section);
-          });      
+      this.render('templates/hb_startpage.hb', data).appendTo(context.$element());
     });
-    this.get('#/what',  function() {
+    this.get('#/what',  function(context) {
       var section = "what",
           data = {};
       data.headline = this.app.navSections[section].headline;
+      data.nav_sections = this.app.navSectionData(section);
 
-      $("#main").html(layout_template(data));
-      this.app.setNavSection(section);
+      // clear the main area
+      context.app.swap('');
+
+      this.render('templates/hb_page_what.hb', data).appendTo(context.$element());
     });
-    this.get('#/who',   function() {
+    this.get('#/who',   function(context) {
       var section = "who",
           data = {};
       data.headline = this.app.navSections[section].headline;
+      data.nav_sections = this.app.navSectionData(section);
 
-      $("#main").html(layout_template(data));
-      this.app.setNavSection(section);
+      // clear the main area
+      context.app.swap('');
+
+      this.render('templates/hb_page_who.hb', data).appendTo(context.$element());
     });
-    this.get('#/when',  function() {
+    this.get('#/when',  function(context) {
       var section = "when",
           data = {};
       data.headline = this.app.navSections[section].headline;
+      data.nav_sections = this.app.navSectionData(section);
 
-      $("#main").html(layout_template(data));
-      this.app.setNavSection(section);
+      // clear the main area
+      context.app.swap('');
+
+      this.render('templates/hb_page_when.hb', data).appendTo(context.$element());
     });
-    this.get('#/where', function() { 
+    this.get('#/where', function(context) { 
       var section = "where",
           data = {};
       data.headline = this.app.navSections[section].headline;
+      data.nav_sections = this.app.navSectionData(section);
 
-      $("#main").html(layout_template(data));
-      this.app.setNavSection(section);
+      // clear the main area
+      context.app.swap('');
+
+      this.render('templates/hb_page_where.hb', data).appendTo(context.$element());
     });
 
-    this.get('#/what/product/:productname', function() {
-      this.app.setNavSection("what");
-      $("#main-area").html(product_template(productData || {}));
-      alert("Switched to product: " + this.params['productname'])
+    this.get('#/what/product/:productname', function(context) {
+      var section = "where",
+          data = {};
+
+
+data = { 
+        product:
+          {
+            name:    "Bulb",
+            section: "products",
+            material: "glass | metal",
+            dimensions: "90 | 120 | 160",
+            development: { purpose: "coat hook", year   : "2013" },
+            producers: [
+              { 
+                name: "SCHÖNBUCH", 
+                url: "http://www.schoenbuch.com/de/wohnen/interior-accessoires/garderobenhaken/bulb.html"
+              }
+            ],
+            images: [
+              1,2,3,4,5,6
+            ]
+          }
+      };
+
+
+      data.headline = this.app.navSections[section].headline;
+      data.nav_sections = this.app.navSectionData(section);
+
+      // clear the main area
+      context.app.swap('');
+
+      this.render('templates/hb_page_product.hb', data).appendTo(context.$element());
+      alert("Switched to product: " + this.params['productname']);
     })
   };
 
