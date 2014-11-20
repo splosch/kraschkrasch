@@ -3,10 +3,10 @@
  * TODO: move to seperate file
  */
 var NAV_SECTIONS = [
-      { name: "what",  url: "#/what",  headline: "WHAT - kaschkasch products"},
-      { name: "who",   url: "#/who",   headline: "WHO - kaschkasch about kaschkasch"},
-      { name: "when",  url: "#/when",  headline: "WHEN - kaschkasch news and infos"},
-      { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities"}
+      { name: "what",  url: "#/what",  headline: "WHAT - kaschkasch products", section_class: "products bigDetailsPage"},
+      { name: "who",   url: "#/who",   headline: "WHO - kaschkasch about kaschkasch", section_class: "about bigDetailsPage"},
+      { name: "when",  url: "#/when",  headline: "WHEN - kaschkasch news and infos", section_class: "news bigDetailsPage"},
+      { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities", section_class: "about bigDetailsPage"}
     ];
 
 // allow usage of registered partials within templates
@@ -67,13 +67,23 @@ var app = $.sammy('#main', function( ) {
     return nav_sections;
   };
 
+  // updates the Navigation Section
+  this.getBaseDataForSection = function(selected_section){
+    var data = {};
+
+    data.headline      = this.navSections[selected_section].headline;
+    data.section_class = this.navSections[selected_section].section_class;
+
+    data.nav_sections  = this.navSectionData(selected_section);
+
+    return data;
+  };
+
   this.defineRoutes = function() {
     // defining the basic routes
     this.get('#/',      function(context) {
       var section = "home",
-          data = {};
-      data.headline = this.app.navSections[section].headline;
-      data.nav_sections = this.app.navSectionData(section);
+          data = this.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
@@ -83,9 +93,7 @@ var app = $.sammy('#main', function( ) {
     });
     this.get('#/what',  function(context) {
       var section = "what",
-          data = {};
-      data.headline = this.app.navSections[section].headline;
-      data.nav_sections = this.app.navSectionData(section);
+          data = this.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
@@ -94,9 +102,7 @@ var app = $.sammy('#main', function( ) {
     });
     this.get('#/who',   function(context) {
       var section = "who",
-          data = {};
-      data.headline = this.app.navSections[section].headline;
-      data.nav_sections = this.app.navSectionData(section);
+          data = this.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
@@ -105,9 +111,7 @@ var app = $.sammy('#main', function( ) {
     });
     this.get('#/when',  function(context) {
       var section = "when",
-          data = {};
-      data.headline = this.app.navSections[section].headline;
-      data.nav_sections = this.app.navSectionData(section);
+          data = this.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
@@ -116,9 +120,7 @@ var app = $.sammy('#main', function( ) {
     });
     this.get('#/where', function(context) { 
       var section = "where",
-          data = {};
-      data.headline = this.app.navSections[section].headline;
-      data.nav_sections = this.app.navSectionData(section);
+          data = this.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
@@ -128,10 +130,9 @@ var app = $.sammy('#main', function( ) {
 
     this.get('#/what/product/:productname', function(context) {
       var section = "where",
-          data = {};
+          data = this.app.getBaseDataForSection(section);
 
-
-data = { 
+      data = { 
         product:
           {
             name:    "Bulb",
@@ -152,8 +153,6 @@ data = {
       };
 
 
-      data.headline = this.app.navSections[section].headline;
-      data.nav_sections = this.app.navSectionData(section);
 
       // clear the main area
       context.app.swap('');
@@ -170,5 +169,14 @@ data = {
 });
 
 $(function() {
+  app.bindToAllEvents(function(event) {
+    //debugger;
+  });
+
+  // every time a navigation was successfull and the route got followed
+  app.bind("changed", function() {
+    initPageOnLoad();
+  });
+
   app.run()
 });

@@ -41,8 +41,7 @@ function maxOutImage() {
   $(window).trigger("load");
 }
 
-
-$(document).ready(function() {
+function initPageOnLoad() {
   $(".fullscale").eq(0).bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
@@ -91,6 +90,10 @@ $(document).ready(function() {
   if($('#slider')[0] && $("#slider").children().length) {
     $("#slider").slidesjs(options);
   }
+}
+
+$(document).ready(function() {
+  initPageOnLoad();
 });
 
 // if (document.layers) {
