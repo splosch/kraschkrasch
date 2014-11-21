@@ -7,6 +7,22 @@ var NAV_SECTIONS = [
       { name: "who",   url: "#/who",   headline: "WHO - kaschkasch about kaschkasch", section_class: "about bigDetailsPage"},
       { name: "when",  url: "#/when",  headline: "WHEN - kaschkasch news and infos", section_class: "news bigDetailsPage"},
       { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities", section_class: "about bigDetailsPage"}
+    ],
+
+    furniture_links = [
+      { name: "zet", url: "#/what/product/zet" },
+      { name: "roundabout", url: "#/what/product/roundabout" },
+      { name: "fju", url: "#/what/product/fju" },
+      { name: "raft", url: "#/what/product/raft" },
+      { name: "hide&park", url: "#/what/product/plank" },
+      { name: "mirror", url: "#/what/product/check" },
+      { name: "scoop table", url: "#/what/product/scoop_table" },
+      { name: "scoop chair", url: "#/what/product/scoop_chair" },
+      { name: "bubka", url: "#/what/product/bubka" },
+      { name: "h&ouml;ninger", url: "#/what/product/hoeninger" },
+      { name: "pina", url: "#/what/product/pina_side_table" },
+      { name: "tome", url: "#/what/product/tome" },
+      { name: "tamp&lable", url: "#/what/product/tamp_n_lable" }
     ];
 
 // allow usage of registered partials within templates
@@ -15,13 +31,13 @@ Handlebars.registerPartial("hb_visual",        $("#hb_visual").html());
 Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
 
 Handlebars.registerPartial("hb_startbild",     $("#hb_startbild").html());
-
+Handlebars.registerPartial("hb_link",          $("#hb_link").html());
 /* configuration end */
 
 
-/* 
+/*
  *  Application routing via sammyjs (http://sammyjs.org/)
- *  url scheme: 
+ *  url scheme:
  *  main section #/:section
  *  product page #/:section/:product
  *  main_content_area id = 'main' --> now sammy knows whats the main content section (equal to this.element_selector = '#main'; within sammy.app())
@@ -94,6 +110,7 @@ var app = $.sammy('#main', function( ) {
     this.get('#/what',  function(context) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
+          data.furniture_links = furniture_links || {};
 
       // clear the main area
       context.app.swap('');
@@ -118,7 +135,7 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_when.hb', data).appendTo(context.$element());
     });
-    this.get('#/where', function(context) { 
+    this.get('#/where', function(context) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
 
@@ -132,7 +149,7 @@ var app = $.sammy('#main', function( ) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
 
-      data = { 
+      data = {
         product:
           {
             name:    "Bulb",
@@ -141,8 +158,8 @@ var app = $.sammy('#main', function( ) {
             dimensions: "90 | 120 | 160",
             development: { purpose: "coat hook", year   : "2013" },
             producers: [
-              { 
-                name: "SCHÖNBUCH", 
+              {
+                name: "SCHÖNBUCH",
                 url: "http://www.schoenbuch.com/de/wohnen/interior-accessoires/garderobenhaken/bulb.html"
               }
             ],
@@ -162,7 +179,7 @@ var app = $.sammy('#main', function( ) {
     })
   };
 
-  // bind app.run() handler to start of the initialization of the APP  
+  // bind app.run() handler to start of the initialization of the APP
   // Once the DOM is loaded and the APP started because of app.run()
   this.bind('run', function() { this.app.initialize(); });
 
