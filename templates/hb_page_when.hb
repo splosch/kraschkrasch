@@ -1,5 +1,4 @@
-<body data-role="page" class="products bigDetailsPage">
-  <div id="container">
+<div id="container" class="{{section_class}}">
     <div class="content centeringContainer">
       <div id="main" class="centered">
         <header>
@@ -53,4 +52,3 @@ and many others.                          </ul><br>
       </div>
     </div>
   </div>
-</body>
