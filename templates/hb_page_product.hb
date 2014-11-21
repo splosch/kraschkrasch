@@ -16,7 +16,7 @@
             <div class="aniContainer">
                 <a class="follow backlink" href="{{nav_sections.what.url}}#detailsBox">back to products</a>
 
-                <h2>{{product.name}}</h2>
+                <h2>{{product.title}}</h2>
                 <p><i>{{product.development.purpose}} | {{product.development.year}}</i></p>
                 <p>{{product.summary}}</p>
 
@@ -29,7 +29,7 @@
                   <h3>Material_</h3>
                   <p>{{product.material}}l</p>
                 {{/if}}
-                
+
                 {{#if product.producers}}
                   <h3>Producer_</h3>
                   <p>

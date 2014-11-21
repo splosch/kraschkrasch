@@ -63,6 +63,7 @@
      @product - Object - optional presence - { @images : Array of product objects }
 -->
 <script id="hb_visual" type="text/x-handlebars-template">
+
   {{> hb_fullscale_img}}
 
   {{#with visual.image}}
@@ -72,7 +73,7 @@
   {{else}}
     <div id="slider" class="overlay autoExpand">
       {{#each product.images}}
-        <img src="images/bulla/0{{@index}}.jpg"/>
+        <img src="images/{{product.name}}/0{{@index}}.jpg"/>
       {{/each}}
     </div>
   {{/with}}

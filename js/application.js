@@ -9,6 +9,28 @@ var NAV_SECTIONS = [
       { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities", section_class: "about bigDetailsPage"}
     ],
 
+
+
+    // TODO: product data to be excluded and served via JSON
+    example_products = [
+      {
+        name:       "bulla",
+        title:      "Bulb",
+        section:    "products",
+        material:   "glass | metal",
+        dimensions: "90 | 120 | 160",
+        development: { purpose: "coat hook", year   : "2013" },
+        producers: [
+          {
+            name: "SCHÖNBUCH",
+            url: "http://www.schoenbuch.com/de/wohnen/interior-accessoires/garderobenhaken/bulb.html"
+          }
+        ],
+        images: [1,2,3,4,5,6]
+      }
+    ],
+
+    // TODO: merge link data with product data
     furniture_links = [
       { name: "zet", url: "#/what/product/zet" },
       { name: "roundabout", url: "#/what/product/roundabout" },
@@ -23,12 +45,27 @@ var NAV_SECTIONS = [
       { name: "pina", url: "#/what/product/pina_side_table" },
       { name: "tome", url: "#/what/product/tome" },
       { name: "tamp&lable", url: "#/what/product/tamp_n_lable" }
+    ],
+    lightning_links = [
+      { name: "keep", url: "#/what/product/keep" },
+      { name: "cherry", url: "#/what/product/cherry" },
+      { name: "konichiwa", url: "#/what/product/konichiwa" },
+      { name: "industrial", url: "#/what/product/industrial" },
+      { name: "cap", url: "#/what/product/cap" },
+      { name: "pina", url: "#/what/product/pina_table_lamp" },
+      { name: "flachmann", url: "#/what/product/flachmann" },
+    ],
+    other_product_links = [
+      { name: "luna", url: "#/what/product/luna" },
+      { name: "bulb", url: "#/what/product/bulla" },
+      { name: "bonfire", url: "#/what/product/bonfire" },
+      { name: "hopper", url: "#/what/product/hopperboxes" },
     ];
 
 // allow usage of registered partials within templates
 Handlebars.registerPartial("hb_nav_sections",  $("#hb_nav_sections").html());
-Handlebars.registerPartial("hb_visual",        $("#hb_visual").html());
 Handlebars.registerPartial("hb_fullscale_img", $("#hb_fullscale_img").html());
+Handlebars.registerPartial("hb_visual",        $("#hb_visual").html());
 
 Handlebars.registerPartial("hb_startbild",     $("#hb_startbild").html());
 Handlebars.registerPartial("hb_link",          $("#hb_link").html());
@@ -111,6 +148,8 @@ var app = $.sammy('#main', function( ) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
           data.furniture_links = furniture_links || {};
+          data.lightning_links = lightning_links || {};
+          data.other_product_links = other_product_links || {};
 
       // clear the main area
       context.app.swap('');
@@ -149,27 +188,7 @@ var app = $.sammy('#main', function( ) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
 
-      data = {
-        product:
-          {
-            name:    "Bulb",
-            section: "products",
-            material: "glass | metal",
-            dimensions: "90 | 120 | 160",
-            development: { purpose: "coat hook", year   : "2013" },
-            producers: [
-              {
-                name: "SCHÖNBUCH",
-                url: "http://www.schoenbuch.com/de/wohnen/interior-accessoires/garderobenhaken/bulb.html"
-              }
-            ],
-            images: [
-              1,2,3,4,5,6
-            ]
-          }
-      };
-
-
+      data.product = example_products[0];
 
       // clear the main area
       context.app.swap('');

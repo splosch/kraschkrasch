@@ -24,22 +24,17 @@
 
                 <li> <h3> Lighting </h3>
                   <ul>
-                    <li> <a href="whatDetailsKeep.html"> keep</a> </li>
-                    <li> <a href="whatDetailsCherry.html"> cherry </a> </li>
-                    <li> <a href="whatDetailsKonichiwa.html"> konichiwa </a> </li>
-                    <li> <a href="whatDetailsIndustrial.html"> industrial </a> </li>
-                    <li> <a href="whatDetailsCap.html"> cap </a> </li>
-                    <li> <a href="whatDetailsPinaTableLamp.html"> pina </a> </li>
-                    <li> <a href="whatDetailsFlachmann.html"> flachmann </a> </li>
+                    {{#each lightning_links}}
+                      <li>{{> hb_link}}</li>
+                    {{/each}}
                   </ul>
                 </li>
 
                 <li> <h3> Products </h3>
                   <ul>
-                    <li> <a href="whatDetailsLuna.html"> luna </a> </li>
-                    <li> <a href="whatDetailsBulb.html"> bulb </a> </li>
-                    <li> <a href="whatDetailsBonfire.html"> bonfire </a> </li>
-                    <li> <a href="whatDetailshopperboxes.html"> hopper </a> </li>
+                    {{#each other_product_links}}
+                      <li>{{> hb_link}}</li>
+                    {{/each}}
                   </ul>
                 </li>
               </ul>
