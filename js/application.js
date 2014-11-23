@@ -16,7 +16,6 @@ var NAV_SECTIONS = [
       {
         name:       "bulla",
         title:      "Bulb",
-        section:    "products",
         material:   "glass | metal",
         dimensions: "90 | 120 | 160",
         development: { purpose: "coat hook", year   : "2013" },
@@ -70,6 +69,18 @@ Handlebars.registerPartial("hb_visual",        $("#hb_visual").html());
 Handlebars.registerPartial("hb_startbild",     $("#hb_startbild").html());
 Handlebars.registerPartial("hb_link",          $("#hb_link").html());
 /* configuration end */
+
+
+// application helper
+Handlebars.registerHelper('include', function(options) {
+  var context = {},
+      mergeContext = function(obj) {
+          for(var k in obj)context[k]=obj[k];
+      };
+  mergeContext(this);
+  mergeContext(options.hash);
+  return options.fn(context);
+});
 
 
 /*
@@ -195,7 +206,19 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_product.hb', data).appendTo(context.$element());
       alert("Switched to product: " + this.params['productname']);
-    })
+    });
+    this.get('#/download',  function(context) {
+      var section = "what",
+          data = this.app.getBaseDataForSection(section);
+          data.furniture_links = furniture_links || {};
+          data.lightning_links = lightning_links || {};
+          data.other_product_links = other_product_links || {};
+
+      // clear the main area
+      context.app.swap('');
+
+      this.render('templates/hb_page_what.hb', data).appendTo(context.$element());
+    });
   };
 
   // bind app.run() handler to start of the initialization of the APP

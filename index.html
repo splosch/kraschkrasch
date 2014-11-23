@@ -66,7 +66,7 @@
 
   {{> hb_fullscale_img}}
 
-  {{#with visual.image}}
+  {{#if visual.image}}
     <div class="overlay autoExpand">
       <img class="fullscale {{visual.image.class}}" src="{{visual.image.url}}"/>
     </div>
@@ -76,7 +76,7 @@
         <img src="images/{{product.name}}/0{{@index}}.jpg"/>
       {{/each}}
     </div>
-  {{/with}}
+  {{/if}}
 </script>
 
 <!-- Helper: Fullscale placeholder

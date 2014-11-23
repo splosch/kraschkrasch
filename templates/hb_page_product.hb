@@ -7,7 +7,7 @@
       </header>
       <article id="main-area">
 
-        {{> hb_visual }}
+        {{> hb_visual this}}
 
         <div id="detailsBox" class="detailsWrapper collapsed">
           <div class="details">
