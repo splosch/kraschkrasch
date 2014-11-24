@@ -99,11 +99,11 @@ function showProductNaviagtionLinks() {
   }
 
   if(nextProduct) {
-    nextUrl = currentUrlParts[0] + productPrefix + nextProduct + ".html";
+    nextUrl = currentUrlParts[0] + productPrefix + nextProduct + ".html#next_product";
   }
 
   if(previousProduct) {
-    previousUrl = currentUrlParts[0] + productPrefix + previousProduct + ".html";
+    previousUrl = currentUrlParts[0] + productPrefix + previousProduct + ".html#previous_product";
   }
 
 
@@ -123,11 +123,15 @@ $(document).ready(function() {
     showProductNaviagtionLinks();
   }
 
-  $('.autoExpand img').eq(0).load(
-    function() {
-      window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
-    }
-  );
+  // automatic open details box unless next / previous product navigation links triggered openong the current product
+  debugger;
+  if(!(window.location.hash === "#previous_product" || window.location.hash === "#next_product")) {
+    $('.autoExpand img').eq(0).load(
+      function() {
+        window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
+      }
+    );
+  }
 
   $(window).bind("resize", function() {
     maxOutImage();
