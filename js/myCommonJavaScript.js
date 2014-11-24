@@ -1,10 +1,10 @@
 function click (event) {
   if (!event)
   event = window.event;
-  if ( (event.type && event.type == "contextmenu") 
-       || (event.button && event.button == 2) 
+  if ( (event.type && event.type == "contextmenu")
+       || (event.button && event.button == 2)
        || (event.which && e.which == 3)) {
-    
+
     if (window.opera) {
       window.alert("Sorry: Diese Funktion ist deaktiviert.");
     }
@@ -12,7 +12,6 @@ function click (event) {
     return false;
   }
 }
-
 
 function maxOutImage() {
   var newWidth  = $(".content").width(),
@@ -41,6 +40,76 @@ function maxOutImage() {
   $(window).trigger("load");
 }
 
+function currentNameInProductlist(name, products) {
+  var index;
+
+  index = products.indexOf(name);
+
+  return index;
+}
+
+function renderLinks(nextUrl, previousUrl) {
+  var next_product_link = $('<a>&gt;</a>')
+        .attr({ href: nextUrl || '#next_product' })
+        .addClass("next_product_link"),
+      prev_product_link = $('<a>&lt;</a>')
+        .attr({ href: previousUrl || '#previous_product' })
+        .addClass("prev_product_link");
+
+  $(".productDetails header").eq(0).after(next_product_link).after(prev_product_link);
+}
+
+function nextProductInList(currentProductIndex, products) {
+  var name;
+
+  name = products[currentProductIndex+1] || products[0] || null;
+
+  return name;
+}
+
+
+function previousProductInList(currentProductIndex, products) {
+  var name;
+
+  name = products[currentProductIndex-1] || products[products.length-1] || null;
+
+  return name;
+}
+
+function showProductNaviagtionLinks() {
+ var products = [ "Zet", "RoundAbout", "Fju", "Raft", "Plank", "Check", "Scoop_table", "Scoop_chair",
+                  "Bubka", "Hoeninger", "PinaSideTable", "tome", "TampLable", "Keep", "Cherry", "Konichiwa", "Industrial",
+                  "Cap", "PinaTableLamp", "Flachmann", "Luna", "Bulb", "Bonfire", "hopperboxes"],
+     productPrefix = "whatDetails",
+     currentUrlParts = window.location.href.split(productPrefix),
+     nextUrl,
+     prevUrl,
+     nextProduct,
+     currentProduct,
+     previousProduct,
+     currentProductIndex;
+
+  // only if the current page is a valid what-product page
+  if(currentUrlParts.length == 2){
+    currentProduct = currentUrlParts[1].split(".html")[0];
+    currentProductIndex = currentNameInProductlist(currentProduct, products);
+
+    nextProduct = nextProductInList(currentProductIndex, products);
+    previousProduct = previousProductInList(currentProductIndex, products);
+  }
+
+  if(nextProduct) {
+    nextUrl = currentUrlParts[0] + productPrefix + nextProduct + ".html";
+  }
+
+  if(previousProduct) {
+    previousUrl = currentUrlParts[0] + productPrefix + previousProduct + ".html";
+  }
+
+
+  renderLinks(nextUrl, previousUrl);
+}
+
 
 $(document).ready(function() {
   $(".fullscale").eq(0).bind("load", maxOutImage);
@@ -50,10 +119,14 @@ $(document).ready(function() {
     $(".detailsWrapper").toggleClass("collapsed");
   });
 
-  $('.autoExpand img').eq(0).load(
-  function() {
-    window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
+  if($("body.productDetails").length) {
+    showProductNaviagtionLinks();
   }
+
+  $('.autoExpand img').eq(0).load(
+    function() {
+      window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
+    }
   );
 
   $(window).bind("resize", function() {

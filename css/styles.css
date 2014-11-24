@@ -119,9 +119,9 @@ html,body {
 
 #container {
   margin: 0 auto;
-  width: 94%;
+  width: 88%;
   height: 93%;
-  padding: 3%;
+  padding: 3% 6%;
 
   font-size: 1em; /* initial font size - all lower level are controlled by this one
              - so its easier to allow mediaquerz breakpoints to controll overall font adjustment */
@@ -157,6 +157,7 @@ nav {
   margin-left: auto;
   margin-right: auto;
   display: inline-block;
+  position: relative;
 }
 
 /* Big Screens scale the .fullscale image inside .content */
@@ -190,6 +191,44 @@ nav a, nav a:link, nav a:visited {
 
 nav a:hover, nav a.active, nav a:focus {
   color: #CCC;
+}
+
+/******** Next / Previous product *******/
+a.prev_product_link,
+a.next_product_link {
+  position: absolute;
+  left: -10%;
+  top: 50%;
+  width: 10%;
+  margin-top: -50%;
+  font-size: 20px;
+  max-width: 100px;
+  text-align: right;
+  padding: 46% 3%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+a.prev_product_link:hover {
+  margin-left: -6px;
+  color: #CCC;
+}
+
+a.next_product_link:hover {
+  margin-right: -6px;
+  color: #CCC;
+}
+
+
+
+a.next_product_link {
+  right: -10%;
+  left: auto;
+  text-align: left;
 }
 
 .productNav >li >ul {
