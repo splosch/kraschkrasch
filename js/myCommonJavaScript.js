@@ -124,7 +124,6 @@ $(document).ready(function() {
   }
 
   // automatic open details box unless next / previous product navigation links triggered openong the current product
-  debugger;
   if(!(window.location.hash === "#previous_product" || window.location.hash === "#next_product")) {
     $('.autoExpand img').eq(0).load(
       function() {
