@@ -9,10 +9,7 @@ var NAV_SECTIONS = [
       { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities", section_class: "about bigDetailsPage"}
     ],
 
-
-
-    // TODO: product data to be excluded and served via JSON
-    example_products = [
+    example_products = example_products || [
       {
         name:       "bulla",
         title:      "Bulb",

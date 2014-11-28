@@ -23,7 +23,7 @@
  *******************************/
 
 
-example_products = [
+var products = [
   {
     "name":       "zet",
     "title":      "Zet",
@@ -125,27 +125,35 @@ example_products = [
   },
 ];
 
+var products = (function(){
+  products.forEach(function(product, index, products){
+    var baseUrl = "#/what/product/";
 
-/*
-{
-    "name":       "test",
-    "title":      "test",
-    "section":    "lightning",
-    "material":   "test",
-    "dimensions": "test",
-    "development": { "purpose": "test", "year"   : "test" },
-    "description": "test",
-    "producers": [
-      {
-        "name": "_comming soon",
-        "url": null
-      }
-    ],
-    "images": [1,2,3,4,5,6],
-    "extras": {
-      "video": "http://vimeo.com/76838325"
+    // if productdata match basic requirements enrich with
+    // additional functionality
+    if(typeof product === "object" && product.name) {
+      product.baseImgPath = "images/" + product.name + "/";
+      product.url     = baseUrl + product.name;
+
+      // TODO: instead of iterate & push use js basic map/reduce functionality
+      // [0,1,2] --> ["images/productname/0.jpg", "images/productname/1.jpg", "images/productname/2.jpg"]
+      product.images  = function(imgArr){
+        var imagePaths = [];
+
+        imgArr.forEach(function(index){
+          var img = index + ".jpg";
+              imgPath = product.baseImgPath + img;
+
+          imagePaths.push(imgPath);
+        });
+
+        return imagePaths;
+      }(product.images || []);
     }
-  }
-*/
 
+    // write back enriched product
+    products[index] = product;
+  });
 
+  return products;
+}(products || []));
