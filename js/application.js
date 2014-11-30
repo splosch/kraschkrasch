@@ -7,55 +7,6 @@ var NAV_SECTIONS = [
       { name: "who",   url: "#/who",   headline: "WHO - kaschkasch about kaschkasch", section_class: "about bigDetailsPage"},
       { name: "when",  url: "#/when",  headline: "WHEN - kaschkasch news and infos", section_class: "news bigDetailsPage"},
       { name: "where", url: "#/where", headline: "WHERE - kaschkasch activities", section_class: "about bigDetailsPage"}
-    ],
-
-    example_products = example_products || [
-      {
-        name:       "bulla",
-        title:      "Bulb",
-        material:   "glass | metal",
-        dimensions: "90 | 120 | 160",
-        development: { purpose: "coat hook", year   : "2013" },
-        producers: [
-          {
-            name: "SCHÖNBUCH",
-            url: "http://www.schoenbuch.com/de/wohnen/interior-accessoires/garderobenhaken/bulb.html"
-          }
-        ],
-        images: [1,2,3,4,5,6]
-      }
-    ],
-
-    // TODO: merge link data with product data
-    furniture_links = [
-      { name: "zet", url: "#/what/product/zet" },
-      { name: "roundabout", url: "#/what/product/roundabout" },
-      { name: "fju", url: "#/what/product/fju" },
-      { name: "raft", url: "#/what/product/raft" },
-      { name: "hide&park", url: "#/what/product/plank" },
-      { name: "mirror", url: "#/what/product/check" },
-      { name: "scoop table", url: "#/what/product/scoop_table" },
-      { name: "scoop chair", url: "#/what/product/scoop_chair" },
-      { name: "bubka", url: "#/what/product/bubka" },
-      { name: "h&ouml;ninger", url: "#/what/product/hoeninger" },
-      { name: "pina", url: "#/what/product/pina_side_table" },
-      { name: "tome", url: "#/what/product/tome" },
-      { name: "tamp&lable", url: "#/what/product/tamp_n_lable" }
-    ],
-    lightning_links = [
-      { name: "keep", url: "#/what/product/keep" },
-      { name: "cherry", url: "#/what/product/cherry" },
-      { name: "konichiwa", url: "#/what/product/konichiwa" },
-      { name: "industrial", url: "#/what/product/industrial" },
-      { name: "cap", url: "#/what/product/cap" },
-      { name: "pina", url: "#/what/product/pina_table_lamp" },
-      { name: "flachmann", url: "#/what/product/flachmann" },
-    ],
-    other_product_links = [
-      { name: "luna", url: "#/what/product/luna" },
-      { name: "bulb", url: "#/what/product/bulla" },
-      { name: "bonfire", url: "#/what/product/bonfire" },
-      { name: "hopper", url: "#/what/product/hopperboxes" },
     ];
 
 // allow usage of registered partials within templates
@@ -155,9 +106,8 @@ var app = $.sammy('#main', function( ) {
     this.get('#/what',  function(context) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
-          data.furniture_links = furniture_links || {};
-          data.lightning_links = lightning_links || {};
-          data.other_product_links = other_product_links || {};
+
+      data.linkSections = linkSections || [];
 
       // clear the main area
       context.app.swap('');
@@ -207,9 +157,8 @@ var app = $.sammy('#main', function( ) {
     this.get('#/download',  function(context) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
-          data.furniture_links = furniture_links || {};
-          data.lightning_links = lightning_links || {};
-          data.other_product_links = other_product_links || {};
+
+      data.linkSections = linkSections || [];
 
       // clear the main area
       context.app.swap('');

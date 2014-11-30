@@ -157,3 +157,49 @@ var products = (function(){
 
   return products;
 }(products || []));
+
+
+
+// @linkSections = [
+//   {
+//     name  : "furniture",
+//     links : {
+//       name : "zed",
+//       url  : "#/what/products/zed"
+//     },
+//     ...
+//   },
+//   ...
+// ]
+var linkSections = (function(products){
+  var sections = [],
+      sectionIndex = [],
+      containsSection = function(sectionName) {
+        return sectionIndex.indexOf(sectionName) >= 0;
+      };
+
+  // fill up the sections with links from products
+  products.forEach(function(product, index, products){
+    // don't allow multiple sections or wrong section type
+    if (typeof product.section !== "string") {
+      return false;
+    }
+    // push new sections
+    if (product.section && !containsSection(product.section)) {
+      sections.push({ name : product.section, links : []});
+      sectionIndex.push(product.section);
+    }
+
+    // push link into section links
+    sections[sectionIndex.indexOf(product.section)].links.push(
+      {
+        name : product.name,
+        url : product.url
+      }
+    );
+  });
+
+  return sections;
+}(products)) || [];
+
+

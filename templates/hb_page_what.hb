@@ -14,29 +14,16 @@
             <div class="aniContainer">
 
               <ul class="productNav">
-                <li> <h3> Furniture </h3>
-                  <ul>
-                    {{#each furniture_links}}
-                      <li>{{> hb_link}}</li>
-                    {{/each}}
-                  </ul>
-                </li>
-
-                <li> <h3> Lighting </h3>
-                  <ul>
-                    {{#each lightning_links}}
-                      <li>{{> hb_link}}</li>
-                    {{/each}}
-                  </ul>
-                </li>
-
-                <li> <h3> Products </h3>
-                  <ul>
-                    {{#each other_product_links}}
-                      <li>{{> hb_link}}</li>
-                    {{/each}}
-                  </ul>
-                </li>
+                {{#each linkSections}}
+                  <li>
+                    <h3> {{name}} </h3>
+                    <ul>
+                      {{#each links}}
+                        <li>{{> hb_link}}</li>
+                      {{/each}}
+                    </ul>
+                  </li>
+                {{/each}}
               </ul>
 
             </div>
