@@ -56,7 +56,7 @@
           speed: 2000
         },
         fade: {
-          speed: 300,
+          speed: 900,
           crossfade: true
         }
       },
