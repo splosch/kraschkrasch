@@ -193,7 +193,23 @@ nav a:hover, nav a.active, nav a:focus {
 }
 
 .productNav >li >ul {
-  padding-left: 10px;
+  padding-left: 0;
+}
+
+.productNav li {
+  display: inline-block;
+}
+
+.productNav li > a:before {
+  content: none;
+}
+
+.productNav ul li a:after {
+  content: "|";
+}
+
+.productNav ul li:last-child a:after {
+  content: none;
 }
 
 /********ARTICLE*****************
@@ -383,7 +399,7 @@ article li, article ul {
 }
 
 .details .productNav {
-  margin-left: 15%;
+  margin-left: 5%;
 }
 
 .details:hover {
