@@ -75,8 +75,8 @@
                                 </li>
 
                                 <li> <h3> Lighting </h3>
-                                    <ul> 
-										<li> <a href="whatDetailsCherryTable.html" data-img="images/cherrytable/01.jpg"> cherry table </a> </li>	
+                                    <ul>
+										<li> <a href="whatDetailsCherryTable.html" data-img="images/cherrytable/01.jpg"> cherry table </a> </li>
                                     	<li> <a href="whatDetailsKeep.html" data-img="images/keep/keep_01.jpg"> keep </a> </li>
                                     	<li> <a href="whatDetailsCherry.html" data-img="images/cherry/01.jpg"> cherry </a> </li>
                                         <li> <a href="whatDetailsKonichiwa.html" data-img="images/konichiwa/01.jpg"> konichiwa </a> </li>
@@ -144,9 +144,15 @@
           restartDelay: 2500
           // [number] restart delay on inactive slideshow
         },
-        fade: {       // Slide effect settings.
-          speed: 4000 // [number] Speed in milliseconds of the slide animation.
-        },
+        effect: {
+            slide: {
+              speed: 2000
+            },
+            fade: {
+              speed: 900,
+              crossfade: true
+            }
+          },
         pagination: {
           active: true,
           effect: "fade" //"slide" or "fade".
