@@ -1,13 +1,13 @@
-var delay=400, 
+var delay=400,
     triggerSliding;
 
 function blubbclick (event) {
   if (!event)
   event = window.event;
-  if ( (event.type && event.type == "contextmenu") 
-       || (event.button && event.button == 2) 
+  if ( (event.type && event.type == "contextmenu")
+       || (event.button && event.button == 2)
        || (event.which && event.which == 3)) {
-    
+
     if (window.opera) {
       window.alert("Sorry: Diese Funktion ist deaktiviert.");
     }
@@ -119,12 +119,34 @@ $(document).ready(function() {
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
   $(".details").bind("click", function() {
+    // force close
+    if ($(".detailsWrapper").is(".keep_closed")) {
+      $(".detailsWrapper").toggleClass("collapsed", true);
+      return false;
+    }
+
     $(".detailsWrapper").toggleClass("collapsed");
   });
 
   if($("body.productDetails").length) {
     showProductNaviagtionLinks();
   }
+
+  // if details is open and click on navigation is detected
+  // close details first
+  $("a").not(".slidesjs-pagination a, a[target='_blank']").on("click", function(event){
+    if( $(".detailsWrapper").length && !$(".detailsWrapper").hasClass("collapsed")) {
+      event.preventDefault();
+
+      var goTo = this.getAttribute("href");
+
+      setTimeout(function(){
+           window.location = goTo;
+      },1700); // 2s animation time for details box to slide right
+
+      $(".detailsWrapper").addClass("collapsed keep_closed");
+    }
+  });
 
   // automatic open details box unless next / previous product navigation links triggered openong the current product
   if(!(window.location.hash === "#previous_product" || window.location.hash === "#next_product")) {
@@ -175,7 +197,7 @@ $(document).ready(function() {
     $("[data-img]").each(function(index){
       var elem = $(this),
           slideImg = $("<img>", { src: elem.attr("data-img") });
-      $('#slider_dynamic').append(slideImg); 
+      $('#slider_dynamic').append(slideImg);
 
       // add the index to the productlink to allow later matching with the pagination
       $(this).attr("data-slide-index", index );
