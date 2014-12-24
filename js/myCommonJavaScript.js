@@ -212,6 +212,8 @@ $(document).ready(function() {
           // allow mouseover on the link to trigger switching the slide to the according index
           var pagination_index = parseInt($(that).attr("data-slide-index"),10) + 1;
           $(".slidesjs-pagination-item").eq(pagination_index).find("a").trigger("click");
+          $('[data-slide-index]').removeClass("active");
+          $(that).addClass("active");
          }, delay);
     });
 

@@ -247,6 +247,10 @@ a.next_product_link {
   content: "|";
 }
 
+.productNav ul li a.active:after, .productNav ul li a:hover:after {
+  opacity: 0.7;
+}
+
 .productNav ul li:last-child a:after {
   content: none;
 }
@@ -339,6 +343,11 @@ article li, article ul {
 
 .productNav a:hover, a.follow:hover {
   white-space:nowrap;
+  opacity:1;
+}
+
+.productNav a.active {
+  color: #333;
   opacity:1;
 }
 
