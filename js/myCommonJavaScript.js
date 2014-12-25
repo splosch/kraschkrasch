@@ -1,21 +1,6 @@
 var delay=400,
     triggerSliding;
 
-function blubbclick (event) {
-  if (!event)
-  event = window.event;
-  if ( (event.type && event.type == "contextmenu")
-       || (event.button && event.button == 2)
-       || (event.which && event.which == 3)) {
-
-    if (window.opera) {
-      window.alert("Sorry: Diese Funktion ist deaktiviert.");
-    }
-
-    return false;
-  }
-}
-
 function maxOutImage() {
   var newWidth  = $(".content").width(),
       maxHeight = $(".content").height(),
@@ -242,13 +227,3 @@ function initPageOnLoad() {
 $(document).ready(function() {
   initPageOnLoad();
 });
-
-/*
-if (document.layers) {
-  document.captureEvents(Event.MOUSEDOWN);
-}
-
-document.onmousedown   = click;
-document.oncontextmenu = click;
-
-*/

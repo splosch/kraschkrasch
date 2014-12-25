@@ -146,7 +146,7 @@ var app = $.sammy('#main', function( ) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
 
-      data.product = example_products[0];
+      data.product = products[0];
 
       // clear the main area
       context.app.swap('');

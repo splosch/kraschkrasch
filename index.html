@@ -43,7 +43,7 @@
      @name - String - Link Name
 -->
 <script id="hb_link" type="text/x-handlebars-template">
-  <a href="{{url}}">{{name}}</a>
+  <a href="{{url}}" {{#if image}}data-img="{{image}}"{{/if}} >{{name}}</a>
 </script>
 
 <!-- Helper: Main navigation

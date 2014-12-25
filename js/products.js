@@ -141,7 +141,7 @@ var products = (function(){
         var imagePaths = [];
 
         imgArr.forEach(function(index){
-          var img = index + ".jpg";
+          var img = "0" + index + ".jpg";
               imgPath = product.baseImgPath + img;
 
           imagePaths.push(imgPath);
@@ -193,8 +193,9 @@ var linkSections = (function(products){
     // push link into section links
     sections[sectionIndex.indexOf(product.section)].links.push(
       {
-        name : product.name,
-        url : product.url
+        name  : product.name,
+        url   : product.url,
+        image : product.images[0] || null
       }
     );
   });
