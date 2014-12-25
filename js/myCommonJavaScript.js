@@ -118,14 +118,22 @@ $(document).ready(function() {
   $(".fullscale").eq(0).bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
-  $(".details").bind("click", function() {
+  $(".details").not(".keep_open > .details").bind("click", function(event) {
     // force close
     if ($(".detailsWrapper").is(".keep_closed")) {
       $(".detailsWrapper").toggleClass("collapsed", true);
       return false;
     }
 
-    $(".detailsWrapper").toggleClass("collapsed");
+    // force open
+    if ($(".detailsWrapper").is(".keep_open")) {
+      $(".detailsWrapper").toggleClass("collapsed", false);
+      return true;
+    }
+
+    if ($(event.target).is(":not([target='_blank'])")) {
+      $(".detailsWrapper").toggleClass("collapsed");
+    }
   });
 
   if($("body.productDetails").length) {
@@ -138,13 +146,12 @@ $(document).ready(function() {
     if( $(".detailsWrapper").length && !$(".detailsWrapper").hasClass("collapsed")) {
       event.preventDefault();
 
-      var goTo = this.getAttribute("href");
+      var goTo  = this.getAttribute("href"),
+          linkOpensInNewWindow = this.getAttribute("target") === "_blank";
 
       setTimeout(function(){
            window.location = goTo;
       },1700); // 2s animation time for details box to slide right
-
-      $(".detailsWrapper").addClass("collapsed keep_closed");
     }
   });
 
