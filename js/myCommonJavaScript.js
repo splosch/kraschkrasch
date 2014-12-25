@@ -152,6 +152,10 @@ $(document).ready(function() {
       setTimeout(function(){
            window.location = goTo;
       },1700); // 2s animation time for details box to slide right
+
+      if (!linkOpensInNewWindow) {
+        $(".detailsWrapper").addClass("collapsed keep_closed");
+      }
     }
   });
 
