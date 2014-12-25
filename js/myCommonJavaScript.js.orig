@@ -43,6 +43,9 @@ function maxOutImage() {
   $(window).trigger("load");
 }
 
+<<<<<<< HEAD
+function initPageOnLoad() {
+=======
 function currentNameInProductlist(name, products) {
   var index;
 
@@ -114,7 +117,8 @@ function showProductNaviagtionLinks() {
 }
 
 
-function initPageOnLoad() {
+$(document).ready(function() {
+>>>>>>> product_navigation
   $(".fullscale").eq(0).bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
@@ -200,6 +204,9 @@ function initPageOnLoad() {
     }
   };
 
+<<<<<<< HEAD
+  if($('#slider')[0] && $("#slider").children().length) {
+=======
   // prepare the slider-content if dynamic
   if($("[data-img]").length > 0 && options.dynamicSlider) {
     $('#slider_dynamic img').removeAttr("class");
@@ -235,6 +242,7 @@ function initPageOnLoad() {
 
   // initialize slidejs on the slider
   if($('#slider')[0]) {
+>>>>>>> product_navigation
     $("#slider").slidesjs(options);
   }
 }
@@ -243,6 +251,14 @@ $(document).ready(function() {
   initPageOnLoad();
 });
 
+<<<<<<< HEAD
+// if (document.layers) {
+//   document.captureEvents(Event.MOUSEDOWN);
+// }
+
+// document.onmousedown   = click;
+// document.oncontextmenu = click;
+=======
 /*
 if (document.layers) {
   document.captureEvents(Event.MOUSEDOWN);
@@ -252,3 +268,4 @@ document.onmousedown   = click;
 document.oncontextmenu = click;
 
 */
+>>>>>>> product_navigation
