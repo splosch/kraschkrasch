@@ -73,7 +73,7 @@
   {{else}}
     <div id="slider" class="overlay autoExpand">
       {{#each product.images}}
-        <img src="images/{{product.name}}/0{{@index}}.jpg"/>
+        <img src="{{ this }}"/>
       {{/each}}
     </div>
   {{/if}}

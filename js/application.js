@@ -154,6 +154,7 @@ var app = $.sammy('#main', function( ) {
       this.render('templates/hb_page_product.hb', data).appendTo(context.$element());
       alert("Switched to product: " + this.params['productname']);
     });
+
     this.get('#/download',  function(context) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
