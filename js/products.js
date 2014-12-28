@@ -158,6 +158,21 @@ var products = (function(){
   return products;
 }(products || []));
 
+var getProductByName = function(name, products) {
+  var products = products || [],
+      foundProduct = null;
+
+  if (typeof name === "string") {
+    products.some(function(product){
+      if (product.name && product.name === name) {
+        foundProduct = product;
+        return true;
+      }
+    });
+  }
+
+  return foundProduct;
+};
 
 
 // @linkSections = [

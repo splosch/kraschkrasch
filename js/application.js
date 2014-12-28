@@ -146,13 +146,12 @@ var app = $.sammy('#main', function( ) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
 
-      data.product = products[0];
+      data.product = getProductByName(this.params['productname'], products);
 
       // clear the main area
       context.app.swap('');
 
       this.render('templates/hb_page_product.hb', data).appendTo(context.$element());
-      alert("Switched to product: " + this.params['productname']);
     });
 
     this.get('#/download',  function(context) {
