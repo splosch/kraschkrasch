@@ -231,12 +231,16 @@ a.next_product_link {
   text-align: left;
 }
 
-.productNav >li >ul {
+.productNav >li > ul {
   padding-left: 0;
 }
 
 .productNav li {
   display: inline-block;
+}
+
+.productNav > li {
+  display: block;
 }
 
 .productNav li > a:before {
