@@ -472,8 +472,8 @@ var products = (function(){
       product.images  = function(imgArr){
         var imagePaths = [];
 
-        imgArr.forEach(function(index){
-          var img = "0" + index + ".jpg";
+        imgArr.forEach(function(image){
+          var img = typeof image === "string" ? image : ( "0" + image + ".jpg" );
               imgPath = product.baseImgPath + img;
 
           imagePaths.push(imgPath);

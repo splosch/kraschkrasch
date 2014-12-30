@@ -27,16 +27,33 @@
 
                 {{#if product.material}}
                   <h3>Material_</h3>
-                  <p>{{product.material}}l</p>
+                  <p>{{product.material}}</p>
                 {{/if}}
 
                 {{#if product.producers}}
                   <h3>Producer_</h3>
                   <p>
                     {{#each product.producers}}
-                      <a class="follow" href="{{this.url}}" target="_blank">{{this.name}}</a>
+                      {{#if this.url}}
+                        <a class="follow" href="{{this.url}}" target="_blank">{{this.name}}</a>
+                      {{else}}
+                        {{this.name}}
+                      {{/if}}
                     {{/each}}
                   </p>
+                {{/if}}
+
+                {{#if product.extras}}
+                  {{#if product.extras.video}}
+                    <h3>Extras_</h3>
+                    <p>
+                      <a class="follow" href="{{product.extras.video}}" target="_blank">VIDEO</a>
+                    </p>
+                  {{/if}}
+
+                  {{#if product.extras.notice}}
+                    <p>{{product.extras.notice}}</p>
+                  {{/if}}
                 {{/if}}
             </div>
           </div>
