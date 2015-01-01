@@ -107,7 +107,7 @@ var app = $.sammy('#main', function( ) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
 
-      data.linkSections = linkSections || [];
+      data.linkSections = products.sections || [];
 
       // clear the main area
       context.app.swap('');
@@ -146,7 +146,9 @@ var app = $.sammy('#main', function( ) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
 
-      data.product = getProductByName(this.params['productname'], products);
+      data.product         = products.withName(this.params['productname']);
+      data.nextProduct     = products.nextTo(this.params['productname']);
+      data.previousProduct = products.previousTo(this.params['productname']);
 
       // clear the main area
       context.app.swap('');
@@ -158,7 +160,7 @@ var app = $.sammy('#main', function( ) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
 
-      data.linkSections = linkSections || [];
+      data.linkSections = products.sections || [];
 
       // clear the main area
       context.app.swap('');

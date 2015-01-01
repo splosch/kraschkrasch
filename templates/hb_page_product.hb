@@ -1,10 +1,19 @@
-<div id="container" class="{{section_class}}">
+<div id="container" class="{{section_class}} productDetailsPage">
   <div class="content centeringContainer">
     <div id="main" class="centered">
       <header>
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
         <a href="#/"><img src="images/logo.png"/></a>
       </header>
+
+      {{#if previousProduct}}
+        <a href="{{previousProduct.url}}" title="{{previousProduct.title}}" id="#previous_product" class="prev_product_link">&lt;</a>
+      {{/if}}
+
+      {{#if nextProduct}}
+        <a href="{{nextProduct.url}}" title="{{nextProduct.title}}" id="#next_product" class="next_product_link">&gt;</a>
+      {{/if}}
+
       <article id="main-area">
 
         {{> hb_visual this}}

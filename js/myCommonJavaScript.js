@@ -28,77 +28,6 @@ function maxOutImage() {
   $(window).trigger("load");
 }
 
-function currentNameInProductlist(name, products) {
-  var index;
-
-  index = products.indexOf(name);
-
-  return index;
-}
-
-function renderLinks(nextUrl, previousUrl) {
-  var next_product_link = $('<a>&gt;</a>')
-        .attr({ href: nextUrl || '#next_product' })
-        .addClass("next_product_link"),
-      prev_product_link = $('<a>&lt;</a>')
-        .attr({ href: previousUrl || '#previous_product' })
-        .addClass("prev_product_link");
-
-  $(".productDetails header").eq(0).after(next_product_link).after(prev_product_link);
-}
-
-function nextProductInList(currentProductIndex, products) {
-  var name;
-
-  name = products[currentProductIndex+1] || products[0] || null;
-
-  return name;
-}
-
-
-function previousProductInList(currentProductIndex, products) {
-  var name;
-
-  name = products[currentProductIndex-1] || products[products.length-1] || null;
-
-  return name;
-}
-
-function showProductNaviagtionLinks() {
- var products = [ "Zet", "RoundAbout", "Fju", "Raft", "Plank", "Check", "Scoop_table", "Scoop_chair",
-                  "Bubka", "Hoeninger", "PinaSideTable", "tome", "TampLable", "CherryTable", "Keep", "Cherry", "Konichiwa", "Industrial",
-                  "Cap", "PinaTableLamp", "Flachmann", "Candleblocks", "Luna", "Bulb", "Bonfire", "hopperboxes"],
-     productPrefix = "whatDetails",
-     currentUrlParts = window.location.href.split(productPrefix),
-     nextUrl,
-     prevUrl,
-     nextProduct,
-     currentProduct,
-     previousProduct,
-     currentProductIndex;
-
-  // only if the current page is a valid what-product page
-  if(currentUrlParts.length == 2){
-    currentProduct = currentUrlParts[1].split(".html")[0];
-    currentProductIndex = currentNameInProductlist(currentProduct, products);
-
-    nextProduct = nextProductInList(currentProductIndex, products);
-    previousProduct = previousProductInList(currentProductIndex, products);
-  }
-
-  if(nextProduct) {
-    nextUrl = currentUrlParts[0] + productPrefix + nextProduct + ".html#next_product";
-  }
-
-  if(previousProduct) {
-    previousUrl = currentUrlParts[0] + productPrefix + previousProduct + ".html#previous_product";
-  }
-
-
-  renderLinks(nextUrl, previousUrl);
-}
-
-
 function initPageOnLoad() {
   $(".fullscale").eq(0).bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
@@ -121,9 +50,6 @@ function initPageOnLoad() {
     }
   });
 
-  if($("body.productDetails").length) {
-    showProductNaviagtionLinks();
-  }
 
   // if details is open and click on navigation is detected
   // close details first

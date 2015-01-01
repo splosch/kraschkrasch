@@ -22,7 +22,6 @@
  * },
  *******************************/
 
-
 var products = [
   {
     "name":       "zet",
@@ -457,97 +456,110 @@ var products = [
   }
 ];
 
-var products = (function(){
-  products.forEach(function(product, index, products){
-    var baseUrl = "#/what/product/";
+var products = (
+  function(list){
+    var prod = {},
+        sections = [];
 
-    // if productdata match basic requirements enrich with
-    // additional functionality
-    if(typeof product === "object" && product.name) {
-      product.baseImgPath = "images/" + product.name + "/";
-      product.url     = baseUrl + product.name;
+    // manipulate product data
+    list.forEach(function(product, index, list){
+      var baseUrl = "#/what/product/";
 
-      // TODO: instead of iterate & push use js basic map/reduce functionality
-      // [0,1,2] --> ["images/productname/0.jpg", "images/productname/1.jpg", "images/productname/2.jpg"]
-      product.images  = function(imgArr){
-        var imagePaths = [];
+      // if productdata match basic requirements enrich with
+      // additional functionality
+      if(typeof product === "object" && product.name) {
+        product.baseImgPath = "images/" + product.name + "/";
+        product.url     = baseUrl + product.name;
 
-        imgArr.forEach(function(image){
-          var img = typeof image === "string" ? image : ( "0" + image + ".jpg" );
-              imgPath = product.baseImgPath + img;
+        // TODO: instead of iterate & push use js basic map/reduce functionality
+        // [0,1,2] --> ["images/productname/0.jpg", "images/productname/1.jpg", "images/productname/2.jpg"]
+        product.images  = function(imgArr){
+          var imagePaths = [];
 
-          imagePaths.push(imgPath);
-        });
+          imgArr.forEach(function(image){
+            var img = typeof image === "string" ? image : ( "0" + image + ".jpg" );
+                imgPath = product.baseImgPath + img;
 
-        return imagePaths;
-      }(product.images || []);
-    }
+            imagePaths.push(imgPath);
+          });
 
-    // write back enriched product
-    products[index] = product;
-  });
-
-  return products;
-}(products || []));
-
-var getProductByName = function(name, products) {
-  var products = products || [],
-      foundProduct = null;
-
-  if (typeof name === "string") {
-    products.some(function(product){
-      if (product.name && product.name === name) {
-        foundProduct = product;
-        return true;
+          return imagePaths;
+        }(product.images || []);
       }
+
+      // write back enriched product
+      list[index] = product;
     });
-  }
-
-  return foundProduct;
-};
 
 
-// @linkSections = [
-//   {
-//     name  : "furniture",
-//     links : {
-//       name : "zed",
-//       url  : "#/what/products/zed"
-//     },
-//     ...
-//   },
-//   ...
-// ]
-var linkSections = (function(products){
-  var sections = [],
-      sectionIndex = [],
-      containsSection = function(sectionName) {
-        return sectionIndex.indexOf(sectionName) >= 0;
-      };
+    // products interface to request products
+    prod.all = list;
+    prod.sections = function(list){
+      var sections = [],
+          sectionIndex = [],
+          containsSection = function(sectionName) {
+            return sectionIndex.indexOf(sectionName) >= 0;
+          };
 
-  // fill up the sections with links from products
-  products.forEach(function(product, index, products){
-    // don't allow multiple sections or wrong section type
-    if (typeof product.section !== "string") {
-      return false;
+      // fill up the sections with links from list
+      list.forEach(function(product, index){
+        // don't allow multiple sections or wrong section type
+        if (typeof product.section !== "string") {
+          return false;
+        }
+        // push new sections
+        if (product.section && !containsSection(product.section)) {
+          sections.push({ name : product.section, links : []});
+          sectionIndex.push(product.section);
+        }
+
+        // push link into section links
+        sections[sectionIndex.indexOf(product.section)].links.push(
+          {
+            name  : product.name,
+            url   : product.url,
+            image : product.images[0] || null
+          }
+        );
+      });
+
+      return sections;
+    }(list);;
+
+    prod.indexOf = function (productName) {
+      var foundIndex = null;
+      list.some(function(listItem, index){
+        if (listItem.name && listItem.name === productName){
+          foundIndex = index;
+
+          // found! --> end .some()
+          return true;
+        }
+      });
+
+      return foundIndex;
+    };
+
+    prod.withName = function(productName) {
+      var index = prod.indexOf(productName);
+
+      return list[index] || null;
+    },
+
+    prod.nextTo = function(productName) {
+      var currentIndex = prod.indexOf(productName),
+          nextIndex = currentIndex == list.length - 1 ? 0 : currentIndex + 1;
+
+      return list[nextIndex] || null ;
+    },
+
+    prod.previousTo = function(productName) {
+      var currentIndex = prod.indexOf(productName),
+          previousIndex = currentIndex == 0 ? list.length - 1 : currentIndex - 1;
+
+      return list[previousIndex] || null ;
     }
-    // push new sections
-    if (product.section && !containsSection(product.section)) {
-      sections.push({ name : product.section, links : []});
-      sectionIndex.push(product.section);
-    }
 
-    // push link into section links
-    sections[sectionIndex.indexOf(product.section)].links.push(
-      {
-        name  : product.name,
-        url   : product.url,
-        image : product.images[0] || null
-      }
-    );
-  });
-
-  return sections;
-}(products)) || [];
-
-
+    return prod;
+  }(products || [])
+);
