@@ -168,7 +168,7 @@ var products = [
         "url": "http://www.magazin.com/garderobe-bubka-p1463692/?c=194744"
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": ["anna_lena_01.jpg","anna_lena_02.jpg","anna_lena_03.jpg","anna_lena_04.jpg","anna_lena_05.jpg","anna_lena_06.jpg"]
   },
   {
     "name":       "pinokkio",
