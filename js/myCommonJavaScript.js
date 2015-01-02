@@ -1,33 +1,6 @@
 var delay=400,
     triggerSliding;
 
-function maxOutImage() {
-  var newWidth  = $(".content").width(),
-      maxHeight = $(".content").height(),
-      oldWidth  = $(".fullscale").width(),
-      oldHeight = $(".fullscale").height(),
-      factor    = newWidth / oldWidth,
-      newHeight = oldHeight * factor;
-
-  if(newHeight > maxHeight) {
-    newHeight = maxHeight;
-    factor    = newHeight / oldHeight;
-    newWidth  = oldWidth * factor;
-  }
-
-  // max size cap
-  if(newWidth > 920) {
-    newWidth  = 920;
-    newHeight = oldHeight * (newWidth / oldWidth);
-  }
-
-  $("article, .fullscale").width(newWidth)
-                          .height(newHeight);
-
-// force slider to update size
-  $(window).trigger("load");
-}
-
 function initPageOnLoad() {
   $(".fullscale").eq(0).bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
@@ -78,10 +51,6 @@ function initPageOnLoad() {
       }
     );
   }
-
-  $(window).bind("resize", function() {
-    maxOutImage();
-  });
 
   var options = typeof sliderOptions === "object" ? sliderOptions : {
     width: 900,
@@ -149,7 +118,3 @@ function initPageOnLoad() {
     $("#slider").slidesjs(options);
   }
 }
-
-$(document).ready(function() {
-  initPageOnLoad();
-});

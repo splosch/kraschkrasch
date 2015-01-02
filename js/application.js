@@ -210,9 +210,44 @@ var app = $.sammy('#main', function( ) {
 
 });
 
+
+
+// helper
+function maxOutImage() {
+  var newWidth  = $(".content").width(),
+      maxHeight = $(".content").height(),
+      oldWidth  = $(".fullscale").width(),
+      oldHeight = $(".fullscale").height(),
+      factor    = newWidth / oldWidth,
+      newHeight = oldHeight * factor;
+
+  if(newHeight > maxHeight) {
+    newHeight = maxHeight;
+    factor    = newHeight / oldHeight;
+    newWidth  = oldWidth * factor;
+  }
+
+  // max size cap
+  if(newWidth > 920) {
+    newWidth  = 920;
+    newHeight = oldHeight * (newWidth / oldWidth);
+  }
+
+  $("article, .fullscale").width(newWidth)
+                          .height(newHeight);
+
+// force slider to update size
+  $(window).trigger("load");
+}
+
+// global events
 $(function() {
   app.bindToAllEvents(function(event) {
     //debugger;
+  });
+
+  $(window).bind("resize", function() {
+    maxOutImage();
   });
 
   // every time a navigation was successfull and the route got followed
