@@ -92,10 +92,33 @@ var app = $.sammy('#main', function( ) {
   };
 
   this.defineRoutes = function() {
-    // defining the basic routes
+
+    // STARTPAGE
     this.get('#/',      function(context) {
       var section = "home",
-          data = this.app.getBaseDataForSection(section);
+          data = this.app.getBaseDataForSection(section),
+          randomImage = function (list) {
+            var randomListItem;
+
+            randomListItem = Math.floor(Math.random()*list.length);
+            randomListItem = randomListItem < (list.length-1) ? randomListItem : (list.length-1);
+
+            return list[randomListItem] || null;
+          }([ "IMG_1.JPG",
+              "IMG_2.JPG",
+              "IMG_3.JPG",
+              "IMG_4.JPG",
+              "IMG_5.JPG",
+              "IMG_6.JPG",
+              "IMG_7.JPG",
+              "IMG_8.JPG",
+              "IMG_9.JPG",
+              "IMG_10.JPG",
+              "IMG_11.JPG",
+              "IMG_12.JPG",
+              "IMG_13.JPG" ]);
+
+      data.image_url = "images/start/" + randomImage;
 
       // clear the main area
       context.app.swap('');
@@ -103,6 +126,8 @@ var app = $.sammy('#main', function( ) {
       // add main layout on main element
       this.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
     });
+
+
     this.get('#/what',  function(context) {
       var section = "what",
           data = this.app.getBaseDataForSection(section);
@@ -114,6 +139,8 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
     });
+
+
     this.get('#/who',   function(context) {
       var section = "who",
           data = this.app.getBaseDataForSection(section);
@@ -123,6 +150,8 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
     });
+
+
     this.get('#/when',  function(context) {
       var section = "when",
           data = this.app.getBaseDataForSection(section);
@@ -132,6 +161,8 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
     });
+
+
     this.get('#/where', function(context) {
       var section = "where",
           data = this.app.getBaseDataForSection(section);
@@ -141,6 +172,7 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
     });
+
 
     this.get('#/what/product/:productname', function(context) {
       var section = "where",
@@ -155,6 +187,7 @@ var app = $.sammy('#main', function( ) {
 
       this.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
     });
+
 
     this.get('#/download',  function(context) {
       var section = "what",
