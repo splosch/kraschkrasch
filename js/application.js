@@ -118,7 +118,7 @@ var app = $.sammy('#main', function( ) {
               "IMG_12.JPG",
               "IMG_13.JPG" ]);
 
-      data.image_url = "images/start/" + randomImage;
+      data.main_image_url = "images/start/" + randomImage;
 
       // clear the main area
       context.app.swap('');
@@ -133,6 +133,7 @@ var app = $.sammy('#main', function( ) {
           data = this.app.getBaseDataForSection(section);
 
       data.linkSections = products.sections || [];
+      data.main_image_url = "images/what/what.jpg";
 
       // clear the main area
       context.app.swap('');
@@ -194,6 +195,7 @@ var app = $.sammy('#main', function( ) {
           data = this.app.getBaseDataForSection(section);
 
       data.linkSections = products.sections || [];
+      data.main_image_url = "images/where/01.jpg";
 
       // clear the main area
       context.app.swap('');
