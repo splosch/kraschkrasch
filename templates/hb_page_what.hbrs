@@ -6,7 +6,7 @@
         <a href="#/"><img src="images/logo.png"/></a>
       </header>
       <article id="main-area">
-        {{> hb_startbild}}
+        {{> hb_visual}}
 
         <div id="detailsBox" class="detailsWrapper collapsed">
           <div class="details">

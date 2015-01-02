@@ -130,10 +130,22 @@ var app = $.sammy('#main', function( ) {
 
     this.get('#/what',  function(context) {
       var section = "what",
-          data = this.app.getBaseDataForSection(section);
+          data = this.app.getBaseDataForSection(section),
+          imagelist = function(products){
+            var images = [];
+            products.all.forEach(function(product){
+              images.push(product.images[0]);
+            });
+
+            return images;
+          }(products);
 
       data.linkSections = products.sections || [];
       data.main_image_url = "images/what/what.jpg";
+
+      data.slider = {
+        images : imagelist
+      }
 
       // clear the main area
       context.app.swap('');
@@ -176,12 +188,18 @@ var app = $.sammy('#main', function( ) {
 
 
     this.get('#/what/product/:productname', function(context) {
-      var section = "where",
-          data = this.app.getBaseDataForSection(section);
+      var section     = "where",
+          data        = this.app.getBaseDataForSection(section),
+          productName = this.params['productname'],
+          product     = products.withName(productName);
 
-      data.product         = products.withName(this.params['productname']);
-      data.nextProduct     = products.nextTo(this.params['productname']);
-      data.previousProduct = products.previousTo(this.params['productname']);
+      data.product         = product;
+      data.nextProduct     = products.nextTo(productName);
+      data.previousProduct = products.previousTo(productName);
+
+      data.slider = {
+        images : product.images
+      }
 
       // clear the main area
       context.app.swap('');
@@ -200,7 +218,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
+      this.render('templates/hb_page_download.hbrs', data).appendTo(context.$element());
     });
   };
 

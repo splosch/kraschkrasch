@@ -80,20 +80,9 @@ function initPageOnLoad() {
     }
   };
 
-  // prepare the slider-content if dynamic
-  if($("[data-img]").length > 0 && options.dynamicSlider) {
+    // prepare the slider-content if dynamic
+  if($("[data-slider-img]").length > 0 && options.dynamicSlider) {
     $('#slider_dynamic img').removeAttr("class");
-
-    // for every productlink create a preview slide in the #slider
-    $("[data-img]").each(function(index){
-      var elem = $(this),
-          slideImg = $("<img>", { src: elem.attr("data-img") });
-      $('#slider_dynamic').append(slideImg);
-
-      // add the index to the productlink to allow later matching with the pagination
-      $(this).attr("data-slide-index", index );
-    });
-
 
     $('[data-slide-index]').on('mouseover', function(event) {
       var that = this;
