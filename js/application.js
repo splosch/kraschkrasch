@@ -42,7 +42,7 @@ var app = $.sammy('#main', function( ) {
   // prepare the APP
   this.initialize = function() {
     // require Plugins and extensions here
-    this.use('Handlebars', 'hb'); // include the plugin and alias handlebars() to hb()
+    this.use('Handlebars', 'hbrs'); // include the plugin and alias handlebars() to hb()
 
     this.navSections = {};
 
@@ -101,7 +101,7 @@ var app = $.sammy('#main', function( ) {
       context.app.swap('');
 
       // add main layout on main element
-      this.render('templates/hb_startpage.hb', data).appendTo(context.$element());
+      this.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
     });
     this.get('#/what',  function(context) {
       var section = "what",
@@ -112,7 +112,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_what.hb', data).appendTo(context.$element());
+      this.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
     });
     this.get('#/who',   function(context) {
       var section = "who",
@@ -121,7 +121,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_who.hb', data).appendTo(context.$element());
+      this.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
     });
     this.get('#/when',  function(context) {
       var section = "when",
@@ -130,7 +130,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_when.hb', data).appendTo(context.$element());
+      this.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
     });
     this.get('#/where', function(context) {
       var section = "where",
@@ -139,7 +139,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_where.hb', data).appendTo(context.$element());
+      this.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
     });
 
     this.get('#/what/product/:productname', function(context) {
@@ -153,7 +153,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_product.hb', data).appendTo(context.$element());
+      this.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
     });
 
     this.get('#/download',  function(context) {
@@ -165,7 +165,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_what.hb', data).appendTo(context.$element());
+      this.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
     });
   };
 
