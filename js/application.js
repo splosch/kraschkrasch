@@ -134,7 +134,7 @@ var app = $.sammy('#main', function( ) {
           imagelist = function(products){
             var images = [];
             products.all.forEach(function(product){
-              images.push(product.images[0]);
+              images.push({ src: product.images[0], name: product.name});
             });
 
             return images;
@@ -144,7 +144,7 @@ var app = $.sammy('#main', function( ) {
       data.main_image_url = "images/what/what.jpg";
 
       data.slider = {
-        images : imagelist
+        imagesWithName : imagelist
       }
 
       // clear the main area

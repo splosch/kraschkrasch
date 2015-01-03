@@ -43,7 +43,7 @@
      @name - String - Link Name
 -->
 <script id="hb_link" type="text/x-handlebars-template">
-  <a href="{{url}}" {{#if image}}data-img="{{image}}"{{/if}} >{{name}}</a>
+  <a href="{{url}}" {{#if image}}data-slider-img="{{image}}" data-slider-name="{{name}}"{{/if}} >{{title}}</a>
 </script>
 
 <!-- Helper: Main navigation
@@ -71,11 +71,21 @@
       <img class="fullscale {{visual.image.class}}" src="{{visual.image.url}}"/>
     </div>
   {{else}}
-    <div id="slider" class="overlay autoExpand">
-      {{#each slider.images}}
-        <img src="{{ this }}"/>
-      {{/each}}
-    </div>
+    {{#if slider.imagesWithName}}
+      <div id="slider" class="overlay autoExpand">
+        {{#each slider.imagesWithName}}
+          <img src="{{ src }}" data-product-name="{{ name }}" />
+        {{/each}}
+      </div>
+    {{/if}}
+
+    {{#if slider.images}}
+      <div id="slider" class="overlay autoExpand">
+        {{#each slider.images}}
+          <img src="{{ this }}"/>
+        {{/each}}
+      </div>
+    {{/if}}
   {{/if}}
 </script>
 

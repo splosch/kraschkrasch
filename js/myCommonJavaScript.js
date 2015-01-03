@@ -81,25 +81,28 @@ function initPageOnLoad() {
   };
 
     // prepare the slider-content if dynamic
-  if($("[data-slider-img]").length > 0 && options.dynamicSlider) {
-    $('#slider_dynamic img').removeAttr("class");
+  if($("[data-slider-name]").length) {
 
-    $('[data-slide-index]').on('mouseover', function(event) {
+    $('[data-slider-img]').on('mouseover', function(event) {
       var that = this;
-        clearTimeout(triggerSliding);
-        triggerSliding = setTimeout(function(){
-          // now that al the links with previews have preview images in the slider
-          // allow mouseover on the link to trigger switching the slide to the according index
-          var pagination_index = parseInt($(that).attr("data-slide-index"),10) + 1;
-          $(".slidesjs-pagination-item").eq(pagination_index).find("a").trigger("click");
-          $('[data-slide-index]').removeClass("active");
-          $(that).addClass("active");
-         }, delay);
+
+      clearTimeout(triggerSliding);
+      triggerSliding = setTimeout(function(){
+        // now that al the links with previews have preview images in the slider
+        // allow mouseover on the link to trigger switching the slide
+        var $slider = $("#slider"),
+            activeProductName = $(that).data("sliderName"),
+            slideJsIndexToActivate = $slider.find('[data-product-name="'+activeProductName+'"]').attr("slidesjs-index");
+
+        $slider.find('[data-slidesjs-item="'+slideJsIndexToActivate+'"]').trigger("click");
+        $('[data-slider-img]').removeClass("active");
+        $(that).addClass("active");
+      }, delay);
     });
 
-    $("#slider_dynamic").slidesjs(options);
+    $("#slider").slidesjs(specialOptions || options);
     // hide pagination for what page
-    $('.slidesjs-pagination').hide();
+    $(".slidesjs-pagination").hide();
   }
 
   // initialize slidejs on the slider

@@ -516,6 +516,7 @@ var products = (
         // push link into section links
         sections[sectionIndex.indexOf(product.section)].links.push(
           {
+            title : product.title,
             name  : product.name,
             url   : product.url,
             image : product.images[0] || null
