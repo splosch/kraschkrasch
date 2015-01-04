@@ -172,7 +172,7 @@ var products = [
   },
   {
     "name":       "pinokkio",
-    "title":      "H&ouml;ninger",
+    "title":      "Höninger",
     "section":    "furniture",
     "material":   "wood | metal",
     "dimensions": "2000 | 730 | 680<br>2000 | 430 | 300",

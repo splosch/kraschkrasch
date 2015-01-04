@@ -343,6 +343,7 @@ article li, article ul {
 .productNav a, a.follow {
   white-space:nowrap;
   opacity: 0.7;
+  text-transform: lowercase;
 }
 
 .productNav a:hover, a.follow:hover {
