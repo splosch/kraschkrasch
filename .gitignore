@@ -1,5 +1,5 @@
 .tmp
 .DS_Store
 pdfs
-*.jpg
-/images
+#*.jpg
+#/images
