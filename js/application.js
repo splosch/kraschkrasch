@@ -271,6 +271,12 @@ $(function() {
   // every time a navigation was successfull and the route got followed
   app.bind("changed", function() {
     initPageOnLoad();
+
+    // automatic open details box unless next / previous product navigation links triggered openong the current product
+    if( this.app.last_route.param_names && this.app.last_route.param_names.indexOf("productname") == -1 ) {
+      window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
+    }
+
   });
 
   app.run()
