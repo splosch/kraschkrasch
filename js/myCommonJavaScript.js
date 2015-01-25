@@ -2,7 +2,7 @@ var delay=400,
     triggerSliding;
 
 function initPageOnLoad() {
-  $(".fullscale").eq(0).bind("load", maxOutImage);
+  //$(".fullscale").eq(0).bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
   $(".details").not(".keep_open > .details").bind("click", function(event) {

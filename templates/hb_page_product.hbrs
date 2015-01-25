@@ -14,7 +14,7 @@
         <a href="{{nextProduct.url}}" title="{{nextProduct.title}}" id="#next_product" class="next_product_link">&gt;</a>
       {{/if}}
 
-      <article id="main-area">
+      <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
 
         {{> hb_visual this}}
 

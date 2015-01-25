@@ -5,7 +5,7 @@
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
         <a href="#/"><img src="images/logo.png"/></a>
       </header>
-      <article id="main-area">
+      <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
         {{> hb_startbild}}
       </article>
       <nav id="nav_sections">{{> hb_nav_sections}}</nav>

@@ -45,6 +45,7 @@ var app = $.sammy('#main', function( ) {
     this.use('Handlebars', 'hbrs'); // include the plugin and alias handlebars() to hb()
 
     this.navSections = {};
+    this.article = { width: 900, height: 600};
 
     // prime the sections once with NAV_SECTIONS data for later (fast) lookup
     for (var i = 0, len = NAV_SECTIONS.length; i < len; i++) {
@@ -55,6 +56,37 @@ var app = $.sammy('#main', function( ) {
     this.navSections.home = { name: "home", url: "#/", headline: "kaschkasch cologne - designstudio by Florian Kallus and Sebastian Schneider."};
 
     this.defineRoutes();
+  }
+
+  // helper
+  this.maxOutImage = function() {
+    var newWidth  = $(".content").width(),
+        maxHeight = $(".content").height(),
+        oldWidth  = $(".fullscale").width(),
+        oldHeight = $(".fullscale").height(),
+        factor    = newWidth / oldWidth,
+        newHeight = oldHeight * factor;
+
+    if(newHeight > maxHeight) {
+      newHeight = maxHeight;
+      factor    = newHeight / oldHeight;
+      newWidth  = oldWidth * factor;
+    }
+
+    // max size cap
+    if(newWidth > 920) {
+      newWidth  = 920;
+      newHeight = oldHeight * (newWidth / oldWidth);
+    }
+
+    this.article = { width: newWidth, height: newHeight};
+
+    $("article").width(newWidth)
+                .height(newHeight);
+
+  // force slider to update size
+    //$(window).trigger("load");
+    return newWidth && $("article").width() === newWidth;
   }
 
   // updates the Navigation Section
@@ -82,6 +114,8 @@ var app = $.sammy('#main', function( ) {
   // updates the Navigation Section
   this.getBaseDataForSection = function(selected_section){
     var data = {};
+
+    data.article = this.article || null;
 
     data.headline      = this.navSections[selected_section].headline;
     data.section_class = this.navSections[selected_section].section_class;
@@ -229,47 +263,24 @@ var app = $.sammy('#main', function( ) {
 });
 
 
-
-// helper
-function maxOutImage() {
-  var newWidth  = $(".content").width(),
-      maxHeight = $(".content").height(),
-      oldWidth  = $(".fullscale").width(),
-      oldHeight = $(".fullscale").height(),
-      factor    = newWidth / oldWidth,
-      newHeight = oldHeight * factor;
-
-  if(newHeight > maxHeight) {
-    newHeight = maxHeight;
-    factor    = newHeight / oldHeight;
-    newWidth  = oldWidth * factor;
-  }
-
-  // max size cap
-  if(newWidth > 920) {
-    newWidth  = 920;
-    newHeight = oldHeight * (newWidth / oldWidth);
-  }
-
-  $("article, .fullscale").width(newWidth)
-                          .height(newHeight);
-
-// force slider to update size
-  $(window).trigger("load");
-}
-
 // global events
 $(function() {
+  app.isInitialized = false;
+
   app.bindToAllEvents(function(event) {
     //debugger;
   });
 
   $(window).bind("resize", function() {
-    maxOutImage();
+    app.maxOutImage();
   });
 
   // every time a navigation was successfull and the route got followed
   app.bind("changed", function() {
+    if(!app.isInitialized){
+      app.isInitialized = app.maxOutImage();
+    }
+
     initPageOnLoad();
 
     // automatic open details box unless next / previous product navigation links triggered openong the current product

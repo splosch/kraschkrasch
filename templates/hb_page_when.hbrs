@@ -5,39 +5,39 @@
           {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
           <a href="#/"><img src="images/logo.png"/></a>
         </header>
-        <article id="main-area">
+        <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
           {{> hb_startbild}}
 
           <div id="slider" class="overlay autoExpand">
-            <img src="images/when/01.jpg"/>
-            <img src="images/when/02.jpg"/>
-            <img src="images/when/03.jpg"/>
-            <img src="images/when/04.jpg"/>
-            <img src="images/when/05.jpg"/>
-            <img src="images/when/06.jpg"/>
+            <img class="fullscale" src="images/when/01.jpg"/>
+            <img class="fullscale" src="images/when/02.jpg"/>
+            <img class="fullscale" src="images/when/03.jpg"/>
+            <img class="fullscale" src="images/when/04.jpg"/>
+            <img class="fullscale" src="images/when/05.jpg"/>
+            <img class="fullscale" src="images/when/06.jpg"/>
           </div>
 
           <div id="detailsBox" class="detailsWrapper collapsed">
               <div class="details">
                 <div class="label"><span class="icon_arrow"></span></div>
-                
+
                 <div class="aniContainer">
                     <h3>Exhibitions_</h3>
-                    <ul class="dates">  
-SaloneSatellite, IMM, Stockholm Furniture Fair, Clerkenwell Design Week, 
-Ambiente, Light&Building, ICFF, Interieur, 
+                    <ul class="dates">
+SaloneSatellite, IMM, Stockholm Furniture Fair, Clerkenwell Design Week,
+Ambiente, Light&Building, ICFF, Interieur,
 Maison et Objet, DMY and others.
-                    </ul><br>    
+                    </ul><br>
 
                     <h3>Publications_</h3>
                     <p>
-                        Wallpaper, Frame, Schöner Wohnen, Case de Abitare, 
-RUM, Surface, Couch, Neo2, Damn, ELLE Decoration, 
+                        Wallpaper, Frame, Schöner Wohnen, Case de Abitare,
+RUM, Surface, Couch, Neo2, Damn, ELLE Decoration,
 Wohnrevue, A&W, KWest, Raum5, Wohn!Ideen, Form
-and many others.                          </ul><br>  
+and many others.                          </ul><br>
 <br>
 
-       <h3>Awards_</h3> 
+       <h3>Awards_</h3>
         <p>
         German Design Award Nominée 2015, Interior Innovation Award, German Design Award Nominée 2013, Designpreis Deutschland Nominée, Interieur Award winner.
 
@@ -52,3 +52,41 @@ and many others.                          </ul><br>
       </div>
     </div>
   </div>
+
+
+<script>
+  var sliderOptions = {
+    width: 900,
+    height: 600,
+
+    play: {
+      active: false,
+      // [boolean] Generate the play and stop buttons.
+      // You cannot use your own buttons. Sorry.
+      effect: "slide",
+      // [string] Can be either "slide" or "fade".
+      interval: 5000,
+      // [number] Time spent on each slide in milliseconds.
+      auto: true,
+      // [boolean] Start playing the slideshow on load.
+      pauseOnHover: true,
+      // [boolean] pause a playing slideshow on hover
+      restartDelay: 2500
+      // [number] restart delay on inactive slideshow
+    },
+    slide: {       // Slide effect settings.
+      speed: 4000 // [number] Speed in milliseconds of the slide animation.
+    },
+    pagination: {
+      active: true,
+      effect: "slide" //"slide" or "fade".
+    }
+  };
+</script>
+
+{{#if article }}
+  <script>
+    sliderOptions.width = {{article.width}};
+    sliderOptions.height = {{article.height}};
+  </script>
+{{/if}}

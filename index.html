@@ -74,7 +74,7 @@
     {{#if slider.imagesWithName}}
       <div id="slider" class="overlay autoExpand">
         {{#each slider.imagesWithName}}
-          <img src="{{ src }}" data-product-name="{{ name }}" />
+          <img class="fullscale" src="{{ src }}" data-product-name="{{ name }}" />
         {{/each}}
       </div>
     {{/if}}
@@ -82,7 +82,7 @@
     {{#if slider.images}}
       <div id="slider" class="overlay autoExpand">
         {{#each slider.images}}
-          <img src="{{ this }}"/>
+          <img class="fullscale" src="{{ this }}"/>
         {{/each}}
       </div>
     {{/if}}

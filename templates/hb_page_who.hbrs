@@ -5,16 +5,16 @@
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
         <a href="#/"><img src="images/logo.png"/></a>
       </header>
-      <article id="main-area">
+      <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
         {{> hb_startbild}}
 
         <div id="slider" class="overlay autoExpand">
-            <img src="images/who/01.jpg"/>
-            <img src="images/who/02.jpg"/>
-            <img src="images/who/03.jpg"/>
-            <img src="images/who/04.jpg"/>
-            <img src="images/who/05.jpg"/>
-            <img src="images/who/06.jpg"/>
+            <img class="fullscale" src="images/who/01.jpg"/>
+            <img class="fullscale" src="images/who/02.jpg"/>
+            <img class="fullscale" src="images/who/03.jpg"/>
+            <img class="fullscale" src="images/who/04.jpg"/>
+            <img class="fullscale" src="images/who/05.jpg"/>
+            <img class="fullscale" src="images/who/06.jpg"/>
         </div>
 
         <div id="detailsBox" class="detailsWrapper collapsed">
@@ -41,9 +41,9 @@
 
                     <h3>Clients_</h3>
                     <p>
-                        Menu | Zeitraum | Normann Copenhagen | Schönbuch | Bolia | Magazin | Esaila | Dreizehngrad | Asco | Hubert Feldkircher 
+                        Menu | Zeitraum | Normann Copenhagen | Schönbuch | Bolia | Magazin | Esaila | Dreizehngrad | Asco | Hubert Feldkircher
                     </p>
-                    
+
                 </div>
             </div>
         </div>
@@ -52,3 +52,41 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  var sliderOptions = {
+    width: 900,
+    height: 600,
+
+    play: {
+      active: false,
+      // [boolean] Generate the play and stop buttons.
+      // You cannot use your own buttons. Sorry.
+      effect: "slide",
+      // [string] Can be either "slide" or "fade".
+      interval: 5000,
+      // [number] Time spent on each slide in milliseconds.
+      auto: true,
+      // [boolean] Start playing the slideshow on load.
+      pauseOnHover: true,
+      // [boolean] pause a playing slideshow on hover
+      restartDelay: 2500
+      // [number] restart delay on inactive slideshow
+    },
+    slide: {       // Slide effect settings.
+      speed: 4000 // [number] Speed in milliseconds of the slide animation.
+    },
+    pagination: {
+      active: true,
+      effect: "slide" //"slide" or "fade".
+    }
+  };
+</script>
+
+{{#if article }}
+  <script>
+    sliderOptions.width = {{article.width}};
+    sliderOptions.height = {{article.height}};
+  </script>
+{{/if}}
