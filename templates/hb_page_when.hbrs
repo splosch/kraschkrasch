@@ -9,12 +9,12 @@
           {{> hb_startbild}}
 
           <div id="slider" class="overlay autoExpand">
-            <img class="fullscale" src="images/when/01.jpg"/>
-            <img class="fullscale" src="images/when/02.jpg"/>
-            <img class="fullscale" src="images/when/03.jpg"/>
-            <img class="fullscale" src="images/when/04.jpg"/>
-            <img class="fullscale" src="images/when/05.jpg"/>
-            <img class="fullscale" src="images/when/06.jpg"/>
+            <img class="fullscale" src="images/when/01.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
+            <img class="fullscale" src="images/when/02.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
+            <img class="fullscale" src="images/when/03.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
+            <img class="fullscale" src="images/when/04.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
+            <img class="fullscale" src="images/when/05.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
+            <img class="fullscale" src="images/when/06.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
           </div>
 
           <div id="detailsBox" class="detailsWrapper collapsed">
