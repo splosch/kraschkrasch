@@ -38,6 +38,130 @@ Handlebars.registerHelper('include', function(options) {
  *  product page #/:section/:product
  *  main_content_area id = 'main' --> now sammy knows whats the main content section (equal to this.element_selector = '#main'; within sammy.app())
  */
+var controller = {
+  // inside a controller "this" reffers to the sammy context
+  startpage : function(context) {
+    var section = "home",
+        data = context.app.getBaseDataForSection(section),
+        randomImage = function (list) {
+          var randomListItem;
+
+          randomListItem = Math.floor(Math.random()*list.length);
+          randomListItem = randomListItem < (list.length-1) ? randomListItem : (list.length-1);
+
+          return list[randomListItem] || null;
+        }([ "IMG_1.JPG",
+            "IMG_2.JPG",
+            "IMG_3.JPG",
+            "IMG_4.JPG",
+            "IMG_5.JPG",
+            "IMG_6.JPG",
+            "IMG_7.JPG",
+            "IMG_8.JPG",
+            "IMG_9.JPG",
+            "IMG_10.JPG",
+            "IMG_11.JPG",
+            "IMG_12.JPG",
+            "IMG_13.JPG" ]);
+
+    data.main_image_url = "images/start/" + randomImage;
+
+    // clear the main area
+    context.app.swap('');
+
+    // add main layout on main element
+    context.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
+  },
+
+  what : function(context) {
+    var section = "what",
+        data = context.app.getBaseDataForSection(section),
+        imagelist = function(products){
+          var images = [];
+          products.all.forEach(function(product){
+            images.push({ src: product.images[0], name: product.name});
+          });
+
+          return images;
+        }(products);
+
+    data.linkSections = products.sections || [];
+    data.main_image_url = "images/what/what.jpg";
+
+    data.slider = {
+      imagesWithName : imagelist
+    };
+
+    // clear the main area
+    context.app.swap('');
+
+    context.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
+  },
+
+  whatProduct : function(context) {
+    var section     = "what",
+        data        = context.app.getBaseDataForSection(section),
+        productName = context.params['productname'],
+        product     = products.withName(productName);
+
+    data.product         = product;
+    data.nextProduct     = products.nextTo(productName);
+    data.previousProduct = products.previousTo(productName);
+
+    data.slider = {
+      images : product.images
+    }
+
+    // clear the main area
+    context.app.swap('');
+
+    context.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
+  },
+
+  who : function(context) {
+    var section = "who",
+        data = context.app.getBaseDataForSection(section);
+
+    // clear the main area
+    context.app.swap('');
+
+    context.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
+  },
+
+  when : function(context) {
+    var section = "when",
+        data = context.app.getBaseDataForSection(section);
+
+    // clear the main area
+    context.app.swap('');
+
+    context.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
+  },
+
+  where : function(context) {
+    var section = "where",
+        data = context.app.getBaseDataForSection(section);
+
+    // clear the main area
+    context.app.swap('');
+
+    context.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
+  },
+
+  download : function(context) {
+    var section = "what",
+        data = context.app.getBaseDataForSection(section);
+
+    data.linkSections = products.sections || [];
+    data.main_image_url = "images/where/01.jpg";
+
+    // clear the main area
+    context.app.swap('');
+
+    context.render('templates/hb_page_download.hbrs', data).appendTo(context.$element());
+  }
+};
+
 var app = $.sammy('#main', function( ) {
   // prepare the APP
   this.initialize = function() {
@@ -128,132 +252,13 @@ var app = $.sammy('#main', function( ) {
   this.defineRoutes = function() {
 
     // STARTPAGE
-    this.get('#/',      function(context) {
-      var section = "home",
-          data = context.app.getBaseDataForSection(section),
-          randomImage = function (list) {
-            var randomListItem;
-
-            randomListItem = Math.floor(Math.random()*list.length);
-            randomListItem = randomListItem < (list.length-1) ? randomListItem : (list.length-1);
-
-            return list[randomListItem] || null;
-          }([ "IMG_1.JPG",
-              "IMG_2.JPG",
-              "IMG_3.JPG",
-              "IMG_4.JPG",
-              "IMG_5.JPG",
-              "IMG_6.JPG",
-              "IMG_7.JPG",
-              "IMG_8.JPG",
-              "IMG_9.JPG",
-              "IMG_10.JPG",
-              "IMG_11.JPG",
-              "IMG_12.JPG",
-              "IMG_13.JPG" ]);
-
-      data.main_image_url = "images/start/" + randomImage;
-
-      // clear the main area
-      context.app.swap('');
-
-      // add main layout on main element
-      context.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
-    });
-
-
-    this.get('#/what',  function(context) {
-      var section = "what",
-          data = context.app.getBaseDataForSection(section),
-          imagelist = function(products){
-            var images = [];
-            products.all.forEach(function(product){
-              images.push({ src: product.images[0], name: product.name});
-            });
-
-            return images;
-          }(products);
-
-      data.linkSections = products.sections || [];
-      data.main_image_url = "images/what/what.jpg";
-
-      data.slider = {
-        imagesWithName : imagelist
-      }
-
-      // clear the main area
-      context.app.swap('');
-
-      context.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
-    });
-
-
-    this.get('#/who',   function(context) {
-      var section = "who",
-          data = context.app.getBaseDataForSection(section);
-
-      // clear the main area
-      context.app.swap('');
-
-      context.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
-    });
-
-
-    this.get('#/when',  function(context) {
-      var section = "when",
-          data = context.app.getBaseDataForSection(section);
-
-      // clear the main area
-      context.app.swap('');
-
-      context.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
-    });
-
-
-    this.get('#/where', function(context) {
-      var section = "where",
-          data = context.app.getBaseDataForSection(section);
-
-      // clear the main area
-      context.app.swap('');
-
-      context.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
-    });
-
-
-    this.get('#/what/product/:productname', function(context) {
-      var section     = "what",
-          data        = context.app.getBaseDataForSection(section),
-          productName = context.params['productname'],
-          product     = products.withName(productName);
-
-      data.product         = product;
-      data.nextProduct     = products.nextTo(productName);
-      data.previousProduct = products.previousTo(productName);
-
-      data.slider = {
-        images : product.images
-      }
-
-      // clear the main area
-      context.app.swap('');
-
-      context.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
-    });
-
-
-    this.get('#/download',  function(context) {
-      var section = "what",
-          data = context.app.getBaseDataForSection(section);
-
-      data.linkSections = products.sections || [];
-      data.main_image_url = "images/where/01.jpg";
-
-      // clear the main area
-      context.app.swap('');
-
-      context.render('templates/hb_page_download.hbrs', data).appendTo(context.$element());
-    });
+    this.get('#/', controller.startpage);
+    this.get('#/what', controller.what);
+    this.get('#/who', controller.who);
+    this.get('#/when', controller.when);
+    this.get('#/where', controller.where);
+    this.get('#/what/product/:productname', controller.whatProduct);
+    this.get('#/download', controller.download);
   };
 
   // bind app.run() handler to start of the initialization of the APP
