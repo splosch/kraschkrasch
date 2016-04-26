@@ -73,8 +73,9 @@ var controller = {
     context.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
   },
 
-  what : function(context) {
+  what : function(context, options) {
     var section = "what",
+        showAll = options && options.showAll;
         data = context.app.getBaseDataForSection(section),
         imagelist = function(products){
           var images = [];
@@ -87,6 +88,7 @@ var controller = {
 
     data.linkSections = products.sections || [];
     data.main_image_url = "images/what/what.jpg";
+    data.showAll = options.showAll;
 
     data.slider = {
       imagesWithName : imagelist
@@ -107,6 +109,7 @@ var controller = {
     data.product         = product;
     data.nextProduct     = products.nextTo(productName);
     data.previousProduct = products.previousTo(productName);
+    data.nav_sections    = context.app.navSections;
 
     data.slider = {
       images : product.images
@@ -257,6 +260,7 @@ var app = $.sammy('#main', function( ) {
     // STARTPAGE
     this.get('#/', controller.startpage);
     this.get('#/what', controller.what);
+    this.get('#/what/showAll', controller.what, { showAll : true });
     this.get('#/who', controller.who);
     this.get('#/when', controller.when);
     this.get('#/where', controller.where);

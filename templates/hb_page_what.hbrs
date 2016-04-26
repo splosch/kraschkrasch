@@ -1,14 +1,16 @@
 <div id="container" class="{{section_class}}">
   <div class="content centeringContainer">
     <div id="main" class="centered">
+
       <header>
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
         <a href="#/"><img src="images/logo.png"/></a>
       </header>
+
       <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
         {{> hb_visual}}
 
-        <div id="detailsBox" class="detailsWrapper collapsed">
+        <div id="detailsBox" class="detailsWrapper {{#if showAll }}collapsed{{/if}}">
           <div class="details">
             <div class="label"><span class="icon_arrow"></span></div>
             <div class="aniContainer">
@@ -30,7 +32,9 @@
           </div>
         </div>
       </article>
+
       <nav id="nav_sections">{{> hb_nav_sections}}</nav>
+
     </div>
   </div>
 </div>
@@ -38,36 +42,35 @@
 <script>
   // Einstellungen für dynamischen slider
   var specialOptions = {
+        width: 900,
+        height: 600,
 
-    width: 900,
-    height: 600,
-
-    play: {
-      active: false,
-      // [boolean] Generate the play and stop buttons.
-      // You cannot use your own buttons. Sorry.
-      effect: "fade",
-      // [string] Can be either "slide" or "fade".
-      interval: 5000,
-      // [number] Time spent on each slide in milliseconds.
-      auto: false,
-      // [boolean] Start playing the slideshow on load.
-      pauseOnHover: true,
-      // [boolean] pause a playing slideshow on hover
-      restartDelay: 2500
-      // [number] restart delay on inactive slideshow
-    },
-    effect: {
-      fade: {
-        speed: 900,
-        crossfade: true
-      }
-    },
-    pagination: {
-      active: true,
-      effect: "fade" //"slide" or "fade".
-    }
-  };
+        play: {
+          active: false,
+          // [boolean] Generate the play and stop buttons.
+          // You cannot use your own buttons. Sorry.
+          effect: "fade",
+          // [string] Can be either "slide" or "fade".
+          interval: 5000,
+          // [number] Time spent on each slide in milliseconds.
+          auto: false,
+          // [boolean] Start playing the slideshow on load.
+          pauseOnHover: true,
+          // [boolean] pause a playing slideshow on hover
+          restartDelay: 2500
+          // [number] restart delay on inactive slideshow
+        },
+        effect: {
+          fade: {
+            speed: 900,
+            crossfade: true
+          }
+        },
+        pagination: {
+          active: true,
+          effect: "fade" //"slide" or "fade".
+        }
+      };
 </script>
 
 {{#if article }}

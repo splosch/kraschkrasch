@@ -1,10 +1,12 @@
 <div id="container" class="{{section_class}}">
   <div class="content centeringContainer">
     <div id="main" class="centered">
+
       <header>
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
         <a href="#/"><img src="images/logo.png"/></a>
       </header>
+
       <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
         {{> hb_startbild}}
 
@@ -18,47 +20,43 @@
         </div>
 
         <div id="detailsBox" class="detailsWrapper collapsed">
-            <div class="details">
-                <div class="label"><span class="icon_arrow"></span></div>
-                <div class="aniContainer">
+          <div class="details">
+            <div class="label"><span class="icon_arrow"></span></div>
+            <div class="aniContainer">
+              <p>
+                <b>kaschkasch´s</b> studio and workshop are located in a charming backyard building in the former working-class district cologne Zollstock (means: folding ruler). Back in the days the studio was a saddlery and the model-building workshop was a horse stable. The associated garden offers kaschkasch the possibility to grow their own vegetables.
+              </p>
 
+              <h3>Address_</h3>
+              <p>
+                kaschkasch<br>
+                Hoeningerweg 174<br>
+                50969 Cologne<br>
+                Germany <br>
+              </p>
 
-                    <p>
-                        <b>kaschkasch´s</b> studio and workshop are located in a charming backyard building in the former working-class district cologne Zollstock (means: folding ruler). Back in the days the studio was a saddlery and the model-building workshop was a horse stable. The associated garden offers kaschkasch the possibility to grow their own vegetables.
-                    </p>
-                    <p>
-                        <h3>Address_</h3>
-            <p> kaschkasch<br />
+              <h3>Phone_</h3>
+              <p>
+                studio 0221 204 31 759 <br>
+                Florian 0049 179 77 90 652 <br>
+                Sebastian 0049 152 33 58 64 79 <br>
+              </p>
 
-                Hoeningerweg 174<br />
-                50969 Cologne<br />
-                Germany <br />
-            </p>
-
-            <h3>Phone_</h3>
-
-                studio 0221 204 31 759 <br />
-
-                Florian 0049 179 77 90 652 <br />
-                Sebastian 0049 152 33 58 64 79 <br />
-            </p>
-                <h3>Email_</h3>
-            <p>
-                <a class="follow" href="mailto:mail@kaschkasch.com">mail@kaschkasch.com (general)</a> <br />
+              <h3>Email_</h3>
+              <p>
+                <a class="follow" href="mailto:mail@kaschkasch.com">mail@kaschkasch.com (general)</a><br>
                 <a class="follow" href="mailto:press@kaschkasch.com">press@kaschkasch.com (press)</a>
+              </p>
 
-                </p>
-
-
-            <h3>Imprint_</h3>
-             <a class="follow" href="imprint.html">click here!</a>
-
-
-
-                </div>
+              <h3>Imprint_</h3>
+              <p>
+                <a class="follow" href="imprint.html">click here!</a>
+              </p>
             </div>
+          </div>
         </div>
       </article>
+
       <nav id="nav_sections">{{> hb_nav_sections}}</nav>
     </div>
   </div>
@@ -67,32 +65,31 @@
 
 <script>
   var sliderOptions = {
-    width: 900,
-    height: 600,
-
-    play: {
-      active: false,
-      // [boolean] Generate the play and stop buttons.
-      // You cannot use your own buttons. Sorry.
-      effect: "slide",
-      // [string] Can be either "slide" or "fade".
-      interval: 5000,
-      // [number] Time spent on each slide in milliseconds.
-      auto: true,
-      // [boolean] Start playing the slideshow on load.
-      pauseOnHover: true,
-      // [boolean] pause a playing slideshow on hover
-      restartDelay: 2500
-      // [number] restart delay on inactive slideshow
-    },
-    slide: {       // Slide effect settings.
-      speed: 4000 // [number] Speed in milliseconds of the slide animation.
-    },
-    pagination: {
-      active: true,
-      effect: "slide" //"slide" or "fade".
-    }
-  };
+        width: 900,
+        height: 600,
+        play: {
+          active: false,
+          // [boolean] Generate the play and stop buttons.
+          // You cannot use your own buttons. Sorry.
+          effect: "slide",
+          // [string] Can be either "slide" or "fade".
+          interval: 5000,
+          // [number] Time spent on each slide in milliseconds.
+          auto: true,
+          // [boolean] Start playing the slideshow on load.
+          pauseOnHover: true,
+          // [boolean] pause a playing slideshow on hover
+          restartDelay: 2500
+          // [number] restart delay on inactive slideshow
+        },
+        slide: {       // Slide effect settings.
+          speed: 4000 // [number] Speed in milliseconds of the slide animation.
+        },
+        pagination: {
+          active: true,
+          effect: "slide" //"slide" or "fade".
+        }
+      };
 </script>
 
 {{#if article }}
