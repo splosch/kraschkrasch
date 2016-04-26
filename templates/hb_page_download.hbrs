@@ -7,7 +7,7 @@
       </header>
       <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
 
-        {{> hb_visual this}}
+        {{> hb_startbild}}
 
         <div class="imprint">
 
