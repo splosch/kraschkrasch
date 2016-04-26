@@ -84,7 +84,7 @@ var app = $.sammy('#main', function( ) {
     $("article").width(newWidth)
                 .height(newHeight);
 
-  // force slider to update size
+    // force slider to update size
     //$(window).trigger("load");
     return newWidth && $("article").width() === newWidth;
   }
@@ -130,7 +130,7 @@ var app = $.sammy('#main', function( ) {
     // STARTPAGE
     this.get('#/',      function(context) {
       var section = "home",
-          data = this.app.getBaseDataForSection(section),
+          data = context.app.getBaseDataForSection(section),
           randomImage = function (list) {
             var randomListItem;
 
@@ -158,13 +158,13 @@ var app = $.sammy('#main', function( ) {
       context.app.swap('');
 
       // add main layout on main element
-      this.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
     });
 
 
     this.get('#/what',  function(context) {
       var section = "what",
-          data = this.app.getBaseDataForSection(section),
+          data = context.app.getBaseDataForSection(section),
           imagelist = function(products){
             var images = [];
             products.all.forEach(function(product){
@@ -184,47 +184,47 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
     });
 
 
     this.get('#/who',   function(context) {
       var section = "who",
-          data = this.app.getBaseDataForSection(section);
+          data = context.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
     });
 
 
     this.get('#/when',  function(context) {
       var section = "when",
-          data = this.app.getBaseDataForSection(section);
+          data = context.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
     });
 
 
     this.get('#/where', function(context) {
       var section = "where",
-          data = this.app.getBaseDataForSection(section);
+          data = context.app.getBaseDataForSection(section);
 
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
     });
 
 
     this.get('#/what/product/:productname', function(context) {
-      var section     = "where",
-          data        = this.app.getBaseDataForSection(section),
-          productName = this.params['productname'],
+      var section     = "what",
+          data        = context.app.getBaseDataForSection(section),
+          productName = context.params['productname'],
           product     = products.withName(productName);
 
       data.product         = product;
@@ -238,13 +238,13 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
     });
 
 
     this.get('#/download',  function(context) {
       var section = "what",
-          data = this.app.getBaseDataForSection(section);
+          data = context.app.getBaseDataForSection(section);
 
       data.linkSections = products.sections || [];
       data.main_image_url = "images/where/01.jpg";
@@ -252,7 +252,7 @@ var app = $.sammy('#main', function( ) {
       // clear the main area
       context.app.swap('');
 
-      this.render('templates/hb_page_download.hbrs', data).appendTo(context.$element());
+      context.render('templates/hb_page_download.hbrs', data).appendTo(context.$element());
     });
   };
 
@@ -284,7 +284,7 @@ $(function() {
     initPageOnLoad();
 
     // automatic open details box unless next / previous product navigation links triggered openong the current product
-    if( this.app.last_route.param_names && this.app.last_route.param_names.indexOf("productname") == -1 ) {
+    if( this.app.last_route && this.app.last_route.param_names && this.app.last_route.param_names.indexOf("productname") == -1 ) {
       window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
     }
 
