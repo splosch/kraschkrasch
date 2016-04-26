@@ -269,7 +269,8 @@ article li, article ul {
   list-style: none;
 }
 
-.impressum article > .imprint {
+.impressum article > .imprint,
+.download article > .imprint {
   position:absolute;
   top:0;
   display: block;

@@ -149,7 +149,7 @@ var controller = {
   },
 
   download : function(context) {
-    var section = "what",
+    var section = "download",
         data = context.app.getBaseDataForSection(section);
 
     data.linkSections = products.sections || [];
@@ -178,6 +178,8 @@ var app = $.sammy('#main', function( ) {
 
     // add "home" section to allowed navSections here since its a special nav section not in the section config
     this.navSections.home = { name: "home", url: "#/", headline: "kaschkasch cologne - designstudio by Florian Kallus and Sebastian Schneider."};
+    // add "download" section to allowed navSections here since its a special nav section not in the section config
+    this.navSections.download = { name: "download", url: "#/download", headline: "DOWNLOAD - kaschkasch download area", section_class: "download bigDetailsPage"}
 
     this.defineRoutes();
   }
@@ -215,7 +217,8 @@ var app = $.sammy('#main', function( ) {
 
   // updates the Navigation Section
   this.navSectionData = function(selected_section){
-    var nav_sections  = [];
+    var nav_sections    = [],
+        skippedSections = ["home", "download"];
 
     if (!this.navSections[selected_section]) {
       console.warn("No such section available --> ["+selected_section+"]");
@@ -225,8 +228,8 @@ var app = $.sammy('#main', function( ) {
     for(section in this.navSections) {
       this.navSections[section].active = section === selected_section;
 
-      // skip home - it will not be rendered in nav section
-      if (section !== "home") {
+      // skipping certain sections that should not occur in the nav area
+      if (skippedSections.indexOf(section) === -1) {
         // keep for rendering && to check wheter update of nav_section is needed
         nav_sections.push(this.navSections[section]);
       }
