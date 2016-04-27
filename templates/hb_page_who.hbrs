@@ -8,16 +8,8 @@
       </header>
 
       <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
-        {{> hb_startbild}}
 
-        <div id="slider" class="overlay autoExpand">
-          <img class="fullscale" src="images/who/01.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
-          <img class="fullscale" src="images/who/02.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
-          <img class="fullscale" src="images/who/03.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
-          <img class="fullscale" src="images/who/04.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
-          <img class="fullscale" src="images/who/05.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
-          <img class="fullscale" src="images/who/06.jpg" {{#if article }}width="{{article.width}}" height="{{article.height}}"{{/if}} />
-        </div>
+        {{> hb_visual}}
 
         <div id="detailsBox" class="detailsWrapper collapsed">
           <div class="details">

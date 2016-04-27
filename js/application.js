@@ -114,7 +114,7 @@ var controller = {
 
     data.slider = {
       images : product.images
-    }
+    };
 
     // clear the main area
     context.app.swap('');
@@ -125,6 +125,17 @@ var controller = {
   who : function(context) {
     var section = "who",
         data = context.app.getBaseDataForSection(section);
+
+    data.slider = {
+      images : [
+        "images/who/01.jpg",
+        "images/who/02.jpg",
+        "images/who/03.jpg",
+        "images/who/04.jpg",
+        "images/who/05.jpg",
+        "images/who/06.jpg"
+      ]
+    };
 
     // clear the main area
     context.app.swap('');
