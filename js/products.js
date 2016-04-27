@@ -18,7 +18,8 @@
  *   @"images":    e.g. [1,2,3,4,5,6]      Für 6 Fotos im Ordner "/images/bulla" mit numerierten Namen "01.jpg" bis "06.jpg"
  *   @"extras": {
  *     @"video":   e.g. "http://vimeo.com/76838325"
- *   }
+ *   },
+ *   @"download":   e.g. "https://drive.google.com/folderview?id=0B_DmGn8prUUIdnUxQmdWREZjdms&usp=sharing"
  * },
  *******************************/
 
@@ -37,7 +38,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIQjFDcWpnemJLc0E&usp=sharing"
   },
   {
     "name":       "roundabout",
@@ -53,7 +55,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIYS1kaTdCTVF3ems&usp=sharing"
   },
   {
     "name":       "fju",
@@ -69,7 +72,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUINlhDNUlkUmNpVE0&usp=sharing"
   },
   {
     "name":       "raft",
@@ -85,7 +89,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIZFdYN1ZtQWd0V28&usp=sharing"
   },
   {
     "name":       "plank",
@@ -104,7 +109,8 @@ var products = [
     "images": [1,2,3,4,5,6],
     "extras": {
       "video" : "https://www.youtube.com/watch?v=35WNFOKZh0s"
-    }
+    },
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIRWpNNHJFaENVZXc&usp=sharing"
   },
   {
     "name":       "check",
@@ -120,7 +126,8 @@ var products = [
         "url": "http://menu.as/"
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUISWgwVVJDNHNQVzA&usp=sharing"
   },
   {
     "name":       "scoop_table",
@@ -136,7 +143,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIaFBoNUt1dS1pMW8&usp=sharing"
   },
   {
     "name":       "scoop_chair",
@@ -152,7 +160,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIYUhzZUVwSmVRVzQ&usp=sharing"
   },
   {
     "name":       "anna_lena",
@@ -168,7 +177,8 @@ var products = [
         "url": "http://www.magazin.com/garderobe-bubka-p1463692/?c=194744"
       }
     ],
-    "images": ["anna_lena_01.jpg","anna_lena_02.jpg","anna_lena_03.jpg","anna_lena_04.jpg","anna_lena_05.jpg","anna_lena_06.jpg"]
+    "images": ["anna_lena_01.jpg","anna_lena_02.jpg","anna_lena_03.jpg","anna_lena_04.jpg","anna_lena_05.jpg","anna_lena_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIaTEyWVVRMnFsVk0&usp=sharing"
   },
   {
     "name":       "pinokkio",
@@ -184,7 +194,8 @@ var products = [
         "url": "http://www.magazin.com/tisch-bank-hoeninger-p1462880/?a=42288"
       }
     ],
-    "images": ["pinokkio_01.jpg","pinokkio_02.jpg","pinokkio_03.jpg","pinokkio_04.jpg","pinokkio_05.jpg","pinokkio_06.jpg"]
+    "images": ["pinokkio_01.jpg","pinokkio_02.jpg","pinokkio_03.jpg","pinokkio_04.jpg","pinokkio_05.jpg","pinokkio_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIVEFBNjg3ZWtiYUU&usp=sharing"
   },
   {
     "name":       "pina_side_table",
@@ -200,7 +211,8 @@ var products = [
         "url": "http://www.hubert-feldkircher.at/cms/index.php?option=com_content&view=article&id=29&Itemid=62&lang=de"
       }
     ],
-    "images": ["pina_side_table_01.jpg","pina_side_table_02.jpg","pina_side_table_03.jpg","pina_side_table_04.jpg","pina_side_table_05.jpg","pina_side_table_06.jpg"]
+    "images": ["pina_side_table_01.jpg","pina_side_table_02.jpg","pina_side_table_03.jpg","pina_side_table_04.jpg","pina_side_table_05.jpg","pina_side_table_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUITm45a0p0T2ZjMEE&usp=sharing"
   },
   {
     "name":       "tome",
@@ -216,7 +228,8 @@ var products = [
         "url": null
       }
     ],
-    "images": ["tome_chair_01.jpg","tome_chair_02.jpg","tome_chair_03.jpg","tome_chair_04.jpg","tome_chair_05.jpg","tome_chair_06.jpg"]
+    "images": ["tome_chair_01.jpg","tome_chair_02.jpg","tome_chair_03.jpg","tome_chair_04.jpg","tome_chair_05.jpg","tome_chair_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIUFk5ZW1yYXg2Wmc&usp=sharing"
   },
   {
     "name":       "tamp_lable",
@@ -232,7 +245,8 @@ var products = [
         "url": null
       }
     ],
-    "images": ["tamp_lable_01.jpg","tamp_lable_02.jpg","tamp_lable_03.jpg","tamp_lable_04.jpg","tamp_lable_05.jpg","tamp_lable_06.jpg"]
+    "images": ["tamp_lable_01.jpg","tamp_lable_02.jpg","tamp_lable_03.jpg","tamp_lable_04.jpg","tamp_lable_05.jpg","tamp_lable_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIa3FqR3FycTBEOHc&usp=sharing"
   },
   {
     "name":       "cherrytable",
@@ -264,7 +278,8 @@ var products = [
         "url": null
       }
     ],
-    "images": ["keep_01.jpg","keep_02.jpg","keep_03.jpg","keep_04.jpg","keep_05.jpg","keep_06.jpg"]
+    "images": ["keep_01.jpg","keep_02.jpg","keep_03.jpg","keep_04.jpg","keep_05.jpg","keep_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIdnUxQmdWREZjdms&usp=sharing"
   },
   {
     "name":       "cherry",
@@ -283,7 +298,8 @@ var products = [
     "images": [1,2,3,4,5,6],
     "extras": {
       "video": "http://vimeo.com/76838325"
-    }
+    },
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUId3lsV1BOZWI2aWM&usp=sharing"
   },
   {
     "name":       "konichiwa",
@@ -302,7 +318,8 @@ var products = [
     "images": [1,2,3,4,5,6],
     "extras": {
       "video": "http://www.youtube.com/watch?v=K8jav3ViIGA"
-    }
+    },
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIQ0FlZTl6bmM1dTQ&usp=sharing"
   },
   {
     "name":       "industrial",
@@ -321,7 +338,8 @@ var products = [
     "images": [1,2,3,4,5,6],
     "extras": {
       "notice": "Interior Innovation Award 2014"
-    }
+    },
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIWTI4bzQtTS03WDg&usp=sharing"
   },
   {
     "name":       "kalimero",
@@ -337,7 +355,8 @@ var products = [
         "url": "http://www.normann-copenhagen.com/products/cap-tablelamp?v=505043"
       }
     ],
-    "images": ["kalimero_01.jpg","kalimero_02.jpg","kalimero_03.jpg","kalimero_04.jpg","kalimero_05.jpg","kalimero_06.jpg"]
+    "images": ["kalimero_01.jpg","kalimero_02.jpg","kalimero_03.jpg","kalimero_04.jpg","kalimero_05.jpg","kalimero_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIdkFQam9qSW1jclk&usp=sharing"
   },
   {
     "name":       "pina_table_lamp",
@@ -353,7 +372,8 @@ var products = [
         "url": null
       }
     ],
-    "images": ["pina_table_lamp_01.jpg","pina_table_lamp_02.jpg","pina_table_lamp_03.jpg","pina_table_lamp_04.jpg","pina_table_lamp_05.jpg","pina_table_lamp_06.jpg"]
+    "images": ["pina_table_lamp_01.jpg","pina_table_lamp_02.jpg","pina_table_lamp_03.jpg","pina_table_lamp_04.jpg","pina_table_lamp_05.jpg","pina_table_lamp_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIWjdLMWRZOEVJZ0E&usp=sharing"
   },
   {
     "name":       "flachmann",
@@ -369,7 +389,8 @@ var products = [
         "url": "http://toendel.de/index.php?option=com_virtuemart&page=shop.browse&category_id=2&Itemid=63"
       }
     ],
-    "images": ["flachmann_01.jpg","flachmann_02.jpg","flachmann_03.jpg","flachmann_04.jpg","flachmann_05.jpg","flachmann_06.jpg"]
+    "images": ["flachmann_01.jpg","flachmann_02.jpg","flachmann_03.jpg","flachmann_04.jpg","flachmann_05.jpg","flachmann_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIeHNfemtxRURDWUk&usp=sharing"
   },
   {
     "name":       "candleblocks",
@@ -401,7 +422,8 @@ var products = [
         "url": null
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIYjV6UzBwb2RfcTA&usp=sharing"
   },
   {
     "name":       "bulla",
@@ -417,7 +439,8 @@ var products = [
         "url": "http://www.schoenbuch.com/de/wohnen/interior-accessoires/garderobenhaken/bulb.html"
       }
     ],
-    "images": [1,2,3,4,5,6]
+    "images": [1,2,3,4,5,6],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUILTRkMUtHVm9aT1k&usp=sharing"
   },
   {
     "name":       "bonfire",
@@ -436,7 +459,8 @@ var products = [
     "images": [1,2,3,4,5,6],
     "extras": {
       "video": "http://www.youtube.com/watch?v=cF6M45Q2Iqg&feature=youtu.be"
-    }
+    },
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIcEo0ejNxOG9rakU&usp=sharing"
   },
   {
     "name":       "hopper_boxes",
@@ -452,7 +476,8 @@ var products = [
         "url": null
       }
     ],
-    "images": ["hopper_boxes_01.jpg","hopper_boxes_02.jpg","hopper_boxes_03.jpg","hopper_boxes_04.jpg","hopper_boxes_05.jpg","hopper_boxes_06.jpg"]
+    "images": ["hopper_boxes_01.jpg","hopper_boxes_02.jpg","hopper_boxes_03.jpg","hopper_boxes_04.jpg","hopper_boxes_05.jpg","hopper_boxes_06.jpg"],
+    "download": "https://drive.google.com/folderview?id=0B_DmGn8prUUIYV9TalVUckNzcnc&usp=sharing"
   }
 ];
 
@@ -519,13 +544,14 @@ var products = (
             title : product.title,
             name  : product.name,
             url   : product.url,
-            image : product.images[0] || null
+            image : product.images[0] || null,
+            download: product.download
           }
         );
       });
 
       return sections;
-    }(list);;
+    }(list);
 
     prod.indexOf = function (productName) {
       var foundIndex = null;

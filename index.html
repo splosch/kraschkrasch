@@ -46,6 +46,15 @@
   <a href="{{url}}" {{#if image}}data-slider-img="{{image}}" data-slider-name="{{name}}"{{/if}} >{{title}}</a>
 </script>
 
+<!-- Helper: Download Link
+     @download - String - Link Url
+     @name     - String - Link Name
+     @title    - String - Link Title
+-->
+<script id="hb_download_link" type="text/x-handlebars-template">
+  <a href="{{download}}" target="_blank" filename="kaschkasch_{{name}}">{{title}}</a>
+</script>
+
 <!-- Helper: Main navigation
      @nav_sections - Array - List of nav section objects
      @nav_section { @active : Boolean, @url : String, @name : String }

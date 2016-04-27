@@ -16,6 +16,7 @@ Handlebars.registerPartial("hb_visual",        $("#hb_visual").html());
 
 Handlebars.registerPartial("hb_startbild",     $("#hb_startbild").html());
 Handlebars.registerPartial("hb_link",          $("#hb_link").html());
+Handlebars.registerPartial("hb_download_link", $("#hb_download_link").html());
 /* configuration end */
 
 
