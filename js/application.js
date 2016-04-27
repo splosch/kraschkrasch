@@ -136,6 +136,17 @@ var controller = {
     var section = "when",
         data = context.app.getBaseDataForSection(section);
 
+    data.slider = {
+      images : [
+        "images/when/01.jpg",
+        "images/when/02.jpg",
+        "images/when/03.jpg",
+        "images/when/04.jpg",
+        "images/when/05.jpg",
+        "images/when/06.jpg"
+      ]
+    };
+
     // clear the main area
     context.app.swap('');
 
@@ -145,6 +156,17 @@ var controller = {
   where : function(context) {
     var section = "where",
         data = context.app.getBaseDataForSection(section);
+
+    data.slider = {
+      images : [
+        "images/where/01.jpg",
+        "images/where/02.jpg",
+        "images/where/03.jpg",
+        "images/where/04.jpg",
+        "images/where/05.jpg",
+        "images/where/06.jpg"
+      ]
+    };
 
     // clear the main area
     context.app.swap('');
@@ -259,20 +281,19 @@ var app = $.sammy('#main', function( ) {
   this.defineRoutes = function() {
 
     // STARTPAGE
-    this.get('#/', controller.startpage);
-    this.get('#/what', controller.what);
-    this.get('#/what/showAll', controller.what, { showAll : true });
-    this.get('#/who', controller.who);
-    this.get('#/when', controller.when);
-    this.get('#/where', controller.where);
-    this.get('#/what/product/:productname', controller.whatProduct);
+    this.get('#/',         controller.startpage);
+    this.get('#/who',      controller.who);
+    this.get('#/when',     controller.when);
+    this.get('#/where',    controller.where);
     this.get('#/download', controller.download);
+    this.get('#/what',     controller.what);
+    this.get('#/what/showAll', controller.what, { showAll : true });
+    this.get('#/what/product/:productname', controller.whatProduct);
   };
 
   // bind app.run() handler to start of the initialization of the APP
   // Once the DOM is loaded and the APP started because of app.run()
   this.bind('run', function() { this.app.initialize(); });
-
 });
 
 

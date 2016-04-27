@@ -1,6 +1,6 @@
 <div id="container" class="{{section_class}}">
   <div class="content centeringContainer">
-    <div id="main" class="centered">
+    <div class="centered">
 
       <header>
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
@@ -8,6 +8,7 @@
       </header>
 
       <article id="main-area" style="{{#if article }}width: {{article.width}}, height: {{article.height}}{{/if}}">
+
         {{> hb_visual}}
 
         <div id="detailsBox" class="detailsWrapper {{#if showAll }}collapsed{{/if}}">

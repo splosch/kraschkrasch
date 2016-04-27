@@ -1,6 +1,7 @@
 <div id="container" class="{{section_class}} productDetailsPage">
   <div class="content centeringContainer">
-    <div id="main" class="centered">
+    <div class="centered">
+
       <header>
         {{#if headline }}<h1 class="invisible">{{headline}}</h1>{{/if}}
         <a href="#/"><img src="images/logo.png"/></a>
