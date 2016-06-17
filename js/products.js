@@ -1,3 +1,5 @@
+var kkc = kkc || {};
+
 /******** Produktliste ********
  * {
  *   @"name"        e.g. "bulla"           Links und Ordner"name", kleingeschrieben
@@ -23,7 +25,7 @@
  * },
  *******************************/
 
-var products = [
+kkc.products = [
   {
     "name":       "zet",
     "title":      "Zet",
@@ -481,10 +483,11 @@ var products = [
   }
 ];
 
-var products = (
+kkc.products = (
   function(list){
-    var prod = {},
-        sections = [];
+    "use strict";
+
+    var prod = {};
 
     // manipulate product data
     list.forEach(function(product, index, list){
@@ -502,7 +505,7 @@ var products = (
           var imagePaths = [];
 
           imgArr.forEach(function(image){
-            var img = typeof image === "string" ? image : ( "0" + image + ".jpg" );
+            var img = typeof image === "string" ? image : ( "0" + image + ".jpg" ),
                 imgPath = product.baseImgPath + img;
 
             imagePaths.push(imgPath);
@@ -527,7 +530,7 @@ var products = (
           };
 
       // fill up the sections with links from list
-      list.forEach(function(product, index){
+      list.forEach(function(product){
         // don't allow multiple sections or wrong section type
         if (typeof product.section !== "string") {
           return false;
@@ -571,22 +574,22 @@ var products = (
       var index = prod.indexOf(productName);
 
       return list[index] || null;
-    },
+    };
 
     prod.nextTo = function(productName) {
       var currentIndex = prod.indexOf(productName),
-          nextIndex = currentIndex == list.length - 1 ? 0 : currentIndex + 1;
+          nextIndex = currentIndex === list.length - 1 ? 0 : currentIndex + 1;
 
       return list[nextIndex] || null ;
-    },
+    };
 
     prod.previousTo = function(productName) {
       var currentIndex = prod.indexOf(productName),
-          previousIndex = currentIndex == 0 ? list.length - 1 : currentIndex - 1;
+          previousIndex = currentIndex === 0 ? list.length - 1 : currentIndex - 1;
 
       return list[previousIndex] || null ;
-    }
+    };
 
     return prod;
-  }(products || [])
+  }(kkc.products || [])
 );

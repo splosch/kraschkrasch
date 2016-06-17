@@ -1,5 +1,5 @@
 // name: sammy
-// version: 0.7.2
+// version: 0.7.4
 
 // Sammy.js / http://sammyjs.org
 
@@ -87,7 +87,7 @@
     }
   };
 
-  Sammy.VERSION = '0.7.2';
+  Sammy.VERSION = '0.7.4';
 
   // Add to the global logger pool. Takes a function that accepts an
   // unknown number of arguments and should print them or send them somewhere
@@ -215,6 +215,17 @@
     }
   });
 
+
+  // Return whether the event targets this window.
+  Sammy.targetIsThisWindow = function targetIsThisWindow(event) {
+    var targetWindow = $(event.target).attr('target');
+    if ( !targetWindow || targetWindow === window.name || targetWindow === '_self' ) { return true; }
+    if ( targetWindow === '_blank' ) { return false; }
+    if ( targetWindow === 'top' && window === window.top ) { return true; }
+    return false;
+  };
+
+
   // The DefaultLocationProxy is the default location proxy for all Sammy applications.
   // A location proxy is a prototype that conforms to a simple interface. The purpose
   // of a location proxy is to notify the Sammy.Application its bound to when the location
@@ -275,14 +286,14 @@ $.extend(Sammy.DefaultLocationProxy.prototype , {
           app.trigger('location-changed');
         });
         // bind to link clicks that have routes
-        $('a').live('click.history-' + this.app.eventNamespace(), function(e) {
-          if (e.isDefaultPrevented() || e.metaKey || e.ctrlKey) {
+        $(document).delegate('a', 'click.history-' + this.app.eventNamespace(), function (e) {
+            if (e.isDefaultPrevented() || e.metaKey || e.ctrlKey) {
             return;
           }
           var full_path = lp.fullPath(this);
           if (this.hostname == window.location.hostname &&
               app.lookupRoute('get', full_path) &&
-              this.target !== '_blank') {
+              Sammy.targetIsThisWindow(e)) {
             e.preventDefault();
             proxy.setLocation(full_path);
             return false;
@@ -299,7 +310,7 @@ $.extend(Sammy.DefaultLocationProxy.prototype , {
     unbind: function() {
       $(window).unbind('hashchange.' + this.app.eventNamespace());
       $(window).unbind('popstate.' + this.app.eventNamespace());
-      $('a').die('click.history-' + this.app.eventNamespace());
+      $(document).undelegate('a', 'click.history-' + this.app.eventNamespace());
       Sammy.DefaultLocationProxy._bindings--;
       if (Sammy.DefaultLocationProxy._bindings <= 0) {
         window.clearInterval(Sammy.DefaultLocationProxy._interval);
@@ -965,6 +976,7 @@ $.extend(Sammy.DefaultLocationProxy.prototype , {
 
       // bind to submit to capture post/put/delete routes
       this.bind('submit', function(e) {
+        if ( !Sammy.targetIsThisWindow(e) ) { return true; }
         var returned = app._checkFormSubmission($(e.target).closest('form'));
         return (returned === false) ? e.preventDefault() : false;
       });
