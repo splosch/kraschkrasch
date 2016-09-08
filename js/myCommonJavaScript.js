@@ -80,9 +80,9 @@ function previousProductInList(currentProductIndex, products) {
 }
 
 function showProductNaviagtionLinks() {
- var products = [ "Zet", "RoundAbout", "Fju", "Raft", "Plank", "Check", "Scoop_table", "Scoop_chair",
-                  "Bubka", "Hoeninger", "PinaSideTable", "tome", "TampLable", "CherryTable", "Keep", "Cherry", "Konichiwa", "Industrial",
-                  "Cap", "PinaTableLamp", "Flachmann", "Candleblocks", "Luna", "Bulb", "Bonfire", "hopperboxes"],
+ var products = [ "Cavetto", "Rail", "Ferro", "Pepe", "Flai", "Shape", "Fju", "Zet", "RoundAbout", "Raft", "Scoop_table", "Scoop_chair",
+                  "Bubka", "Hoeninger", "Dub", "CherryTable", "Keep", "Cherry", "Konichiwa", "Industrial",
+                  "Cap", "PinaTableLamp", "Horizon", "Vase","Lyn", "Lop", "Luna", "Plank", "Check", "Bulb" ],
      productPrefix = "whatDetails",
      currentUrlParts = window.location.href.split(productPrefix),
      nextUrl,

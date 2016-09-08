@@ -1,0 +1,3 @@
+# Block for robots - no indexing
+User-agent: *
+Disallow: /
