@@ -74,9 +74,20 @@
                                             </p>
                         <h3>Email</h3>
                     <p>
-                        <a class="follow" href="mailto:mail@kaschkasch.com">mail@kaschkasch.com </a> <br />
-                        
-                        </p>
+                      <script language="JavaScript">
+                        var mail = {
+                            press    : "press",
+                            standard : "mail",
+                            domain   : "kaschkasch",
+                            tld      : "com"
+                          },
+                          presslinktext = mail.press    + " @ " + mail.domain,
+                          maillinktext  = mail.standard + " @ " + mail.domain;
+
+                        document.write("<a class='follow' target='_blank' href='" + "mail" + "to:" + mail.standard + "@" + mail.domain + mail.tld +"'>" + maillinktext + "</a><br>");
+                        document.write("<a class='follow' target='_blank' href='" + "mail" + "to:" + mail.press + "@" + mail.domain + mail.tld +"'>" + presslinktext + "</a>");
+                      </script>
+                    </p>
 
 
                     <h3>Imprint</h3>
