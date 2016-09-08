@@ -1,2 +1,0 @@
-lenashome finaly deployable :)
-===================================
