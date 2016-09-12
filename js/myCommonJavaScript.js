@@ -1,22 +1,13 @@
-var delay=400,
-    triggerSliding;
+var appK = appK || {};
 
-function blubbclick (event) {
-  if (!event)
-  event = window.event;
-  if ( (event.type && event.type == "contextmenu")
-       || (event.button && event.button == 2)
-       || (event.which && event.which == 3)) {
-
-    if (window.opera) {
-      window.alert("Sorry: Diese Funktion ist deaktiviert.");
-    }
-
-    return false;
-  }
-}
+$.extend(appK, {
+  delay : 400,
+  triggerSliding : null
+});
 
 function maxOutImage() {
+  "use strict";
+
   var newWidth  = $(".content").width(),
       maxHeight = $(".content").height(),
       oldWidth  = $(".fullscale").width(),
@@ -44,56 +35,54 @@ function maxOutImage() {
 }
 
 function currentNameInProductlist(name, products) {
-  var index;
+  "use strict";
 
-  index = products.indexOf(name);
-
-  return index;
+  return products.indexOf(name);
 }
 
 function renderLinks(nextUrl, previousUrl) {
-  var next_product_link = $('<a>&gt;</a>')
+  "use strict";
+
+  var nextProductLink = $('<a>&gt;</a>')
         .attr({ href: nextUrl || '#next_product' })
         .addClass("next_product_link"),
-      prev_product_link = $('<a>&lt;</a>')
+      prevProductLink = $('<a>&lt;</a>')
         .attr({ href: previousUrl || '#previous_product' })
         .addClass("prev_product_link");
 
-  $(".productDetails header").eq(0).after(next_product_link).after(prev_product_link);
+  $(".productDetails header").eq(0).after(nextProductLink).after(prevProductLink);
 }
 
 function nextProductInList(currentProductIndex, products) {
-  var name;
+  "use strict";
 
-  name = products[currentProductIndex+1] || products[0] || null;
-
-  return name;
+  return products[currentProductIndex+1] || products[0] || null;;
 }
 
 
 function previousProductInList(currentProductIndex, products) {
-  var name;
+  "use strict";
 
-  name = products[currentProductIndex-1] || products[products.length-1] || null;
-
-  return name;
+  return products[currentProductIndex-1] || products[products.length-1] || null;;
 }
 
 function showProductNaviagtionLinks() {
- var products = [ "Cavetto", "Rail", "Ferro", "Pepe", "Flai", "Shape", "Fju", "Zet", "RoundAbout", "Raft", "Scoop_table", "Scoop_chair",
+  "use strict";
+
+  var products = [ "Cavetto", "Rail", "Ferro", "Pepe", "Flai", "Shape", "Fju", "Zet", "RoundAbout", "Raft", "Scoop_table", "Scoop_chair",
                   "Bubka", "Hoeninger", "Dub", "CherryTable", "Keep", "Cherry", "Konichiwa", "Industrial",
                   "Cap", "PinaTableLamp", "Horizon", "Vase","Lyn", "Lop", "Luna", "Plank", "Check", "Bulb" ],
      productPrefix = "whatDetails",
      currentUrlParts = window.location.href.split(productPrefix),
      nextUrl,
-     prevUrl,
+     previousUrl,
      nextProduct,
      currentProduct,
      previousProduct,
      currentProductIndex;
 
   // only if the current page is a valid what-product page
-  if(currentUrlParts.length == 2){
+  if(currentUrlParts.length === 2){
     currentProduct = currentUrlParts[1].split(".html")[0];
     currentProductIndex = currentNameInProductlist(currentProduct, products);
 
@@ -113,9 +102,90 @@ function showProductNaviagtionLinks() {
   renderLinks(nextUrl, previousUrl);
 }
 
+var mySlider = {
+    defaults : {
+      width: 900,
+      height: 600,
+
+      play: {
+        active: false,
+        // [boolean] Generate the play and stop buttons.
+        // You cannot use your own buttons. Sorry.
+        effect: "slide",
+        // [string] Can be either "slide" or "fade".
+        interval: 5000,
+        // [number] Time spent on each slide in milliseconds.
+        auto: true,
+        // [boolean] Start playing the slideshow on load.
+        pauseOnHover: true,
+        // [boolean] pause a playing slideshow on hover
+        restartDelay: 2500
+        // [number] restart delay on inactive slideshow
+      },
+      slide: {       // Slide effect settings.
+        speed: 4000 // [number] Speed in milliseconds of the slide animation.
+      },
+      pagination: {
+        active: true,
+        effect: "slide" //"slide" or "fade".
+      }
+    },
+
+    init : function(sliderOptions) {
+      this.options = $.extend(this.defaults, sliderOptions || {});
+
+      if($("[data-img]").length > 0 && this.options.dynamicSlider) {
+        this.initDynamicSlider();
+        this.bindDynamicSliderInteraction();
+      } else {
+        // initialize static slidejs on the slider
+        if($('#slider')[0]) {
+          $("#slider").slidesjs(this.options);
+        }
+      }
+    },
+
+    initDynamicSlider : function() {
+      // prepare the slider-content if dynamic
+      $('#slider_dynamic img').removeAttr("class");
+
+      // for every productlink create a preview slide in the #slider
+      $("[data-img]").each(function(index){
+        var elem = $(this),
+            slideImg = $("<img>", { src: elem.attr("data-img") });
+        $('#slider_dynamic').append(slideImg);
+
+        // add the index to the productlink to allow later matching with the pagination
+        $(this).attr("data-slide-index", index );
+      });
+
+      $("#slider_dynamic").slidesjs(this.options);
+      // hide pagination for what page
+      $('.slidesjs-pagination').hide();
+    },
+
+    bindDynamicSliderInteraction : function() {
+      $('[data-slide-index]').on('mouseover', function() {
+        var that = this;
+
+        clearTimeout(appK.triggerSliding);
+        appK.triggerSliding = setTimeout(function(){
+          // now that all the links with previews have preview images in the slider
+          // allow mouseover on the link to trigger switching the slide to the according index
+          var paginationIndex = parseInt($(that).attr("data-slide-index"),10) + 1;
+          $(".slidesjs-pagination-item").eq(paginationIndex).find("a").trigger("click");
+          $('[data-slide-index]').removeClass("active");
+          $(that).addClass("active");
+        }, delay);
+      });
+    }
+  };
+
 
 $(document).ready(function() {
-  $(".fullscale").eq(0).bind("load", maxOutImage);
+  "use strict";
+
+  $(".fullscale.startbild").bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
   $(".details").not(".keep_open > .details").bind("click", function(event) {
@@ -149,9 +219,8 @@ $(document).ready(function() {
       var goTo  = this.getAttribute("href"),
           linkOpensInNewWindow = this.getAttribute("target") === "_blank";
 
-      setTimeout(function(){
-           window.location = goTo;
-      },1700); // 2s animation time for details box to slide right
+      // ~2s animation time for details box to slide right
+      setTimeout(function(){ window.location = goTo; }, 1700);
 
       if (!linkOpensInNewWindow) {
         $(".detailsWrapper").addClass("collapsed keep_closed");
@@ -163,7 +232,7 @@ $(document).ready(function() {
   if(!(window.location.hash === "#previous_product" || window.location.hash === "#next_product")) {
     $('.autoExpand img').eq(0).load(
       function() {
-        window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false)}, 500);
+        window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false);}, 500);
       }
     );
   }
@@ -172,79 +241,5 @@ $(document).ready(function() {
     maxOutImage();
   });
 
-  var options = typeof sliderOptions === "object" ? sliderOptions : {
-    width: 900,
-    height: 600,
-
-    play: {
-      active: false,
-      // [boolean] Generate the play and stop buttons.
-      // You cannot use your own buttons. Sorry.
-      effect: "slide",
-      // [string] Can be either "slide" or "fade".
-      interval: 5000,
-      // [number] Time spent on each slide in milliseconds.
-      auto: true,
-      // [boolean] Start playing the slideshow on load.
-      pauseOnHover: true,
-      // [boolean] pause a playing slideshow on hover
-      restartDelay: 2500
-      // [number] restart delay on inactive slideshow
-    },
-    slide: {       // Slide effect settings.
-      speed: 4000 // [number] Speed in milliseconds of the slide animation.
-    },
-    pagination: {
-      active: true,
-      effect: "slide" //"slide" or "fade".
-    }
-  };
-
-  // prepare the slider-content if dynamic
-  if($("[data-img]").length > 0 && options.dynamicSlider) {
-    $('#slider_dynamic img').removeAttr("class");
-
-    // for every productlink create a preview slide in the #slider
-    $("[data-img]").each(function(index){
-      var elem = $(this),
-          slideImg = $("<img>", { src: elem.attr("data-img") });
-      $('#slider_dynamic').append(slideImg);
-
-      // add the index to the productlink to allow later matching with the pagination
-      $(this).attr("data-slide-index", index );
-    });
-
-
-    $('[data-slide-index]').on('mouseover', function(event) {
-      var that = this;
-        clearTimeout(triggerSliding);
-        triggerSliding = setTimeout(function(){
-          // now that al the links with previews have preview images in the slider
-          // allow mouseover on the link to trigger switching the slide to the according index
-          var pagination_index = parseInt($(that).attr("data-slide-index"),10) + 1;
-          $(".slidesjs-pagination-item").eq(pagination_index).find("a").trigger("click");
-          $('[data-slide-index]').removeClass("active");
-          $(that).addClass("active");
-         }, delay);
-    });
-
-    $("#slider_dynamic").slidesjs(options);
-    // hide pagination for what page
-    $('.slidesjs-pagination').hide();
-  }
-
-  // initialize slidejs on the slider
-  if($('#slider')[0]) {
-    $("#slider").slidesjs(options);
-  }
+  mySlider.init(sliderOptions);
 });
-
-/*
-if (document.layers) {
-  document.captureEvents(Event.MOUSEDOWN);
-}
-
-document.onmousedown   = click;
-document.oncontextmenu = click;
-
-*/
