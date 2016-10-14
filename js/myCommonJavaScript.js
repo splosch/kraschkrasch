@@ -69,7 +69,7 @@ function previousProductInList(currentProductIndex, products) {
 function showProductNaviagtionLinks() {
   "use strict";
 
-  var products = [ "Cavetto", "Rail", "Ferro", "Pepe", "Flai", "Shape", "Fju", "Zet", "RoundAbout", "Raft", "Scoop_table", "Scoop_chair",
+  var products = [ "Cavetto", "Rail", "Ferro", "Pepe", "Flai", "Shape", "Fju", "Zet", "RoundAbout", "Scoop_table", "Scoop_chair",
                   "Bubka", "Hoeninger", "Dub", "CherryTable", "Keep", "Cherry", "Konichiwa", "Industrial",
                   "Cap", "PinaTableLamp", "Horizon", "Vase","Lyn", "Lop", "Luna", "Plank", "Check", "Bulb" ],
      productPrefix = "whatDetails",
