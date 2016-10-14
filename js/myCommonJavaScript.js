@@ -184,6 +184,7 @@ var mySlider = {
 
 $(document).ready(function() {
   "use strict";
+  var sliderOptions = sliderOptions || {};
 
   $(".fullscale.startbild").bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
