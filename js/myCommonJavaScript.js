@@ -176,7 +176,7 @@ var mySlider = {
           $(".slidesjs-pagination-item").eq(paginationIndex).find("a").trigger("click");
           $('[data-slide-index]').removeClass("active");
           $(that).addClass("active");
-        }, delay);
+        }, appK.delay);
       });
     }
   };
@@ -184,7 +184,7 @@ var mySlider = {
 
 $(document).ready(function() {
   "use strict";
-  var sliderOptions = sliderOptions || {};
+  var sliderOptions = sliderOptions || appK.sliderOptions || {};
 
   $(".fullscale.startbild").bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });

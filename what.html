@@ -134,7 +134,9 @@
 
 <script type="text/javascript">
     // Einstellungen für dynamischen slider
-    var sliderOptions = {
+    var appK = appK || {};
+
+    var sliderOptions = appK.sliderOptions = {
 
         // dynamic slider allows to generate a slider out of navigation elements with data-img attributes
         dynamicSlider: true,
