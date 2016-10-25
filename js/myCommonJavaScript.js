@@ -128,6 +128,9 @@ var mySlider = {
       pagination: {
         active: true,
         effect: "slide" //"slide" or "fade".
+      },
+      callback: {
+        loaded: function(){$(window).trigger("resize")}
       }
     },
 
@@ -229,14 +232,7 @@ $(document).ready(function() {
     }
   });
 
-  // automatic open details box unless next / previous product navigation links triggered openong the current product
-  if(!(window.location.hash === "#previous_product" || window.location.hash === "#next_product")) {
-    $('.autoExpand img').eq(0).load(
-      function() {
-        window.setTimeout(function(){$('#detailsBox').toggleClass('collapsed',false);}, 500);
-      }
-    );
-  }
+
 
   $(window).bind("resize", function() {
     maxOutImage();
