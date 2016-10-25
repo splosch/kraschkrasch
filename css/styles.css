@@ -113,16 +113,16 @@ a, a:link, a:visited {
 
 /* Height on HTML/Body - maybe an issue in some Browsers - JS fill */
 html,body {
-  height: 98%;
-  margin: 0.1%;
+  height: 100%;
+  margin: 0%;
 }
 
 #container {
   margin: 0 auto;
-  width: 88%;
-  height: 93%;
-  padding: 3% 6%;
-
+  width: 100%;
+  height: 100%;
+  padding: 3% 6% 4%;
+  box-sizing: border-box;
   font-size: 1em; /* initial font size - all lower level are controlled by this one
              - so its easier to allow mediaquerz breakpoints to controll overall font adjustment */
 }
@@ -130,8 +130,8 @@ html,body {
 .content {
   display:block;
   width: 100%;
-  height:89%;
-  margin:auto;
+  height: 95%;
+  margin: auto;
   margin-bottom:1%;
 }
 
