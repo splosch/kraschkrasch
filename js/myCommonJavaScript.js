@@ -1,17 +1,30 @@
 var appK = appK || {};
 
-$.extend(appK, {
-  delay : 400,
-  triggerSliding : null
-});
+appK.delay = 400;
+appK.triggerSliding = null;
+
+function revealContentElement() {
+  var content = document.querySelector(".content");
+
+  if(content) {
+    content.style.opacity = 1;
+  }
+}
+// in case something goes wrong ...
+// show the page anyways after 1 sec.
+setTimeout(revealContentElement, 1000);
 
 function maxOutImage() {
   "use strict";
 
-  var newWidth  = $(".content").width(),
-      maxHeight = $(".content").height(),
-      oldWidth  = $(".fullscale").width(),
-      oldHeight = $(".fullscale").height(),
+  var fullscale = document.querySelector(".fullscale"),
+      content   = document.querySelector(".content"),
+      article   = document.querySelector("article");
+
+  var newWidth  = content.offsetWidth,
+      maxHeight = content.offsetHeight,
+      oldWidth  = fullscale.offsetWidth,
+      oldHeight = fullscale.offsetHeight,
       factor    = newWidth / oldWidth,
       newHeight = oldHeight * factor;
 
@@ -27,12 +40,14 @@ function maxOutImage() {
     newHeight = oldHeight * (newWidth / oldWidth);
   }
 
-  $("article, .fullscale").width(newWidth)
-                          .height(newHeight);
+  fullscale.style.width  = newWidth  + "px";
+  fullscale.style.height = newHeight + "px";
+  article.style.width    = newWidth  + "px";
+  article.style.height   = newHeight + "px";
 
-// force slider to update size
-  $(window).trigger("load");
-}
+  // make the content visible again
+  revealContentElement();
+};
 
 function currentNameInProductlist(name, products) {
   "use strict";
@@ -130,7 +145,7 @@ var mySlider = {
         effect: "slide" //"slide" or "fade".
       },
       callback: {
-        loaded: function(){$(window).trigger("resize")}
+        //loaded: function(){$(window).trigger("resize")}
       }
     },
 
@@ -206,7 +221,17 @@ $(document).ready(function() {
     }
 
     if ($(event.target).is(":not([target='_blank'])")) {
-      $(".detailsWrapper").toggleClass("collapsed");
+      // only force collapsing in case a fragment/target was specified
+      // undefined assures not influencing the toggling behaviour
+      var forceCollapsing = (window.location.hash === "#detailsBox") || undefined;
+
+      $(".detailsWrapper").toggleClass("collapsed", forceCollapsing);
+    }
+
+    // last
+    // clean #detailsBox from url remove
+    if (window.location.hash === "#detailsBox") {
+      window.location.hash = "";
     }
   });
 
@@ -235,8 +260,13 @@ $(document).ready(function() {
 
 
   $(window).bind("resize", function() {
+    $(window).trigger("load");
     maxOutImage();
   });
 
+  //maxOutImage();
   mySlider.init(sliderOptions);
 });
+
+// dont wait for scripts and styles - just need the dom to prepare
+document.addEventListener("DOMContentLoaded", maxOutImage);
