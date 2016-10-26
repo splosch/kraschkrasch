@@ -45,6 +45,9 @@ function maxOutImage() {
   article.style.width    = newWidth  + "px";
   article.style.height   = newHeight + "px";
 
+  appK.contentWidth = newWidth;
+  appK.contentHeight = newHeight;
+
   // make the content visible again
   revealContentElement();
 };
@@ -117,10 +120,10 @@ function showProductNaviagtionLinks() {
   renderLinks(nextUrl, previousUrl);
 }
 
-var mySlider = {
+appK.mySlider = {
     defaults : {
-      width: 900,
-      height: 600,
+      width: appK.contentWidth || 900,
+      height: appK.contentHeight || 600,
 
       play: {
         active: false,
@@ -201,9 +204,6 @@ var mySlider = {
 
 
 $(document).ready(function() {
-  "use strict";
-  var sliderOptions = sliderOptions || appK.sliderOptions || {};
-
   $(".fullscale.startbild").bind("load", maxOutImage);
   $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
 
@@ -263,10 +263,17 @@ $(document).ready(function() {
     $(window).trigger("load");
     maxOutImage();
   });
-
-  //maxOutImage();
-  mySlider.init(sliderOptions);
 });
 
 // dont wait for scripts and styles - just need the dom to prepare
-document.addEventListener("DOMContentLoaded", maxOutImage);
+document.addEventListener("DOMContentLoaded", function(){
+  "use strict";
+
+  var sliderOptions = sliderOptions || appK.sliderOptions || {};
+  maxOutImage();
+
+  sliderOptions.width  = appK.contentWidth || 900;
+  sliderOptions.height = appK.contentHeight || 600;
+
+  appK.mySlider.init(sliderOptions);
+});
