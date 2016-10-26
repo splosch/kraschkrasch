@@ -123,6 +123,7 @@ html,body {
   height: 100%;
   padding: 3% 6% 4%;
   box-sizing: border-box;
+  -moz-box-sizing: border-box;
   font-size: 1em; /* initial font size - all lower level are controlled by this one
              - so its easier to allow mediaquerz breakpoints to controll overall font adjustment */
 
