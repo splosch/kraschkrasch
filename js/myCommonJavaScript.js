@@ -215,7 +215,17 @@ appK.mySlider = {
 
 $(document).ready(function() {
   $(".fullscale.startbild").bind("load", maxOutImage);
-  $(".startbild").eq(0).bind("load", function(){ $(this).fadeIn(); });
+
+  // in case something goes wrong ...
+  var delayedStartbildShow = setTimeout(function(){
+    $(".startbild").eq(0).fadeIn();
+  }, 1000);
+
+  // once loaded ...
+  $(".startbild").eq(0).bind("load", function(){
+    clearTimeout(delayedStartbildShow);
+    $(this).fadeIn();
+  });
 
   $(".details").not(".keep_open > .details").bind("click", function(event) {
     // force close
