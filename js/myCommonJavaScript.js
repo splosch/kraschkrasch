@@ -52,6 +52,16 @@ function maxOutImage() {
   revealContentElement();
 };
 
+function openDetailsBoxForMainSections() {
+  // takes '/preview/what.html' --> 'what'
+  var mainSections = ['what','who','where','when'],
+      section = window.location.pathname.split("/").pop().split(".")[0];
+
+  if (mainSections.indexOf(section) !== -1){
+    $("#detailsBox").removeClass("collapsed");
+  }
+}
+
 function currentNameInProductlist(name, products) {
   "use strict";
 
@@ -263,6 +273,9 @@ $(document).ready(function() {
     $(window).trigger("load");
     maxOutImage();
   });
+
+  // open detailsBox for all category pages
+  openDetailsBoxForMainSections();
 });
 
 // dont wait for scripts and styles - just need the dom to prepare
