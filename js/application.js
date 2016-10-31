@@ -13,7 +13,7 @@ kkc.app = $.sammy('#main', function( ) {
     // require Plugins and extensions here
     this.use('Handlebars', 'hbrs'); // include the plugin and alias handlebars() to hbrs()
 
-    this.templateCache('templates/hb_startpage.hbrs', Handlebars.templates['templates/hb_startpage.hbrs']);
+    //this.templateCache('templates/hb_startpage.hbrs', Handlebars.templates['templates/hb_startpage.hbrs']);
 
     this.navSections = {};
     this.article = { width: 900, height: 600};

@@ -42,9 +42,7 @@ kkc.controller = {
     context.app.swap('');
 
     // add main layout on main element
-    context.partial('templates/hb_startpage.hbrs', { data : data });
-    //context.partial('hb_startpage.hbrs', { data : data }).appendTo(context.$element());
-    //context.render(Handlebars.templates['hb_startpage.hbrs'], { data : data }).appendTo(context.$element());
+    context.render('templates/hb_startpage.hbrs', data).appendTo(context.$element());
   },
 
   what : function(context, options) {
@@ -71,7 +69,7 @@ kkc.controller = {
     // clear the main area
     context.app.swap('');
 
-    context.render('hb_page_what.hbrs', data).appendTo(context.$element());
+    context.render('templates/hb_page_what.hbrs', data).appendTo(context.$element());
   },
 
   whatProduct : function(context) {
@@ -92,7 +90,7 @@ kkc.controller = {
     // clear the main area
     context.app.swap('');
 
-    context.render('hb_page_product.hbrs', data).appendTo(context.$element());
+    context.render('templates/hb_page_product.hbrs', data).appendTo(context.$element());
   },
 
   who : function(context) {
@@ -113,7 +111,7 @@ kkc.controller = {
     // clear the main area
     context.app.swap('');
 
-    context.render('hb_page_who.hbrs', data).appendTo(context.$element());
+    context.render('templates/hb_page_who.hbrs', data).appendTo(context.$element());
   },
 
   when : function(context) {
@@ -134,7 +132,7 @@ kkc.controller = {
     // clear the main area
     context.app.swap('');
 
-    context.render('hb_page_when.hbrs', data).appendTo(context.$element());
+    context.render('templates/hb_page_when.hbrs', data).appendTo(context.$element());
   },
 
   where : function(context) {
@@ -155,7 +153,7 @@ kkc.controller = {
     // clear the main area
     context.app.swap('');
 
-    Handlebars.templates['hb_page_where.hbrs'](context, data).appendTo(context.$element());
+    context.render('templates/hb_page_where.hbrs', data).appendTo(context.$element());
   },
 
   download : function(context) {
@@ -168,6 +166,6 @@ kkc.controller = {
     // clear the main area
     context.app.swap('');
 
-    context.render('hb_page_download.hbrs', data).appendTo(context.$element());
+    context.render('templates/hb_page_download.hbrs', data).appendTo(context.$element());
   }
 };
