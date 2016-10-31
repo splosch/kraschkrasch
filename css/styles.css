@@ -113,25 +113,27 @@ a, a:link, a:visited {
 
 /* Height on HTML/Body - maybe an issue in some Browsers - JS fill */
 html,body {
-  height: 98%;
-  margin: 0.1%;
+  height: 100%;
+  margin: 0%;
 }
 
 #container {
   margin: 0 auto;
-  width: 88%;
-  height: 93%;
-  padding: 3% 6%;
-
+  width: 100%;
+  height: 100%;
+  padding: 3% 6% 4%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
   font-size: 1em; /* initial font size - all lower level are controlled by this one
              - so its easier to allow mediaquerz breakpoints to controll overall font adjustment */
+
 }
 
 .content {
   display:block;
   width: 100%;
-  height:89%;
-  margin:auto;
+  height: 95%;
+  margin: auto;
   margin-bottom:1%;
 }
 
@@ -371,7 +373,8 @@ article li, article ul {
   line-height: 34px;
 }
 
-.details .label > .icon_arrow {
+.details .label > .icon_arrow,
+#detailsBox:target > .details .label > .icon_arrow {
   display: inline-block;
   /* fixed px size to avoid font-size inheritage while resizing*/
   font-size: 20px;
@@ -392,8 +395,8 @@ article li, article ul {
           transition-delay: 1.2s;
 }
 
-.collapsed > .details .label > .icon_arrow/*,
-.details:hover .label > .icon_arrow*/ {
+.collapsed > .details .label > .icon_arrow
+/* .details:hover .label > .icon_arrow*/ {
   -moz-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   -o-transform: rotate(0deg);

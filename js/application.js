@@ -134,7 +134,7 @@ $(function() {
       this.app.isInitialized = this.app.maxOutImage();
     }
 
-    initPageOnLoad();
+    $(document).trigger("appk_changed");
 
     // automatic open details box unless next / previous product navigation links triggered openong the current product
     if( this.app.last_route && this.app.last_route.param_names && this.app.last_route.param_names.indexOf("productname") == -1 ) {
