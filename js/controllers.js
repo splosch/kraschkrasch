@@ -31,10 +31,8 @@ kkc.controller = {
             "IMG_7.JPG",
             "IMG_8.JPG",
             "IMG_9.JPG",
-            "IMG_10.JPG",
-            "IMG_11.JPG",
-            "IMG_12.JPG",
-            "IMG_13.JPG" ]);
+            "IMG_10.JPG"
+        ]);
 
     data.main_image_url = "images/start/" + randomImage;
 
