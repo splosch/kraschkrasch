@@ -13,8 +13,6 @@ kkc.app = $.sammy('#main', function( ) {
     // require Plugins and extensions here
     this.use('Handlebars', 'hbrs'); // include the plugin and alias handlebars() to hbrs()
 
-    //this.templateCache('templates/hb_startpage.hbrs', Handlebars.templates['templates/hb_startpage.hbrs']);
-
     this.navSections = {};
     this.article = { width: 900, height: 600};
 
@@ -134,7 +132,7 @@ $(function() {
       this.app.isInitialized = this.app.maxOutImage();
     }
 
-    $(document).trigger("appk_changed");
+    $(document).trigger("initialize_slider", {sliderOptions : kkc.sliderOptions || {}});
 
     // automatic open details box unless next / previous product navigation links triggered openong the current product
     if( this.app.last_route && this.app.last_route.param_names && this.app.last_route.param_names.indexOf("productname") == -1 ) {

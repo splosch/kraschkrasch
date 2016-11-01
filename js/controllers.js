@@ -66,6 +66,28 @@ kkc.controller = {
       imagesWithName : imagelist
     };
 
+    kkc.sliderOptions = {
+      dynamicSlider : true,
+      play: {
+        active: false,
+        effect: "fade",
+        auto: false,
+        pauseOnHover: true,
+        interval: 5000,
+        restartDelay: 2500
+      },
+      effect: {
+        fade: {
+          speed: 900,
+          crossfade: true
+        }
+      },
+      pagination: {
+        active: true,
+        effect: "fade" //"slide" or "fade".
+      }
+    };
+
     // clear the main area
     context.app.swap('');
 
