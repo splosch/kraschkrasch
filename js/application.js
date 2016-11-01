@@ -118,9 +118,7 @@ kkc.app = $.sammy('#main', function( ) {
 $(function() {
   kkc.app.isInitialized = false;
 
-  kkc.app.bindToAllEvents(function(event) {
-    //debugger;
-  });
+  //kkc.app.bindToAllEvents(function(event) {/*debugger;*/});
 
   $(window).bind("resize", function() {
     kkc.app.maxOutImage();
@@ -128,9 +126,12 @@ $(function() {
 
   // every time a navigation was successfull and the route got followed
   kkc.app.bind("changed", function() {
-    if(!this.app.isInitialized){
-      this.app.isInitialized = this.app.maxOutImage();
+    if (!$("#main").children()[0]){
+      return false;
     }
+    //if(!this.app.isInitialized){
+      this.app.isInitialized = this.app.maxOutImage();
+    //}
 
     $(document).trigger("initialize_slider", {sliderOptions : kkc.sliderOptions || {}});
 
