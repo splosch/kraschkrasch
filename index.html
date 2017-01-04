@@ -84,6 +84,35 @@
 
 </div>
 
+<script>
+	$(function(){
+		//sample vimeo api call
+		 var parameter = "background=0&maxheight=600",
+		 		 video_id  = "196412667",
+				 vimeo_oembed = "https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/",
+		     vimeo_url = vimeo_oembed + video_id + "&" + parameter,
+				 container = $("article .overlay"),
+				 iframe_str = "<iframe src='https://player.vimeo.com/video/" + video_id + "?title=0&byline=0&portrait=0&api=1&" + parameter + "' width='300' height='169' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+
+
+		var player = $(iframe_str);
+
+		container.on("click", function(event){
+			player.appendTo(container);
+
+			event.preventDefault();
+		});
+
+		// $.getJSON( vimeo_url, function( data ) {
+		// 	if(data && data.html && data.html.indexOf("iframe") > 0){
+		// 		var iframe = $(data.html);
+		// 		iframe.height = container.parents("article").height;
+		// 		iframe.appendTo(container);
+		// 	}
+		// });
+	});
+</script>
+
 <script src="js/analytics.js" type="text/javascript"></script>
 
 </body>
