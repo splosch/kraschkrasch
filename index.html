@@ -91,19 +91,23 @@
 		 		 video_id  = "196412667",
 				 vimeo_oembed = "https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/",
 		     vimeo_url = vimeo_oembed + video_id + "&" + parameter,
-				 container = $("article .overlay"),
+				 video_thumb = $("article .overlay"),
 				 iframe_str = "<iframe src='https://player.vimeo.com/video/" + video_id + "?title=0&byline=0&portrait=0&api=1&" + parameter + "' width='300' height='169' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
+				 videoContainer = "<div class='videoOverlay'><span class='closeIcon'>&times;</span><div class='videoContainer'></div></div>",
 				 playButton = "<span class='playButton'></span>";
 
+		video_thumb.append(playButton);
 
-		var player = $(iframe_str);
-
-		container.append(playButton);
-
-		container.on("click", function(event){
-			player.appendTo(container);
+		video_thumb.on("click", ".playButton", function(event){
+			var player = $(videoContainer);
+			player.find(".videoContainer").append(iframe_str);
+			$("body").prepend(player);
 
 			event.preventDefault();
+		});
+
+		$("body").on("click", ".videoOverlay", function(event){
+			this.remove();
 		});
 
 		// $.getJSON( vimeo_url, function( data ) {
