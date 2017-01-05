@@ -87,21 +87,26 @@
 <script>
 	$(function(){
 		//sample vimeo api call
-		 var parameter = "background=0&maxheight=600",
-		 		 video_id  = "196412667",
-				 vimeo_oembed = "https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/",
-		     vimeo_url = vimeo_oembed + video_id + "&" + parameter,
-				 video_thumb = $("article .overlay"),
-				 iframe_str = "<iframe src='https://player.vimeo.com/video/" + video_id + "?title=0&byline=0&portrait=0&api=1&" + parameter + "' width='300' height='169' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
-				 videoContainer = "<div class='videoOverlay'><span class='closeIcon'>&times;</span><div class='videoContainer'></div></div>",
+		 var video_thumb = $("article .overlay"),
 				 playButton = "<span class='playButton'></span>";
 
 		video_thumb.append(playButton);
 
 		video_thumb.on("click", ".playButton", function(event){
-			var player = $(videoContainer);
-			player.find(".videoContainer").append(iframe_str);
-			$("body").prepend(player);
+			var body = $("body"),
+			    maxHeight = body.height(),
+			    maxWidth = body.width(),
+			    videoPlayer = $("<iframe src='https://player.vimeo.com/video/196412667?title=0&byline=0&portrait=0&api=1&background=0&maxheight="+maxHeight+"&maxwidth="+maxWidth+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"),
+			    videoContainer = $("<div class='videoOverlay'><span class='closeIcon'>&times;</span><div class='videoContainer'></div></div>");
+
+			var closeIcon = videoContainer.find(".closeIcon");
+
+			// make sure close Icon is still clickable
+			videoPlayer.height(maxHeight - 50);
+			videoPlayer.width(maxWidth);
+
+			videoContainer.append(videoPlayer);
+			body.prepend(videoContainer);
 
 			event.preventDefault();
 		});
@@ -109,14 +114,6 @@
 		$("body").on("click", ".videoOverlay", function(event){
 			this.remove();
 		});
-
-		// $.getJSON( vimeo_url, function( data ) {
-		// 	if(data && data.html && data.html.indexOf("iframe") > 0){
-		// 		var iframe = $(data.html);
-		// 		iframe.height = container.parents("article").height;
-		// 		iframe.appendTo(container);
-		// 	}
-		// });
 	});
 </script>
 
