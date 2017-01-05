@@ -94,9 +94,9 @@
 
 		video_thumb.on("click", ".playButton", function(event){
 			var body = $("body"),
-			    maxHeight = body.height(),
+			    maxHeight = body.height() - 50,
 			    maxWidth = body.width(),
-			    videoPlayer = $("<iframe src='https://player.vimeo.com/video/196412667?title=0&byline=0&portrait=0&api=1&background=0&maxheight="+maxHeight+"&maxwidth="+maxWidth+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"),
+			    videoPlayer = $("<iframe src='https://player.vimeo.com/video/196412667?title=0&byline=0&portrait=0&api=1&background=1&maxheight="+maxHeight+"&maxwidth="+maxWidth+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"),
 			    videoContainer = $("<div class='videoOverlay'><span class='closeIcon'>&times;</span><div class='videoContainer'></div></div>");
 
 			var closeIcon = videoContainer.find(".closeIcon");
