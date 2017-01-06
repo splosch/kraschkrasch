@@ -740,10 +740,16 @@ a.popup:hover span {
   /* On top of the rest*/
   z-index: 999;
   top: 0;
-  left: 0;
+  left: -100%;
   /* CSS3 Transition */
-  transition: opacity .5s;
-  -webkit-transition: opacity .5s;
+  opacity: 0;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+
+.videoOverlay.show {
+  left: 0;
+  opacity: 1;
 }
 
 .videoOverlay iframe {
@@ -755,12 +761,13 @@ a.popup:hover span {
 .closeIcon {
   color: white;
   position: absolute;
-  right: 10px;
+  left: 0;
   top: 10px;
-  font-size: 40px;
-  width: 30px;
+  font-size: 1em;
+  width: 100%;
   opacity: 0.5;
   line-height: 30px;
+  text-align: center;
 }
 
 .closeIcon:hover {
