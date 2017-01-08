@@ -144,12 +144,7 @@
 
 			body.find(playButton).show();
 
-			$(playButton).add(".startbild").on("click", function(event){
-				initVideoPlayer();
-			});
-
-			//body.on("click", playButton, initVideoPlayer);
-			body.on("click", closeButton, closeVideoPlayer);
+			$(playButton).add(".startbild").on("click", initVideoPlayer);
 			onEscapeButtonPressed(closeVideoPlayer);
 		}
 
@@ -174,6 +169,8 @@
 
 			$(".videoOverlay iframe").height(dimension.height - 50)
 															 .width(dimension.width);
+
+      $(".closeButton").add(".videoOverlay").on("click", closeVideoPlayer);
 
 			window.vPlayer = new Vimeo.Player($(".videoOverlay iframe"));
 
