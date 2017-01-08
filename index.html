@@ -149,16 +149,6 @@
 			onEscapeButtonPressed(closeVideoPlayer);
 		}
 
-		// wait for final dimensions or resizing done by user
-		$(window).on("maxOutImage_done", function(){
-			if($(".videoOverlay").hasClass("show")){
-				// store current playback position
-				window.vPlayer.getCurrentTime().then(initVideoPlayer).catch(initVideoPlayer);
-			} else {
-				init();
-			}
-		}.bind(this, currentTime));
-
 		function initVideoPlayer(currentTime){
 			var hasCurrentTime = typeof currentTime === 'number',
 			    delay = hasCurrentTime ? 150 : 400, //in case the videoPlayer is reinitialized no waiting time
@@ -194,6 +184,18 @@
 			}, delay);
 		};
 
+
+		// wait for final dimensions or resizing done by user
+		$(window).on("maxOutImage_done", function(){
+			if($(".videoOverlay").hasClass("show")){
+				// store current playback position
+				window.vPlayer.getCurrentTime().then(initVideoPlayer).catch(initVideoPlayer);
+			} else {
+				init();
+			}
+		}.bind(this, currentTime));
+
+		init();
 	});
 	</script>
 
