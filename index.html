@@ -161,7 +161,7 @@
 
 		function initVideoPlayer(currentTime){
 			var hasCurrentTime = typeof currentTime === 'number',
-			    delay = hasCurrentTime ? 0 : 400, //in case the videoPlayer is reinitialized no waiting time
+			    delay = hasCurrentTime ? 150 : 400, //in case the videoPlayer is reinitialized no waiting time
 			    body = $("body"),
 					dimension   = {
 						height  : body.height() - 50,
