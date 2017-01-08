@@ -752,7 +752,7 @@ a.popup:hover span {
   opacity: 1;
 }
 
-.videoOverlay iframe {
+.videoContainer {
   top: 50px;
   left: 0;
   position: absolute;

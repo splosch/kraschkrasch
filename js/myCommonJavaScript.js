@@ -50,6 +50,9 @@ function maxOutImage() {
 
   // make the content visible again
   revealContentElement();
+
+  // tell other observers resizing is done
+  $(window).trigger("maxOutImage_done");
 };
 
 function openDetailsBoxForMainSections() {
