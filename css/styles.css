@@ -758,20 +758,19 @@ a.popup:hover span {
   position: absolute;
 }
 
-.closeIcon {
-  color: white;
+.closeButton {
+  color: rgba(255,255,255,0.6);
   position: absolute;
   left: 0;
   top: 10px;
   font-size: 1em;
   width: 100%;
-  opacity: 0.5;
   line-height: 30px;
   text-align: center;
 }
 
-.closeIcon:hover {
+.closeButton:hover {
   /* 50% opacity white */
-  opacity: 0.8;
+  color: rgba(255,255,255,0.8);
   cursor: pointer;
 }
