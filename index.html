@@ -94,7 +94,7 @@
 					zufallszahl = Math.floor(Math.random()*bilder.length);
 					zufallszahl = zufallszahl < (bilder.length-1) ? zufallszahl : (bilder.length-1);
 					bildUrl = "images/start/" + bilder[zufallszahl];
-					$("article .overlay").append('<img class="startbild fullscale" src="'+bildUrl+'"/>');
+					$("article .overlay").prepend('<img class="startbild fullscale" src="'+bildUrl+'"/>');
 					</script>
 
 					<noscript>
@@ -144,7 +144,11 @@
 
 			body.find(playButton).show();
 
-			body.on("click", playButton, initVideoPlayer);
+			$(playButton).add(".startbild").on("click", function(event){
+				initVideoPlayer();
+			});
+
+			//body.on("click", playButton, initVideoPlayer);
 			body.on("click", closeButton, closeVideoPlayer);
 			onEscapeButtonPressed(closeVideoPlayer);
 		}
