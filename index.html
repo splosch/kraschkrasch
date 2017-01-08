@@ -156,7 +156,7 @@
 						height  : body.height() - 50,
 						width   : body.width()
 					},
-					vimeoFrame = "<iframe src='https://player.vimeo.com/video/196412667?title=0&byline=0&portrait=0&api=1&autoplay=0&background=0&maxheight="+dimension.height+"&maxwidth="+dimension.width+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
+					vimeoFrame = "<iframe src='https://player.vimeo.com/video/196412667?&autoplay=1&maxheight="+640+"&maxwidth="+480+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
 					videoContainer = $(".videoContainer");
 
 		  // cleanup old Overlays
@@ -172,27 +172,24 @@
 
       $(".closeButton").add(".videoOverlay").on("click", closeVideoPlayer);
 
-			window.vPlayer = new Vimeo.Player($(".videoOverlay iframe"));
+			// window.vPlayer = new Vimeo.Player($(".videoOverlay iframe"));
 
 			// wait some time
-			setTimeout(function() {
-				$(".videoOverlay").addClass("show");
-				if(hasCurrentTime){
-					window.vPlayer.setCurrentTime(currentTime).then(window.vPlayer.play);
-				} else {
-					window.vPlayer.play();
-				}
-			}, delay);
+			// setTimeout(function() {
+			 	$(".videoOverlay").addClass("show");
+			// 	if(hasCurrentTime){
+			// 		window.vPlayer.setCurrentTime(currentTime).then(window.vPlayer.play);
+			// 	} else {
+			// 		window.vPlayer.play();
+			// 	}
+			// }, delay);
 		};
 
 
 		// wait for final dimensions or resizing done by user
 		$(window).on("maxOutImage_done", function(){
 			if($(".videoOverlay").hasClass("show")){
-				// store current playback position
-				window.vPlayer.getCurrentTime().then(initVideoPlayer).catch(initVideoPlayer);
-			} else {
-				init();
+				initVideoPlayer();
 			}
 		}.bind(this, currentTime));
 
