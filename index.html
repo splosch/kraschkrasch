@@ -164,7 +164,7 @@
 						height  : body.height() - 50,
 						width   : body.width()
 					},
-					vimeoFrame = "<iframe src='https://player.vimeo.com/video/196412667?&autoplay=1' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
+					vimeoFrame = "<iframe src='https://player.vimeo.com/video/196412667?&autoplay=1&maxheight="+640+"&maxwidth="+480+"' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
 					videoContainer = $(".videoContainer");
 
 		  // cleanup old Overlays
@@ -175,8 +175,8 @@
 												.width(dimension.width)
 												.append(vimeoFrame);
 
-			// $(".videoOverlay iframe").height(dimension.height - 50)
-			// 												 .width(dimension.width);
+			$(".videoOverlay iframe").height(dimension.height - 50)
+															 .width(dimension.width);
 
       $(".closeButton").add(".videoOverlay").on("click", closeVideoPlayer);
 

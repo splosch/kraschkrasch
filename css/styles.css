@@ -758,15 +758,6 @@ a.popup:hover span {
   position: absolute;
 }
 
-.videoContainer iframe {
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  left: 5%;
-  top: 0;
-}
-
-
 .closeButton {
   color: rgba(255,255,255,0.6);
   position: absolute;
