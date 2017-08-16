@@ -1,3 +1,6 @@
+**[PREVIEW](http://kaschkasch.splosch.de/#/):** [![Deployment status from DeployBot](https://kaschkasch.deploybot.com/badge/34534835939694/17869.svg)](http://deploybot.com)
+**[LIVE](http://www.kaschkasch.de):** [![Deployment status from DeployBot](https://kaschkasch.deploybot.com/badge/88313865889439/17904.svg)](http://deploybot.com)
+
 # kaschkasch collogne - website
 [kaschkasch collogne](http://www.kaschkasch.de)
 
