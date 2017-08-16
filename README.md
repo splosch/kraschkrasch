@@ -2,10 +2,11 @@
 [kaschkasch collogne](http://www.kaschkasch.de)
 
 ## copyright
-All code, images and text in this repository and on the corresponding webpages are owened by kaschkasch cologne.
-Even though though the code is publically available via github, the reusage of code or parts of it that is not subject to any other license requires the explicit agreement of kaschkasch - cologne. That includes forking, cloning and any other way of distributing this repository.
+All **content** - which means Photos, Images an presented Text is owened by kaschkasch cologne.
+The mentioned **content** is __not__ subject to the attached MIT Licence. 
+You are free to fork & clone this repo as long as you include this copyright note in the README or README.md or remove all **content** mentioned above. Reusage of the mentioned **content**  or parts of it requires the explicit agreement of [kaschkasch collogne](http://www.kaschkasch.de).
 
-As far as other licenses apply to parts of used code these license models are applied.
+Other licenses of code inclded in this repo remain as they are.
 
 ## about the app
 - SPA (Single Page Application) based on:
